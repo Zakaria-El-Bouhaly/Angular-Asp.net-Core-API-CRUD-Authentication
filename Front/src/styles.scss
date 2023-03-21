@@ -1,0 +1,63 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+.nav-link {
+    cursor: pointer;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid;
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.btn-primary {
+    background-color: #ffffff;
+    border-color: #006aff;
+    color: rgb(0, 159, 245);
+}
+
+.btn-danger {
+    background-color: #ffffff;
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.form-control {
+    border-radius: 20px;
+    border: 2px solid;
+    border-color: #575757;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.modal-content {
+    border-radius: 20px;
+}
+
+.ng-invalid {
+    border-color: #ff0000;
+}
+
+.ng-valid {
+    border-color: #006aff;
+}
+
+input {
+    border: none;
+    border-radius: 20px;      
+}
+
+.form-select{
+    border-radius: 20px;    
+    border-width: 2px;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}

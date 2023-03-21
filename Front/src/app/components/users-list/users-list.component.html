@@ -1,0 +1,12 @@
+<button class="btn btn-primary mb-2" (click)="openAddModal()">Add User</button>
+
+
+<div class="overflow-auto">
+    <app-mytable [Tabledata]="participants" (editEvent)="openEditModal($event)"
+        (deleteEvent)="openDeleteModal($event)"></app-mytable>
+</div>
+
+<app-modal [title]="modalTitle">
+    <app-user-form *ngIf="formId==1" [formUserProject]="projectUser" (submitForm)="submitForm($event)"></app-user-form>
+    <app-confirmation-dialog *ngIf="formId==2" (cancel)=" closeModal()" (confirm)="removeUser()"></app-confirmation-dialog>
+</app-modal>

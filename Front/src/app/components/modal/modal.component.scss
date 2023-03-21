@@ -1,0 +1,10 @@
+.btn-close {
+    border-radius: 5px;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    &:hover {
+        background-color: #b5b5b5;
+    }
+}

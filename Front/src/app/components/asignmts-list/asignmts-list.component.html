@@ -1,0 +1,14 @@
+<button class="btn btn-primary mb-2" (click)="openAddModal()">Add Assignment</button>
+
+
+<div class="overflow-auto">
+    <app-mytable [Tabledata]="allAssignments" (editEvent)="openEditModal($event)"
+        (deleteEvent)="openDeleteModal($event)"></app-mytable>
+</div>
+
+<app-modal [title]="modalTitle">
+    <app-assignment-form *ngIf="isForm" [formAssignment]="assignment"
+        (submitForm)="submitForm($event)"></app-assignment-form>
+    <app-confirmation-dialog *ngIf="!isForm" (confirm)="deleteAssignment()"
+        (cancel)="closeModal()"></app-confirmation-dialog>
+</app-modal>

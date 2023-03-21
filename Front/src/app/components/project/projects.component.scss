@@ -1,0 +1,11 @@
+//media query for mobile
+@media screen and (max-width: 900px) {
+  .project {
+    flex-direction: column;   
+  }
+}
+
+.row3 {
+  background-color: #d4d4d4;
+  border-radius: 20px;
+}

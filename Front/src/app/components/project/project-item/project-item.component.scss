@@ -1,0 +1,15 @@
+.card {
+    
+    border-radius: 20px;
+    padding-bottom: 20px;    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    .card-header {            
+        border-radius: 20px 20px 0 0;
+    }
+    &:hover {
+     //rotate the card
+        transform: rotate(1deg);
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,53 @@
+.card {
+    border-radius: 20px;
+    margin: 20px;
+    // padding: 20px;
+    .card-header {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+}
+
+.tabs-container {
+    background: #eee;
+    list-style-type: none;
+    height: 40px;    
+    width: 100%;
+    border-radius: 20px;
+
+    .tab-link {
+        width: 33.33%;
+        position: relative;
+        height: 100%;
+        padding: 10px;
+        float: left;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+
+.tab-link::after {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 0;
+    display: block;
+    content: "";
+    border-bottom: 3px solid #18a790;
+    color: #18a790;
+    transform: scaleX(0);
+    transition: transform 50ms ease-in-out;
+}
+.tab-link:hover:after {
+    transform: scaleX(1);  
+}
+.active::after {
+    transform: scaleX(1);
+}
+.active {
+    color: #18a790 !important;
+}

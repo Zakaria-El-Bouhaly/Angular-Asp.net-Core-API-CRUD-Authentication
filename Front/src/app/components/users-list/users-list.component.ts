@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from 'src/app/Services/modal.service';
 import { ProjectUserService } from 'src/app/Services/project-user.service';
@@ -11,11 +11,13 @@ import { ProjectUserService } from 'src/app/Services/project-user.service';
 })
 export class UsersListComponent {
   @Input() participants: any[] = [];
+  @Output() onDeleteParticipant: EventEmitter<any> = new EventEmitter<any>();
   projectUser: any;
   modalTitle: string = "Edit participant";
   formId: number = 0;
   projectId: any;
   isEditMode = false;
+
 
 
   constructor(private projectUserService: ProjectUserService, private modalService: ModalService, private route: ActivatedRoute) { }
@@ -88,10 +90,8 @@ export class UsersListComponent {
     this.projectUserService.RemoveUserFromProject(this.projectUser).subscribe({
       next: (res) => {
         this.modalService.setModalSuccess("Participant deleted successfully");
-        console.log(res);
-        this.participants = this.participants.filter((p) => {
-          return p.userId != res.userId || p.projectId != res.projectId;
-        });
+        var deletedIndex = this.participants.findIndex((p) => p.userId == this.projectUser.userId && p.projectId == this.projectUser.projectId);
+        this.onDeleteParticipant.emit(this.projectUser);
       },
       error: (err) => {
         this.modalService.setModalError("Error deleting participant");
@@ -104,7 +104,6 @@ export class UsersListComponent {
     this.projectUserService.AddUserToProject(projectUser).subscribe({
       next: (res) => {
         this.modalService.setModalSuccess("User added successfully");
-        console.log(res);
         delete res.project;
         res.user = res.user.name
         this.participants.push(res);

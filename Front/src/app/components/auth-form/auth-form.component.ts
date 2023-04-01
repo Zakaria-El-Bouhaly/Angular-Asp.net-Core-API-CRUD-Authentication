@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 
 
+
 @Component({
   selector: 'app-auth-form',
   templateUrl: './auth-form.component.html',
@@ -16,6 +17,7 @@ export class AuthFormComponent {
   message: string = '';
   errors: any = "";
   subscription: any;
+  userInfo: any;
 
   @ViewChild('authForm') authForm!: NgForm;
 
@@ -44,11 +46,10 @@ export class AuthFormComponent {
       this.authService.login(loginUser).subscribe({
         next: (res) => {
           this.authService.loginSuccess(res);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/myprojects']);
         },
         error: (err) => {
           this.errors = err.error.errors;
-
         }
       }
       );
@@ -62,7 +63,6 @@ export class AuthFormComponent {
         },
         error: (err) => {
           this.errors = err.error.errors;
-
         }
       });
 
@@ -74,8 +74,22 @@ export class AuthFormComponent {
     this.router.navigate(['/login'], { queryParams: { message: this.message } });
   }
 
+  onGoogleLogin(response: any) {
+    var googleCredentials = { 'credential': response.credential };
+    console.log(response);
+    this.authService.loginWithGoogle(googleCredentials).subscribe({
+      next: (res) => {
+        console.log("resutlt :" + res);
+        this.authService.loginSuccess(res);
+        this.router.navigate(['/myprojects']);
+      },
+      error: (err) => {
+        this.errors = err.error.errors;
+      }
+    })
+  }
+
   ngonDestory() {
     this.subscription.unsubscribe();
-
   }
 }

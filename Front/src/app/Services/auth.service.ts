@@ -13,11 +13,16 @@ export class AuthService {
 
   constructor(private router: Router, private httpService: HttpService) { }
 
-   
+
   AuthEvent: Subject<boolean> = new Subject<boolean>();
 
   login(user: User): Observable<any> {
     return this.httpService.post('/Auth/login', user);
+  }
+
+  loginWithGoogle(credentials: any): Observable<any> {
+
+    return this.httpService.post('/Auth/loginWithGoogle', credentials);
   }
 
   loginSuccess(res: any) {
@@ -50,8 +55,6 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.AuthEvent.next(false);
-    this.router.navigate(['/login']);
-
   }
 
   getUserId() {

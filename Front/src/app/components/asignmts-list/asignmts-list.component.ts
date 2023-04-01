@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AssignmentService } from 'src/app/Services/assignment.service';
 import { ModalService } from 'src/app/Services/modal.service';
@@ -10,6 +10,7 @@ import { ModalService } from 'src/app/Services/modal.service';
 })
 export class AsignmtsListComponent {
   @Input() allAssignments: any[] = [];
+  @Output() onDeletedAssignment: EventEmitter<any> = new EventEmitter<any>();
   assignment: any;
   modalTitle: string = "Edit Assignment";
   isForm: boolean = false;
@@ -92,8 +93,7 @@ export class AsignmtsListComponent {
     this.assignmentService.deleteAssignment(this.assignment.id).subscribe({
       next: (res) => {
         this.modalService.setModalSuccess("Assignment deleted successfully");
-        console.log(res);
-        this.allAssignments = this.allAssignments.filter((asg) => asg.id != this.assignment.id);
+        this.onDeletedAssignment.emit(this.assignment.id);
       },
       error: (err) => {
         this.modalService.setModalError("Error deleting assignment");

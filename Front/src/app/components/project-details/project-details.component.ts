@@ -20,6 +20,7 @@ export class ProjectDetailsComponent {
   subProject!: Subscription;
   projectId: any;
   participators: any[] = [];
+  allAssignments: any[] = [];
   errorMessage: string = "";
   successMessage: string = "";
   activeTab: string = "ProjectInfo";
@@ -37,6 +38,7 @@ export class ProjectDetailsComponent {
         this.participators.forEach((participator) => {
           participator.user = participator.user.name;
         });
+        this.allAssignments = resultProject.assignments;
         this.subProject.unsubscribe();
       },
       error: (err) => {
@@ -72,6 +74,18 @@ export class ProjectDetailsComponent {
   setErrorMessage(msg: string) {
     this.successMessage = "";
     this.errorMessage = msg;
+  }
+
+  deleteParticipant(participantIndex: any) {
+    // delete element by index
+    this.participators.splice(this.participators.indexOf(participantIndex), 1);
+    console.log(this.participators);
+  }
+
+  deleteAssignment(assignmentIndex: any) {
+    // delete element by index
+    this.allAssignments= this.allAssignments.filter((assignment) => assignment.id != assignmentIndex);
+    console.log(this.allAssignments);
   }
 
 }

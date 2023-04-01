@@ -57,7 +57,7 @@ export class ProjectsComponent {
 
   editProject(project: Project) {
     console.log(project);
-    this.router.navigate(['/project/' + project.id]);
+    this.router.navigate(['/edit/' + project.id]);
   }
 
   deleteProject() {

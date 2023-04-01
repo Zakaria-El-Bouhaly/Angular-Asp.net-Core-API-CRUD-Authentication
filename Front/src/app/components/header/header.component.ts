@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class HeaderComponent {
   title = 'Home';
 
-  constructor(private authSrv: AuthService) { }
+  constructor(private authSrv: AuthService,private router: Router) { }
 
   islogged = this.authSrv.loggedIn();
   
@@ -24,5 +25,6 @@ export class HeaderComponent {
 
   logout() {
     this.authSrv.logout();
+    this.router.navigate(['/login']);
   }
 }

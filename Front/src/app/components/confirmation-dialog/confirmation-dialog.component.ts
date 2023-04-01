@@ -15,8 +15,7 @@ export class ConfirmationDialogComponent {
     this.confirm.emit();
   }
 
-  onCancel() {    
+  onCancel() {
     this.cancel.emit();
   }
-
 }

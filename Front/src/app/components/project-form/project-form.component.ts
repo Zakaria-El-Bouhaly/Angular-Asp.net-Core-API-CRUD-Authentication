@@ -17,7 +17,7 @@ export class ProjectFormComponent {
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      id: new FormControl(""),
+      id: new FormControl(0),
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
       description: new FormControl("", [Validators.required, Validators.minLength(3)]),
     });

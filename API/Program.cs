@@ -8,6 +8,7 @@ using RotativaHQ.AspNetCore;
 using System.Text;
 using Colab.Repositories;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 //add dbcontext
@@ -22,7 +23,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 );
 
 //add jwt authorization
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -38,9 +42,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 
-// add identity
 
-    
+// add identity
+builder.Services.AddHttpClient();
+
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdminRole", p => p.RequireRole("Admin"));
@@ -54,8 +59,6 @@ builder.Services.AddScoped<ITokenService, JwtService>();
 // cofigure rotativa for pdf generation
 RotativaHqConfiguration.SetRotativaHqApiKey("ec3a8456afe444629e9cfd826ea1a3b8");
 RotativaHqConfiguration.SetRotativaHqUrl("https://eunorth.rotativahq.com");
-
-
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

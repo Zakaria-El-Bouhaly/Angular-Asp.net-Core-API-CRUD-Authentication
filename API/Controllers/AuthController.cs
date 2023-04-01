@@ -1,10 +1,11 @@
-using System.IdentityModel.Tokens.Jwt;
 using Colab.Models;
 using Colab.Requests;
 using Colab.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Colab.Repositories;
+using Google.Apis.Auth;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Colab.Controllers;
 
@@ -12,17 +13,24 @@ namespace Colab.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly MainDbContext _context;   
+    private readonly MainDbContext _context;
     private readonly ITokenService _tokenService;
     private readonly IUserRepository _userRepository;
+    private readonly IConfiguration _configuration;
+
+    // httpClient instance to make http requests
+    private readonly HttpClient _httpClient;
 
 
-    public AuthController(MainDbContext context, IConfiguration configuration, ITokenService tokenService, IUserRepository userRepository)
+    public AuthController(MainDbContext context, IConfiguration configuration, ITokenService tokenService, IUserRepository userRepository, HttpClient httpClient)
     {
         _context = context;
         _tokenService = tokenService;
         _userRepository = userRepository;
-    }    
+        _configuration = configuration;
+        _httpClient = httpClient;
+
+    }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest user)
@@ -98,5 +106,43 @@ public class AuthController : ControllerBase
     {
         return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
+
+    [HttpPost]
+    [Route("loginWithGoogle")]
+    public async Task<IActionResult> loginWithGoogle(GoogleCredentials googleCredentials)
+    {
+
+        var settings = new GoogleJsonWebSignature.ValidationSettings()
+        {
+            Audience = new List<string> { this._configuration["Google:ClientId"] },
+            // date for which the token is iso8601 format
+        };
+        var payload = await GoogleJsonWebSignature.ValidateAsync(googleCredentials.credential, settings);
+
+        var user = await _userRepository.findByEmail(payload.Email);
+
+        if (user != null)
+        {
+            return generateJwt(user);
+        }
+        else
+        {
+            var newUser = new User
+            {
+                Name = payload.Name,
+                Email = payload.Email,
+                IsAdmin = false,
+                Password = BCrypt.Net.BCrypt.HashPassword(payload.Email),
+            };
+
+            var createdUser = await _userRepository.CreateUser(newUser);
+
+            // return Ok(_tokenService.generateToken(createdUser));
+            return generateJwt(createdUser);
+        }
+
+    }
+
+
 
 }

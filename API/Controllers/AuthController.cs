@@ -114,8 +114,7 @@ public class AuthController : ControllerBase
 
         var settings = new GoogleJsonWebSignature.ValidationSettings()
         {
-            Audience = new List<string> { this._configuration["Google:ClientId"] },
-            // date for which the token is iso8601 format
+            Audience = new List<string> { this._configuration["Google:ClientId"] }
         };
         var payload = await GoogleJsonWebSignature.ValidateAsync(googleCredentials.credential, settings);
 

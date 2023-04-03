@@ -4,6 +4,6 @@ export const environment = {
     production: false,
     apiUrl: 'http://localhost:5130/api',
     google: {
-        clientId: 'google client Id'
+        clientId: ''
     }
 };

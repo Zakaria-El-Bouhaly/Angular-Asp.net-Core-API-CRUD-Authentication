@@ -12,7 +12,7 @@ using Colab.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 //add dbcontext
-builder.Services.AddDbContext<MainDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<MainDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Add services to the container.
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();

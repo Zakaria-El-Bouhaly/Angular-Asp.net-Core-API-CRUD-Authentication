@@ -24,11 +24,6 @@ namespace Colab.Repositories
         public async Task<IEnumerable<Project>> GetProjectsByUserId(int id)
         {
 
-            if (_jwtService.getUserId() != id)
-            {
-                return null;
-            }
-
             var projects = await _context.Projects
                 .Where(p => p.Participators.Any(u => u.UserId == id && u.IsOwner))
                 .ToListAsync();
@@ -132,7 +127,7 @@ namespace Colab.Repositories
                 _context.Set<ProjectUser>().Add(newProjectUser);
 
                 await _context.SaveChangesAsync();
-                
+
                 newProjectUser = _context.Set<ProjectUser>().Where(p => p.ProjectId == projectUser.ProjectId && p.UserId == projectUser.UserId).Include(p => p.User).FirstOrDefault();
 
                 return newProjectUser;
@@ -177,6 +172,27 @@ namespace Colab.Repositories
             else
             {
                 return null;
+            }
+        }
+
+        public async Task<IEnumerable<Project>> GetParticipations()
+        {
+            var userId = _jwtService.getUserId();
+            return await _context.Projects.Where(p => p.Participators.Any(u => u.UserId == userId)).ToListAsync();
+        }
+
+
+        public async Task<Boolean> isOnwerOfProject(int projectId, int userId)
+        {
+
+            var project = await _context.Projects.Where(p => p.Id == projectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).FirstOrDefaultAsync();
+            if (project != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

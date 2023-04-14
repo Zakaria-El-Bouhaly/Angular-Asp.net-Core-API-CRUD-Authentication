@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Colab.Models;
 using Colab.Requests;
+using Colab.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Colab.Controllers
 {
@@ -14,124 +10,83 @@ namespace Colab.Controllers
     [ApiController]
     public class AssignmentController : ControllerBase
     {
-        private readonly MainDbContext _context;
 
-        public AssignmentController(MainDbContext context)
+        private readonly IAssignmentRepo _assignmentRepo;
+
+        public AssignmentController(IAssignmentRepo assignmentRepo)
         {
-            _context = context;
+
+            _assignmentRepo = assignmentRepo;
         }
 
         // GET: api/Assignment
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Assignment>>> GetAssignments()
         {
-            if (_context.Assignments == null)
-            {
-                return NotFound();
-            }
-            return await _context.Assignments.ToListAsync();
+
+            return Ok(await _assignmentRepo.GetAssignments());
         }
 
         // GET: api/Assignment/5
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Assignment>> GetAssignment(int id)
         {
-            if (_context.Assignments == null)
-            {
-                return NotFound();
-            }
-            var assignment = await _context.Assignments.FindAsync(id);
+            var assignment = await _assignmentRepo.GetAssignment(id);
 
             if (assignment == null)
             {
                 return NotFound();
             }
 
-            return assignment;
+            return Ok(assignment);
         }
 
         // PUT: api/Assignment/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "User,Admin")]
         [HttpPut]
         public async Task<IActionResult> PutAssignment(AssignmentRequest assignment)
         {
-
-            // update 
-            var assignmentToUpdate = await _context.Assignments.FindAsync(assignment.Id);
-            if (assignmentToUpdate == null)
+            var assignments = await _assignmentRepo.PutAssignment(assignment);
+            if (assignments == null)
             {
                 return NotFound();
             }
-            assignmentToUpdate.Title = assignment.Title;
-            assignmentToUpdate.Description = assignment.Description;
-            assignmentToUpdate.IsCompleted = assignment.IsCompleted;
-            assignmentToUpdate.ProjectId = assignment.ProjectId;
-            assignmentToUpdate.UpdatedAt = DateTime.Now;
+            return Ok(assignment);
 
-            _context.Entry(assignmentToUpdate).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                // return error message if update fails
-                return BadRequest(new { message = "Update failed" });
-
-            }
-
-            // return success message
-            return Ok(assignmentToUpdate);
         }
 
         // POST: api/Assignment
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "User,Admin")]
         [HttpPost]
         public async Task<ActionResult<Assignment>> PostAssignment(BaseAssignmentRequest assignment)
         {
-            if (_context.Assignments == null)
-            {
-                return Problem("Entity set 'MainDbContext.Assignments'  is null.");
-            }
-
-            var newAssignment = new Assignment
-            {
-                Title = assignment.Title,
-                Description = assignment.Description,
-                ProjectId = assignment.ProjectId,
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
-            };
-            _context.Assignments.Add(newAssignment);
-            await _context.SaveChangesAsync();
-
-            return Ok(newAssignment);
+            return Ok(await _assignmentRepo.PostAssignment(assignment));
         }
 
         // DELETE: api/Assignment/5
+
+        [Authorize(Roles = "User,Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAssignment(int id)
         {
-            if (_context.Assignments == null)
+            var assignments = await _assignmentRepo.DeleteAssignment(id);
+            if (assignments == null)
             {
                 return NotFound();
             }
-            var assignment = await _context.Assignments.FindAsync(id);
-            if (assignment == null)
-            {
-                return NotFound();
-            }
-
-            _context.Assignments.Remove(assignment);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(new { message = "Assignment deleted" });
         }
 
-        private bool AssignmentExists(int id)
+        [Authorize(Roles = "User,Admin")]
+        [HttpGet("usertasks/{id}")]
+        public async Task<ActionResult<IEnumerable<Assignment>>> GetAssignmentsByUserProject(int id)
         {
-            return (_context.Assignments?.Any(e => e.Id == id)).GetValueOrDefault();
+            return Ok(await _assignmentRepo.GetAssignmentsByUserProject(id));
         }
+
     }
 }

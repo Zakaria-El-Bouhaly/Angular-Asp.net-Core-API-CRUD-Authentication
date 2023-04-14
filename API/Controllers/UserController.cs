@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Colab.Models;
 using Microsoft.AspNetCore.Authorization;
 using Colab.Repositories;
+using Colab.Services;
+using Colab.Requests;
 
 namespace Colab.Controllers
 {
@@ -11,9 +13,11 @@ namespace Colab.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
-        public UserController(IUserRepository userRpository)
+        private readonly ITokenService _tokenService;
+        public UserController(IUserRepository userRpository, ITokenService tokenService)
         {
             _userRepository = userRpository;
+            _tokenService = tokenService;
         }
 
 
@@ -23,7 +27,7 @@ namespace Colab.Controllers
 
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            var users=await _userRepository.GetUsers();
+            var users = await _userRepository.GetUsers();
             return Ok(users);
         }
 
@@ -50,23 +54,21 @@ namespace Colab.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<ActionResult<User>> PutUser(int id, [FromForm] UserRequest userRequest)
         {
-            if (id != user.Id)
+            if (id != userRequest.Id)
             {
                 return BadRequest();
             }
 
             try
             {
-                await _userRepository.UpdateUser(user);
+                return await _userRepository.UpdateUser(userRequest);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                throw;
+                return BadRequest(new { message = e.Message });
             }
-
-            return NoContent();
         }
 
 
@@ -98,6 +100,66 @@ namespace Colab.Controllers
 
             return NoContent();
         }
+
+        [Authorize(Roles = "Admin,User")]
+        [HttpPost("sendVerificationEmail")]
+        public async Task<ActionResult<User>> sendVerificationEmail()
+        {
+            var userId = _tokenService.getUserId();
+
+            try
+            {
+                await _userRepository.sendVerificationEmail(userId);
+                return Ok(new { message = "Verification email sent" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { message = e.Message });
+            }
+        }
+
+        [HttpPost("verifyEmail")]
+        public async Task<ActionResult> verifyEmail(VerificationRequest request)
+        {
+            try
+            {
+                var user = await _userRepository.verifyEmail(request.Token);
+                return Ok(new { message = "Email verified" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { message = e.Message });
+            }
+        }
+
+        [HttpPost("forgotPassword")]
+        public async Task<ActionResult> forgotPassword(ForgotPasswordRequest request)
+        {
+            try
+            {
+                await _userRepository.forgotPassword(request.Email);
+                return Ok(new { message = "Password reset email sent" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { message = e.Message });
+            }
+        }
+
+        [HttpPost("resetPassword")]
+        public async Task<ActionResult> resetPassword(ResetPasswordRequest request)
+        {
+            try
+            {
+                await _userRepository.resetPassword(request.Token, request.Password, request.ConfirmPassword);
+                return Ok(new { message = "Password reset" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { message = e.Message });
+            }
+        }
+
 
     }
 }

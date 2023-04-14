@@ -45,7 +45,7 @@ public class AuthController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        if (!BCrypt.Net.BCrypt.Verify(user.Password, userFromDb.Password))
+        if (!BCrypt.Net.BCrypt.Verify(user.Password, userFromDb.Password) || userFromDb.IsVerified == false)
         {
             return BadRequest(ModelState);
         }
@@ -72,9 +72,12 @@ public class AuthController : ControllerBase
             Name = request.Name,
             Email = request.Email,
             Password = BCrypt.Net.BCrypt.HashPassword(request.Password),
+            profilePicture = "profile-images/default.png"
         };
 
         await _userRepository.CreateUser(user);
+
+        await _userRepository.sendVerificationEmail(user.Id);
 
         // return created successfully message response
         return Ok(new { message = "User created successfully" });
@@ -95,6 +98,7 @@ public class AuthController : ControllerBase
                 id = user.Id,
                 name = user.Name,
                 email = user.Email,
+                profilePicture = user.profilePicture,
                 isAdmin = user.IsAdmin
             }
         });
@@ -130,8 +134,9 @@ public class AuthController : ControllerBase
             {
                 Name = payload.Name,
                 Email = payload.Email,
-                IsAdmin = false,
                 Password = BCrypt.Net.BCrypt.HashPassword(payload.Email),
+                IsVerified = true,
+                profilePicture = "profile-images/default.png"
             };
 
             var createdUser = await _userRepository.CreateUser(newUser);

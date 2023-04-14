@@ -9,13 +9,19 @@ public class BaseAssignmentRequest
 
     [Required]
     public int ProjectId { get; set; }
+
+    [Required]
+    public int UserId { get; set; }
+
+    [Required]
+    [Range(0, 2)]
+    public int state { get; set; }
 }
 
 public class AssignmentRequest : BaseAssignmentRequest
 {
     [Required]
     public int Id { get; set; }
-    [Required]
-    public bool IsCompleted { get; set; }
+
 }
 

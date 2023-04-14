@@ -35,9 +35,6 @@ namespace Colab.Controllers
             return Ok(await _projectRepo.GetProjectsByUserId(id));
         }
 
-
-
-
         [Authorize(Roles = "User,Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Project>> GetProject(int id)
@@ -123,7 +120,12 @@ namespace Colab.Controllers
             return Ok(updatedProject);
         }
 
-
+        [Authorize(Roles = "User,Admin")]
+        [HttpGet("participations")]
+        public async Task<ActionResult<IEnumerable<Project>>> GetParticipations()
+        {
+            return Ok(await _projectRepo.GetParticipations());
+        }
 
 
 

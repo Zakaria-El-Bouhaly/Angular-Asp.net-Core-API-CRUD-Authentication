@@ -13,13 +13,11 @@ public class JwtService : ITokenService
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IConfiguration _configuration;
 
-    private readonly IUserRepository _userRepository;
 
-    public JwtService(IHttpContextAccessor httpContextAccessor, IConfiguration configuration, IUserRepository userRepository)
+    public JwtService(IHttpContextAccessor httpContextAccessor, IConfiguration configuration)
     {
         _httpContextAccessor = httpContextAccessor;
-        _configuration = configuration;
-        _userRepository = userRepository;
+        _configuration = configuration;        
     }
 
     public int getUserId()

@@ -34,8 +34,9 @@ public class MainDbContext : DbContext
         var randomusers = new Faker<User>()
                     .RuleFor(m => m.Id, f => i++)
                     .RuleFor(m => m.Name, f => f.Name.FullName())
+                    .RuleFor(m => m.profilePicture, f => f.Internet.Avatar())
                     .RuleFor(m => m.Email, f => f.Internet.Email())
-                    .RuleFor(m => m.Password, f => f.Internet.Password());
+                    .RuleFor(m => m.Password, f => BCrypt.Net.BCrypt.HashPassword("userpass" + (i-1)));
 
 
         modelBuilder.Entity<User>()
@@ -58,13 +59,14 @@ public class MainDbContext : DbContext
                                                        .RuleFor(m => m.Description, f => f.Lorem.Paragraph().Substring(0, 20))
                                                        .RuleFor(m => m.CreatedAt, f => f.Date.Past())
                                                        .RuleFor(m => m.UpdatedAt, f => f.Date.Past())
-                                                       .RuleFor(m => m.IsCompleted, f => f.Random.Bool())
-                                                       .RuleFor(m => m.ProjectId, f => f.Random.Int(1, 10));
+                                                       .RuleFor(m => m.state, f => f.Random.Int(0,2))
+                                                       .RuleFor(m => m.ProjectId, f => f.Random.Int(1, 10))
+                                                       .RuleFor(m => m.UserId, f => f.Random.Int(1, 5));
 
 
         modelBuilder.Entity<Assignment>().HasData(randomAssignments.Generate(20));
 
-      
+
 
     }
 
@@ -72,5 +74,7 @@ public class MainDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Assignment> Assignments { get; set; }
     public DbSet<Project> Projects { get; set; }
+    public DbSet<EmailVerifTokens> EmailVerifTokens { get; set; }
+    public DbSet<PasswordResetTokens> PasswordResetTokens { get; set; }
 
 }

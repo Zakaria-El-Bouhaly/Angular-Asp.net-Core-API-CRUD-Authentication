@@ -13,6 +13,8 @@ namespace Colab.Repositories
         Task<Project> DeleteProject(int id);
         Task<ProjectUser> AddUserToProject(ProjectUserDto projectUser);
         Task<ProjectUser> UpdateUserInProject(ProjectUserDto projectUser);
-        Task<ProjectUser > RemoveUserFromProject(ProjectUserDto projectUser);
+        Task<ProjectUser> RemoveUserFromProject(ProjectUserDto projectUser);
+        Task<IEnumerable<Project>> GetParticipations();
+        Task<Boolean> isOnwerOfProject(int projectId, int userId);
     }
 }

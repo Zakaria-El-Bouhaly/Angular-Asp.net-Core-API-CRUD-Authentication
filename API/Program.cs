@@ -6,20 +6,26 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Colab.Repositories;
-
+using MailKit;
+using MailKit.Security;
+using Colab.config;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //add dbcontext
-builder.Services.AddDbContext<MainDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<MainDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Add services to the container.
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProjectRepo, ProjectRepo>();
+builder.Services.AddScoped<IAssignmentRepo, AssignmentRepo>();
+builder.Services.AddScoped<IProfileRepo, ProfileRepo>();
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+
+builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
 //add jwt authorization
 builder.Services.AddAuthentication(options =>
@@ -54,6 +60,7 @@ builder.Services.AddAuthorization(options =>
 // add httpcontext
 builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<ITokenService, JwtService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -61,6 +68,12 @@ builder.Services.AddEndpointsApiExplorer();
 
 // add authorization to swagger jwt bearer
 builder.Services.AddSwaggerGen();
+
+//config mailkit
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection(nameof(MailSettings)));
+
+// add log file
+builder.Logging.AddFile("Logs/colab-{Date}.txt");
 
 var app = builder.Build();
 
@@ -73,6 +86,10 @@ if (app.Environment.IsDevelopment())
 
 // enable autorization token bearer in swagger
 app.UseHttpsRedirection();
+
+//serve files 
+app.UseStaticFiles();
+
 
 // use cors to allow all origins
 app.UseCors(x => x

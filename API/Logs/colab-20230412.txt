@@ -1,0 +1,829 @@
+2023-04-12T02:37:17.4083349+00:00  [INF] User profile is available. Using '"C:\Users\op\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2023-04-12T02:37:17.5307924+00:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2023-04-12T02:37:17.5356811+00:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-04-12T02:37:17.5359798+00:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2023-04-12T02:37:17.5360377+00:00  [INF] Content root path: "C:\Users\op\Desktop\Angular-Asp.net-Core-API-CRUD-Authentication\API" (cc26f24e)
+2023-04-12T02:37:18.0236925+00:00 0HMPQVRALNU0U:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/index.html - - (ca22a1cb)
+2023-04-12T02:37:18.3130059+00:00 0HMPQVRALNU0U:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/index.html - - - 200 - text/html;charset=utf-8 289.5896ms (791a596a)
+2023-04-12T02:37:18.4109663+00:00 0HMPQVRALNU0U:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - (ca22a1cb)
+2023-04-12T02:37:18.4182638+00:00 0HMPQVRALNU0U:00000002 [INF] Request finished HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - - 200 11966 application/javascript;+charset=utf-8 7.2715ms (791a596a)
+2023-04-12T02:37:19.2011276+00:00 0HMPQVRALNU0U:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - (ca22a1cb)
+2023-04-12T02:37:19.4736750+00:00 0HMPQVRALNU0U:00000003 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 272.5857ms (791a596a)
+2023-04-12T02:37:46.1140389+00:00 0HMPQVRALNU0V:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:37:46.1408822+00:00 0HMPQVRALNU0V:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2023-04-12T02:37:46.1432469+00:00 0HMPQVRALNU0V:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:37:46.1463219+00:00 0HMPQVRALNU0V:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 32.2650ms (791a596a)
+2023-04-12T02:37:46.1500802+00:00 0HMPQVRALNU0V:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 (ca22a1cb)
+2023-04-12T02:37:46.1518394+00:00 0HMPQVRALNU0V:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:37:46.1867548+00:00 0HMPQVRALNU0V:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:37:46.2221867+00:00 0HMPQVRALNU0V:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:37:49.2898554+00:00 0HMPQVRALNU0V:00000002 [INF] Executed DbCommand ("13"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:37:49.3182343+00:00 0HMPQVRALNU0V:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:37:49.3688810+00:00 0HMPQVRALNU0V:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 3130.1106ms (afa2e885)
+2023-04-12T02:37:49.3690905+00:00 0HMPQVRALNU0V:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:37:49.3818318+00:00 0HMPQVRALNU0V:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 - 400 45 application/json;+charset=utf-8 3231.7739ms (791a596a)
+2023-04-12T02:37:51.4261858+00:00 0HMPQVRALNU0V:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:37:51.4299751+00:00 0HMPQVRALNU0V:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:37:51.4306125+00:00 0HMPQVRALNU0V:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 4.0762ms (791a596a)
+2023-04-12T02:37:51.4319089+00:00 0HMPQVRALNU0V:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 (ca22a1cb)
+2023-04-12T02:37:51.4322212+00:00 0HMPQVRALNU0V:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:37:51.4347159+00:00 0HMPQVRALNU0V:00000004 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:37:51.4354009+00:00 0HMPQVRALNU0V:00000004 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:37:51.4636366+00:00 0HMPQVRALNU0V:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:37:51.4657384+00:00 0HMPQVRALNU0V:00000004 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:37:51.4667526+00:00 0HMPQVRALNU0V:00000004 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 31.0805ms (afa2e885)
+2023-04-12T02:37:51.4668343+00:00 0HMPQVRALNU0V:00000004 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:37:51.4678345+00:00 0HMPQVRALNU0V:00000004 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 - 400 45 application/json;+charset=utf-8 35.9453ms (791a596a)
+2023-04-12T02:45:55.6339816+00:00 0HMPQVRALNU10:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:45:55.6342526+00:00 0HMPQVRALNU10:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:45:55.6345003+00:00 0HMPQVRALNU10:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.5223ms (791a596a)
+2023-04-12T02:45:55.6357487+00:00 0HMPQVRALNU10:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 (ca22a1cb)
+2023-04-12T02:45:55.6358709+00:00 0HMPQVRALNU10:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:45:55.6452449+00:00 0HMPQVRALNU10:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:45:55.6454785+00:00 0HMPQVRALNU10:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:45:55.7403493+00:00 0HMPQVRALNU10:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:45:55.7407222+00:00 0HMPQVRALNU10:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:45:55.7410365+00:00 0HMPQVRALNU10:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 95.5164ms (afa2e885)
+2023-04-12T02:45:55.7410840+00:00 0HMPQVRALNU10:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:45:55.7412239+00:00 0HMPQVRALNU10:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 - 400 45 application/json;+charset=utf-8 105.4769ms (791a596a)
+2023-04-12T02:46:01.7851345+00:00 0HMPQVRALNU10:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/loginWithGoogle - - (ca22a1cb)
+2023-04-12T02:46:01.7852820+00:00 0HMPQVRALNU10:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:46:01.7854614+00:00 0HMPQVRALNU10:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/loginWithGoogle - - - 204 - - 0.2829ms (791a596a)
+2023-04-12T02:46:01.7867200+00:00 0HMPQVRALNU10:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/loginWithGoogle application/json 1146 (ca22a1cb)
+2023-04-12T02:46:01.7868514+00:00 0HMPQVRALNU10:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:46:01.7870134+00:00 0HMPQVRALNU10:00000004 [INF] Executing endpoint '"Colab.Controllers.AuthController.loginWithGoogle (Colab)"' (500cc934)
+2023-04-12T02:46:01.7937992+00:00 0HMPQVRALNU10:00000004 [INF] Route matched with "{action = \"loginWithGoogle\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] loginWithGoogle(Colab.Requests.GoogleCredentials)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:46:02.4200291+00:00 0HMPQVRALNU10:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 21)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:46:02.5994385+00:00 0HMPQVRALNU10:00000004 [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType2`5[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T02:46:02.6112719+00:00 0HMPQVRALNU10:00000004 [INF] Executed action "Colab.Controllers.AuthController.loginWithGoogle (Colab)" in 817.3727ms (afa2e885)
+2023-04-12T02:46:02.6119648+00:00 0HMPQVRALNU10:00000004 [INF] Executed endpoint '"Colab.Controllers.AuthController.loginWithGoogle (Colab)"' (99874f2b)
+2023-04-12T02:46:02.6152549+00:00 0HMPQVRALNU10:00000004 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/loginWithGoogle application/json 1146 - 200 604 application/json;+charset=utf-8 828.5147ms (791a596a)
+2023-04-12T02:46:02.6516415+00:00 0HMPQVRALNU10:00000005 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/9 - - (ca22a1cb)
+2023-04-12T02:46:02.6519421+00:00 0HMPQVRALNU10:00000005 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:46:02.6521849+00:00 0HMPQVRALNU10:00000005 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/9 - - - 204 - - 0.5281ms (791a596a)
+2023-04-12T02:46:02.6545587+00:00 0HMPQVRALNU10:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:5130/api/project/user/9 - - (ca22a1cb)
+2023-04-12T02:46:02.6594125+00:00 0HMPQVRALNU10:00000006 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:46:02.7353357+00:00 0HMPQVRALNU10:00000006 [INF] Executing endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (500cc934)
+2023-04-12T02:46:02.7445677+00:00 0HMPQVRALNU10:00000006 [INF] Route matched with "{action = \"GetProjectsByUserId\", controller = \"Project\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Colab.Models.Project]]] GetProjectsByUserId(Int32)" on controller "Colab.Controllers.ProjectController" ("Colab"). (122b2fdf)
+2023-04-12T02:46:02.8130110+00:00 0HMPQVRALNU10:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p\".\"Id\", \"p\".\"CreatedAt\", \"p\".\"Description\", \"p\".\"Title\", \"p\".\"UpdatedAt\"
+FROM \"Projects\" AS \"p\"
+WHERE EXISTS (
+    SELECT 1
+    FROM \"ProjectUser\" AS \"p0\"
+    WHERE \"p\".\"Id\" = \"p0\".\"ProjectId\" AND \"p0\".\"UserId\" = @__id_0 AND \"p0\".\"IsOwner\")" (0723d8ff)
+2023-04-12T02:46:02.8136404+00:00 0HMPQVRALNU10:00000006 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[Colab.Models.Project, Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T02:46:02.8170202+00:00 0HMPQVRALNU10:00000006 [INF] Executed action "Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)" in 72.4ms (afa2e885)
+2023-04-12T02:46:02.8170749+00:00 0HMPQVRALNU10:00000006 [INF] Executed endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (99874f2b)
+2023-04-12T02:46:02.8171949+00:00 0HMPQVRALNU10:00000006 [INF] Request finished HTTP/1.1 GET http://localhost:5130/api/project/user/9 - - - 200 2 application/json;+charset=utf-8 162.6530ms (791a596a)
+2023-04-12T02:46:07.2565259+00:00 0HMPQVRALNU11:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/profile - - (ca22a1cb)
+2023-04-12T02:46:07.2566567+00:00 0HMPQVRALNU11:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:46:07.2567832+00:00 0HMPQVRALNU11:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/profile - - - 204 - - 0.2650ms (791a596a)
+2023-04-12T02:46:07.2585998+00:00 0HMPQVRALNU11:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5130/api/profile - - (ca22a1cb)
+2023-04-12T02:46:07.2591546+00:00 0HMPQVRALNU11:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:46:07.2642283+00:00 0HMPQVRALNU12:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/ - - (ca22a1cb)
+2023-04-12T02:46:07.2647959+00:00 0HMPQVRALNU12:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/ - - - 404 0 - 0.5668ms (791a596a)
+2023-04-12T02:46:07.2668749+00:00 0HMPQVRALNU11:00000002 [INF] Executing endpoint '"Colab.Controllers.ProfileController.GetProfile (Colab)"' (500cc934)
+2023-04-12T02:46:07.2792599+00:00 0HMPQVRALNU11:00000002 [INF] Route matched with "{action = \"GetProfile\", controller = \"Profile\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] GetProfile()" on controller "Colab.Controllers.ProfileController" ("Colab"). (122b2fdf)
+2023-04-12T02:46:07.2933698+00:00 0HMPQVRALNU11:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__getUserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__getUserId_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:46:07.2966210+00:00 0HMPQVRALNU11:00000002 [INF] Executing "OkObjectResult", writing value of type '"Colab.Models.User"'. (605b4265)
+2023-04-12T02:46:07.2997128+00:00 0HMPQVRALNU11:00000002 [INF] Executed action "Colab.Controllers.ProfileController.GetProfile (Colab)" in 20.3894ms (afa2e885)
+2023-04-12T02:46:07.2997497+00:00 0HMPQVRALNU11:00000002 [INF] Executed endpoint '"Colab.Controllers.ProfileController.GetProfile (Colab)"' (99874f2b)
+2023-04-12T02:46:07.3000759+00:00 0HMPQVRALNU11:00000002 [INF] Request finished HTTP/1.1 GET http://localhost:5130/api/profile - - - 200 191 application/json;+charset=utf-8 41.3910ms (791a596a)
+2023-04-12T02:46:07.3101639+00:00 0HMPQVRALNU12:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5130/profile-images/a517ed4a-c6c2-442b-9808-4fb7944006b8.jpg - - (ca22a1cb)
+2023-04-12T02:46:07.3260314+00:00 0HMPQVRALNU12:00000002 [INF] The file "/profile-images/a517ed4a-c6c2-442b-9808-4fb7944006b8.jpg" was not modified (f1f8d725)
+2023-04-12T02:46:07.3264544+00:00 0HMPQVRALNU12:00000002 [INF] Request finished HTTP/1.1 GET http://localhost:5130/profile-images/a517ed4a-c6c2-442b-9808-4fb7944006b8.jpg - - - 304 - image/jpeg 16.3032ms (791a596a)
+2023-04-12T02:49:14.0842656+00:00 0HMPQVRALNU13:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/loginWithGoogle - - (ca22a1cb)
+2023-04-12T02:49:14.0849924+00:00 0HMPQVRALNU13:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:49:14.0852851+00:00 0HMPQVRALNU13:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/loginWithGoogle - - - 204 - - 0.9838ms (791a596a)
+2023-04-12T02:49:14.0887356+00:00 0HMPQVRALNU13:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/loginWithGoogle application/json 1146 (ca22a1cb)
+2023-04-12T02:49:14.0889011+00:00 0HMPQVRALNU13:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:49:14.0890505+00:00 0HMPQVRALNU13:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.loginWithGoogle (Colab)"' (500cc934)
+2023-04-12T02:49:14.0891738+00:00 0HMPQVRALNU13:00000002 [INF] Route matched with "{action = \"loginWithGoogle\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] loginWithGoogle(Colab.Requests.GoogleCredentials)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:49:14.1030059+00:00 0HMPQVRALNU13:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 21)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:49:14.1044051+00:00 0HMPQVRALNU13:00000002 [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType2`5[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T02:49:14.1048402+00:00 0HMPQVRALNU13:00000002 [INF] Executed action "Colab.Controllers.AuthController.loginWithGoogle (Colab)" in 15.6003ms (afa2e885)
+2023-04-12T02:49:14.1048810+00:00 0HMPQVRALNU13:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.loginWithGoogle (Colab)"' (99874f2b)
+2023-04-12T02:49:14.1050347+00:00 0HMPQVRALNU13:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/loginWithGoogle application/json 1146 - 200 605 application/json;+charset=utf-8 16.6286ms (791a596a)
+2023-04-12T02:49:14.1732945+00:00 0HMPQVRALNU13:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/9 - - (ca22a1cb)
+2023-04-12T02:49:14.1734458+00:00 0HMPQVRALNU13:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:49:14.1742316+00:00 0HMPQVRALNU13:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/9 - - - 204 - - 0.2756ms (791a596a)
+2023-04-12T02:49:14.1756954+00:00 0HMPQVRALNU13:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:5130/api/project/user/9 - - (ca22a1cb)
+2023-04-12T02:49:14.1758641+00:00 0HMPQVRALNU13:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:49:14.1780774+00:00 0HMPQVRALNU13:00000004 [INF] Executing endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (500cc934)
+2023-04-12T02:49:14.1781838+00:00 0HMPQVRALNU13:00000004 [INF] Route matched with "{action = \"GetProjectsByUserId\", controller = \"Project\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Colab.Models.Project]]] GetProjectsByUserId(Int32)" on controller "Colab.Controllers.ProjectController" ("Colab"). (122b2fdf)
+2023-04-12T02:49:14.1815221+00:00 0HMPQVRALNU13:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p\".\"Id\", \"p\".\"CreatedAt\", \"p\".\"Description\", \"p\".\"Title\", \"p\".\"UpdatedAt\"
+FROM \"Projects\" AS \"p\"
+WHERE EXISTS (
+    SELECT 1
+    FROM \"ProjectUser\" AS \"p0\"
+    WHERE \"p\".\"Id\" = \"p0\".\"ProjectId\" AND \"p0\".\"UserId\" = @__id_0 AND \"p0\".\"IsOwner\")" (0723d8ff)
+2023-04-12T02:49:14.1819509+00:00 0HMPQVRALNU13:00000004 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[Colab.Models.Project, Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T02:49:14.1822419+00:00 0HMPQVRALNU13:00000004 [INF] Executed action "Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)" in 3.9946ms (afa2e885)
+2023-04-12T02:49:14.1822817+00:00 0HMPQVRALNU13:00000004 [INF] Executed endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (99874f2b)
+2023-04-12T02:49:14.1825264+00:00 0HMPQVRALNU13:00000004 [INF] Request finished HTTP/1.1 GET http://localhost:5130/api/project/user/9 - - - 200 2 application/json;+charset=utf-8 6.7446ms (791a596a)
+2023-04-12T02:50:39.9350019+00:00 0HMPQVRALNU14:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:50:39.9352623+00:00 0HMPQVRALNU14:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:50:39.9353831+00:00 0HMPQVRALNU14:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.3991ms (791a596a)
+2023-04-12T02:50:39.9369982+00:00 0HMPQVRALNU14:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:50:39.9371193+00:00 0HMPQVRALNU14:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:50:39.9372268+00:00 0HMPQVRALNU14:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:50:39.9373322+00:00 0HMPQVRALNU14:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:50:39.9411259+00:00 0HMPQVRALNU14:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:50:39.9415221+00:00 0HMPQVRALNU14:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:50:39.9420956+00:00 0HMPQVRALNU14:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 4.698ms (afa2e885)
+2023-04-12T02:50:39.9421520+00:00 0HMPQVRALNU14:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:50:39.9424125+00:00 0HMPQVRALNU14:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 5.3616ms (791a596a)
+2023-04-12T02:50:46.9511307+00:00 0HMPQVRALNU15:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:50:46.9513005+00:00 0HMPQVRALNU15:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:50:46.9518802+00:00 0HMPQVRALNU15:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.7316ms (791a596a)
+2023-04-12T02:50:46.9543808+00:00 0HMPQVRALNU15:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:50:46.9546764+00:00 0HMPQVRALNU15:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:50:46.9549718+00:00 0HMPQVRALNU15:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:50:46.9551173+00:00 0HMPQVRALNU15:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:50:46.9568733+00:00 0HMPQVRALNU15:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:50:46.9576723+00:00 0HMPQVRALNU15:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:50:46.9580297+00:00 0HMPQVRALNU15:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2.8638ms (afa2e885)
+2023-04-12T02:50:46.9580623+00:00 0HMPQVRALNU15:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:50:46.9584489+00:00 0HMPQVRALNU15:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 4.0942ms (791a596a)
+2023-04-12T02:50:54.9555252+00:00 0HMPQVRALNU16:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:50:54.9556550+00:00 0HMPQVRALNU16:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:50:54.9557730+00:00 0HMPQVRALNU16:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.2299ms (791a596a)
+2023-04-12T02:50:54.9571585+00:00 0HMPQVRALNU16:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:50:54.9572684+00:00 0HMPQVRALNU16:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:50:54.9573859+00:00 0HMPQVRALNU16:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:50:54.9574935+00:00 0HMPQVRALNU16:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:50:54.9606135+00:00 0HMPQVRALNU16:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:50:54.9609726+00:00 0HMPQVRALNU16:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:50:54.9611483+00:00 0HMPQVRALNU16:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 3.596ms (afa2e885)
+2023-04-12T02:50:54.9611822+00:00 0HMPQVRALNU16:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:50:54.9614758+00:00 0HMPQVRALNU16:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 4.1543ms (791a596a)
+2023-04-12T02:51:03.5534012+00:00 0HMPQVRALNU16:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:51:03.5536685+00:00 0HMPQVRALNU16:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:03.5538147+00:00 0HMPQVRALNU16:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.7549ms (791a596a)
+2023-04-12T02:51:03.5559347+00:00 0HMPQVRALNU16:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 (ca22a1cb)
+2023-04-12T02:51:03.5560348+00:00 0HMPQVRALNU16:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:03.5563706+00:00 0HMPQVRALNU16:00000004 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:03.5569941+00:00 0HMPQVRALNU16:00000004 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:03.5608729+00:00 0HMPQVRALNU16:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:03.5621619+00:00 0HMPQVRALNU16:00000004 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:03.5624644+00:00 0HMPQVRALNU16:00000004 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 5.4247ms (afa2e885)
+2023-04-12T02:51:03.5625106+00:00 0HMPQVRALNU16:00000004 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:03.5626350+00:00 0HMPQVRALNU16:00000004 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 74 - 400 45 application/json;+charset=utf-8 6.7473ms (791a596a)
+2023-04-12T02:51:10.0758167+00:00 0HMPQVRALNU17:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:51:10.0762734+00:00 0HMPQVRALNU17:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:10.0764374+00:00 0HMPQVRALNU17:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.6044ms (791a596a)
+2023-04-12T02:51:10.0781431+00:00 0HMPQVRALNU17:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:10.0782642+00:00 0HMPQVRALNU17:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:10.0783632+00:00 0HMPQVRALNU17:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:10.0784387+00:00 0HMPQVRALNU17:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:10.0802812+00:00 0HMPQVRALNU17:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:10.0805114+00:00 0HMPQVRALNU17:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:10.0806853+00:00 0HMPQVRALNU17:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2.2107ms (afa2e885)
+2023-04-12T02:51:10.0807108+00:00 0HMPQVRALNU17:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:10.0807939+00:00 0HMPQVRALNU17:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 2.6915ms (791a596a)
+2023-04-12T02:51:11.4585377+00:00 0HMPQVRALNU17:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:11.4586970+00:00 0HMPQVRALNU17:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:11.4589039+00:00 0HMPQVRALNU17:00000003 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:11.4590035+00:00 0HMPQVRALNU17:00000003 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:11.4614070+00:00 0HMPQVRALNU17:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:11.4616126+00:00 0HMPQVRALNU17:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:11.4618160+00:00 0HMPQVRALNU17:00000003 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2.7847ms (afa2e885)
+2023-04-12T02:51:11.4618408+00:00 0HMPQVRALNU17:00000003 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:11.4619298+00:00 0HMPQVRALNU17:00000003 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 3.4065ms (791a596a)
+2023-04-12T02:51:11.8557447+00:00 0HMPQVRALNU17:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:11.8559067+00:00 0HMPQVRALNU17:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:11.8560271+00:00 0HMPQVRALNU17:00000004 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:11.8561909+00:00 0HMPQVRALNU17:00000004 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:11.8573149+00:00 0HMPQVRALNU17:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:11.8575060+00:00 0HMPQVRALNU17:00000004 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:11.8577416+00:00 0HMPQVRALNU17:00000004 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.509ms (afa2e885)
+2023-04-12T02:51:11.8577756+00:00 0HMPQVRALNU17:00000004 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:11.8579253+00:00 0HMPQVRALNU17:00000004 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 2.1026ms (791a596a)
+2023-04-12T02:51:12.0905876+00:00 0HMPQVRALNU17:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:12.0906981+00:00 0HMPQVRALNU17:00000005 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:12.0911221+00:00 0HMPQVRALNU17:00000005 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:12.0912074+00:00 0HMPQVRALNU17:00000005 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:12.0927142+00:00 0HMPQVRALNU17:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:12.0935468+00:00 0HMPQVRALNU17:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:12.0938600+00:00 0HMPQVRALNU17:00000005 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2.609ms (afa2e885)
+2023-04-12T02:51:12.0938917+00:00 0HMPQVRALNU17:00000005 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:12.0939851+00:00 0HMPQVRALNU17:00000005 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 3.4704ms (791a596a)
+2023-04-12T02:51:12.2844920+00:00 0HMPQVRALNU17:00000006 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:12.2847988+00:00 0HMPQVRALNU17:00000006 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:12.2849127+00:00 0HMPQVRALNU17:00000006 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:12.2850073+00:00 0HMPQVRALNU17:00000006 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:12.2864985+00:00 0HMPQVRALNU17:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:12.2867153+00:00 0HMPQVRALNU17:00000006 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:12.2869570+00:00 0HMPQVRALNU17:00000006 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.9191ms (afa2e885)
+2023-04-12T02:51:12.2870005+00:00 0HMPQVRALNU17:00000006 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:12.2870894+00:00 0HMPQVRALNU17:00000006 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 2.6257ms (791a596a)
+2023-04-12T02:51:12.4668733+00:00 0HMPQVRALNU17:00000007 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:12.4669987+00:00 0HMPQVRALNU17:00000007 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:12.4672656+00:00 0HMPQVRALNU17:00000007 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:12.4673975+00:00 0HMPQVRALNU17:00000007 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:12.4692439+00:00 0HMPQVRALNU17:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:12.4694841+00:00 0HMPQVRALNU17:00000007 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:12.4697512+00:00 0HMPQVRALNU17:00000007 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2.2486ms (afa2e885)
+2023-04-12T02:51:12.4698686+00:00 0HMPQVRALNU17:00000007 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:12.4709974+00:00 0HMPQVRALNU17:00000007 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 3.0932ms (791a596a)
+2023-04-12T02:51:12.6580869+00:00 0HMPQVRALNU17:00000008 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:12.6584027+00:00 0HMPQVRALNU17:00000008 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:12.6585193+00:00 0HMPQVRALNU17:00000008 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:12.6585881+00:00 0HMPQVRALNU17:00000008 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:12.6605987+00:00 0HMPQVRALNU17:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:12.6608647+00:00 0HMPQVRALNU17:00000008 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:12.6610677+00:00 0HMPQVRALNU17:00000008 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2.4436ms (afa2e885)
+2023-04-12T02:51:12.6610904+00:00 0HMPQVRALNU17:00000008 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:12.6611538+00:00 0HMPQVRALNU17:00000008 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 3.0771ms (791a596a)
+2023-04-12T02:51:12.8323380+00:00 0HMPQVRALNU17:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:12.8325998+00:00 0HMPQVRALNU17:00000009 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:12.8327195+00:00 0HMPQVRALNU17:00000009 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:12.8328103+00:00 0HMPQVRALNU17:00000009 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:12.8387534+00:00 0HMPQVRALNU17:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:12.8390721+00:00 0HMPQVRALNU17:00000009 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:12.8395782+00:00 0HMPQVRALNU17:00000009 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 6.7069ms (afa2e885)
+2023-04-12T02:51:12.8396049+00:00 0HMPQVRALNU17:00000009 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:12.8396785+00:00 0HMPQVRALNU17:00000009 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 7.3748ms (791a596a)
+2023-04-12T02:51:13.0037222+00:00 0HMPQVRALNU17:0000000A [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:13.0039122+00:00 0HMPQVRALNU17:0000000A [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:13.0040497+00:00 0HMPQVRALNU17:0000000A [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:13.0041242+00:00 0HMPQVRALNU17:0000000A [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:13.0053995+00:00 0HMPQVRALNU17:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:13.0055960+00:00 0HMPQVRALNU17:0000000A [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:13.0057985+00:00 0HMPQVRALNU17:0000000A [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.6458ms (afa2e885)
+2023-04-12T02:51:13.0058206+00:00 0HMPQVRALNU17:0000000A [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:13.0058844+00:00 0HMPQVRALNU17:0000000A [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 2.1631ms (791a596a)
+2023-04-12T02:51:13.2000436+00:00 0HMPQVRALNU17:0000000B [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:13.2003177+00:00 0HMPQVRALNU17:0000000B [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:13.2005786+00:00 0HMPQVRALNU17:0000000B [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:13.2006640+00:00 0HMPQVRALNU17:0000000B [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:13.2019586+00:00 0HMPQVRALNU17:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:13.2021569+00:00 0HMPQVRALNU17:0000000B [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:13.2024076+00:00 0HMPQVRALNU17:0000000B [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.6908ms (afa2e885)
+2023-04-12T02:51:13.2025396+00:00 0HMPQVRALNU17:0000000B [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:13.2040492+00:00 0HMPQVRALNU17:0000000B [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 2.5828ms (791a596a)
+2023-04-12T02:51:14.3902538+00:00 0HMPQVRALNU18:00000001 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:14.3905074+00:00 0HMPQVRALNU18:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:14.3906568+00:00 0HMPQVRALNU18:00000001 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:14.3909336+00:00 0HMPQVRALNU18:00000001 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:14.3946128+00:00 0HMPQVRALNU18:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:14.3948667+00:00 0HMPQVRALNU18:00000001 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:14.3951132+00:00 0HMPQVRALNU18:00000001 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 4.1364ms (afa2e885)
+2023-04-12T02:51:14.3951673+00:00 0HMPQVRALNU18:00000001 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:14.3953291+00:00 0HMPQVRALNU18:00000001 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 5.0906ms (791a596a)
+2023-04-12T02:51:14.7450371+00:00 0HMPQVRALNU18:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:14.7452236+00:00 0HMPQVRALNU18:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:14.7460894+00:00 0HMPQVRALNU18:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:14.7461881+00:00 0HMPQVRALNU18:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:14.7475537+00:00 0HMPQVRALNU18:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:14.7477649+00:00 0HMPQVRALNU18:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:14.7479576+00:00 0HMPQVRALNU18:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.738ms (afa2e885)
+2023-04-12T02:51:14.7479975+00:00 0HMPQVRALNU18:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:14.7481162+00:00 0HMPQVRALNU18:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 3.0820ms (791a596a)
+2023-04-12T02:51:15.0891603+00:00 0HMPQVRALNU18:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:51:15.0893008+00:00 0HMPQVRALNU18:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:15.0894319+00:00 0HMPQVRALNU18:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.2598ms (791a596a)
+2023-04-12T02:51:15.0909162+00:00 0HMPQVRALNU18:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:15.0910289+00:00 0HMPQVRALNU18:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:15.0911697+00:00 0HMPQVRALNU18:00000004 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:15.0913042+00:00 0HMPQVRALNU18:00000004 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:15.0925541+00:00 0HMPQVRALNU18:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:15.0927443+00:00 0HMPQVRALNU18:00000004 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:15.0945588+00:00 0HMPQVRALNU18:00000004 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.7726ms (afa2e885)
+2023-04-12T02:51:15.0947399+00:00 0HMPQVRALNU18:00000004 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:15.0948466+00:00 0HMPQVRALNU18:00000004 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 3.9159ms (791a596a)
+2023-04-12T02:51:15.4359235+00:00 0HMPQVRALNU18:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:15.4360696+00:00 0HMPQVRALNU18:00000005 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:15.4361714+00:00 0HMPQVRALNU18:00000005 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:15.4362672+00:00 0HMPQVRALNU18:00000005 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:15.4376301+00:00 0HMPQVRALNU18:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:15.4378203+00:00 0HMPQVRALNU18:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:15.4380517+00:00 0HMPQVRALNU18:00000005 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.7427ms (afa2e885)
+2023-04-12T02:51:15.4380772+00:00 0HMPQVRALNU18:00000005 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:15.4381632+00:00 0HMPQVRALNU18:00000005 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 2.2463ms (791a596a)
+2023-04-12T02:51:15.7200222+00:00 0HMPQVRALNU18:00000006 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 (ca22a1cb)
+2023-04-12T02:51:15.7201639+00:00 0HMPQVRALNU18:00000006 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:15.7203435+00:00 0HMPQVRALNU18:00000006 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:51:15.7204801+00:00 0HMPQVRALNU18:00000006 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:15.7217329+00:00 0HMPQVRALNU18:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:15.7219314+00:00 0HMPQVRALNU18:00000006 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:51:15.7221702+00:00 0HMPQVRALNU18:00000006 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 1.6576ms (afa2e885)
+2023-04-12T02:51:15.7221919+00:00 0HMPQVRALNU18:00000006 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:51:15.7222606+00:00 0HMPQVRALNU18:00000006 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 57 - 400 45 application/json;+charset=utf-8 2.2437ms (791a596a)
+2023-04-12T02:51:36.2865047+00:00 0HMPQVRALNU19:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/forgotPassword - - (ca22a1cb)
+2023-04-12T02:51:36.2866165+00:00 0HMPQVRALNU19:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:36.2867019+00:00 0HMPQVRALNU19:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/forgotPassword - - - 204 - - 0.1948ms (791a596a)
+2023-04-12T02:51:36.2881588+00:00 0HMPQVRALNU19:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/user/forgotPassword application/json 36 (ca22a1cb)
+2023-04-12T02:51:36.2910035+00:00 0HMPQVRALNU19:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:51:36.2912644+00:00 0HMPQVRALNU19:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.forgotPassword (Colab)"' (500cc934)
+2023-04-12T02:51:36.2956922+00:00 0HMPQVRALNU19:00000002 [INF] Route matched with "{action = \"forgotPassword\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] forgotPassword(Colab.Requests.ForgotPasswordRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T02:51:36.3207617+00:00 0HMPQVRALNU19:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:51:36.3216440+00:00 0HMPQVRALNU19:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2023-04-12T02:51:36.3226280+00:00 0HMPQVRALNU19:00000002 [INF] Executed action "Colab.Controllers.UserController.forgotPassword (Colab)" in 26.8844ms (afa2e885)
+2023-04-12T02:51:36.3226681+00:00 0HMPQVRALNU19:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.forgotPassword (Colab)"' (99874f2b)
+2023-04-12T02:51:36.3227413+00:00 0HMPQVRALNU19:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/user/forgotPassword application/json 36 - 400 44 application/json;+charset=utf-8 34.6219ms (791a596a)
+2023-04-12T02:52:28.7783263+00:00 0HMPQVRALNU1A:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:52:28.7784340+00:00 0HMPQVRALNU1A:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:52:28.7785818+00:00 0HMPQVRALNU1A:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.2474ms (791a596a)
+2023-04-12T02:52:28.7820549+00:00 0HMPQVRALNU1A:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 (ca22a1cb)
+2023-04-12T02:52:28.7821746+00:00 0HMPQVRALNU1A:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:52:28.7822842+00:00 0HMPQVRALNU1A:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:52:28.7824319+00:00 0HMPQVRALNU1A:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:52:28.7852722+00:00 0HMPQVRALNU1A:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 23)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:52:28.7862161+00:00 0HMPQVRALNU1A:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:52:28.7865443+00:00 0HMPQVRALNU1A:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 4.0636ms (afa2e885)
+2023-04-12T02:52:28.7865716+00:00 0HMPQVRALNU1A:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:52:28.7866595+00:00 0HMPQVRALNU1A:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 - 400 45 application/json;+charset=utf-8 4.6037ms (791a596a)
+2023-04-12T02:52:31.1873036+00:00 0HMPQVRALNU1A:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 (ca22a1cb)
+2023-04-12T02:52:31.1873883+00:00 0HMPQVRALNU1A:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:52:31.1875931+00:00 0HMPQVRALNU1A:00000003 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:52:31.1877474+00:00 0HMPQVRALNU1A:00000003 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:52:31.1891394+00:00 0HMPQVRALNU1A:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 23)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:52:31.1896366+00:00 0HMPQVRALNU1A:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:52:31.1898073+00:00 0HMPQVRALNU1A:00000003 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2.0281ms (afa2e885)
+2023-04-12T02:52:31.1898295+00:00 0HMPQVRALNU1A:00000003 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:52:31.1899121+00:00 0HMPQVRALNU1A:00000003 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 - 400 45 application/json;+charset=utf-8 2.5944ms (791a596a)
+2023-04-12T02:52:32.6418183+00:00 0HMPQVRALNU1A:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 (ca22a1cb)
+2023-04-12T02:52:32.6421170+00:00 0HMPQVRALNU1A:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:52:32.6424078+00:00 0HMPQVRALNU1A:00000004 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:52:32.6425186+00:00 0HMPQVRALNU1A:00000004 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:52:32.6466885+00:00 0HMPQVRALNU1A:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 23)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:52:32.6469574+00:00 0HMPQVRALNU1A:00000004 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:52:32.6472127+00:00 0HMPQVRALNU1A:00000004 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 4.6494ms (afa2e885)
+2023-04-12T02:52:32.6472453+00:00 0HMPQVRALNU1A:00000004 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:52:32.6473505+00:00 0HMPQVRALNU1A:00000004 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 - 400 45 application/json;+charset=utf-8 5.5258ms (791a596a)
+2023-04-12T02:52:37.6985489+00:00 0HMPQVRALNU1B:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T02:52:37.6986350+00:00 0HMPQVRALNU1B:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:52:37.6987312+00:00 0HMPQVRALNU1B:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.1986ms (791a596a)
+2023-04-12T02:52:37.7001777+00:00 0HMPQVRALNU1B:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 (ca22a1cb)
+2023-04-12T02:52:37.7002733+00:00 0HMPQVRALNU1B:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:52:37.7004397+00:00 0HMPQVRALNU1B:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T02:52:37.7005448+00:00 0HMPQVRALNU1B:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:52:37.7054171+00:00 0HMPQVRALNU1B:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 23)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:52:37.7069835+00:00 0HMPQVRALNU1B:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T02:52:37.7075576+00:00 0HMPQVRALNU1B:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 6.9293ms (afa2e885)
+2023-04-12T02:52:37.7080756+00:00 0HMPQVRALNU1B:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T02:52:37.7082000+00:00 0HMPQVRALNU1B:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 58 - 400 45 application/json;+charset=utf-8 8.0420ms (791a596a)
+2023-04-12T02:53:02.7053089+00:00 0HMPQVRALNU1C:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/loginWithGoogle - - (ca22a1cb)
+2023-04-12T02:53:02.7054036+00:00 0HMPQVRALNU1C:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:02.7055634+00:00 0HMPQVRALNU1C:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/loginWithGoogle - - - 204 - - 0.2328ms (791a596a)
+2023-04-12T02:53:02.7077587+00:00 0HMPQVRALNU1C:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/loginWithGoogle application/json 1146 (ca22a1cb)
+2023-04-12T02:53:02.7078450+00:00 0HMPQVRALNU1C:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:02.7079099+00:00 0HMPQVRALNU1C:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.loginWithGoogle (Colab)"' (500cc934)
+2023-04-12T02:53:02.7079680+00:00 0HMPQVRALNU1C:00000002 [INF] Route matched with "{action = \"loginWithGoogle\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] loginWithGoogle(Colab.Requests.GoogleCredentials)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T02:53:02.7123006+00:00 0HMPQVRALNU1C:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 21)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:53:02.7153257+00:00 0HMPQVRALNU1C:00000002 [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType2`5[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T02:53:02.7155724+00:00 0HMPQVRALNU1C:00000002 [INF] Executed action "Colab.Controllers.AuthController.loginWithGoogle (Colab)" in 7.5762ms (afa2e885)
+2023-04-12T02:53:02.7156048+00:00 0HMPQVRALNU1C:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.loginWithGoogle (Colab)"' (99874f2b)
+2023-04-12T02:53:02.7156985+00:00 0HMPQVRALNU1C:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/loginWithGoogle application/json 1146 - 200 605 application/json;+charset=utf-8 7.9660ms (791a596a)
+2023-04-12T02:53:02.7743031+00:00 0HMPQVRALNU1C:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/9 - - (ca22a1cb)
+2023-04-12T02:53:02.7745599+00:00 0HMPQVRALNU1C:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:02.7746997+00:00 0HMPQVRALNU1C:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/9 - - - 204 - - 0.4215ms (791a596a)
+2023-04-12T02:53:02.7772182+00:00 0HMPQVRALNU1C:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:5130/api/project/user/9 - - (ca22a1cb)
+2023-04-12T02:53:02.7773350+00:00 0HMPQVRALNU1C:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:02.7779673+00:00 0HMPQVRALNU1C:00000004 [INF] Executing endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (500cc934)
+2023-04-12T02:53:02.7780437+00:00 0HMPQVRALNU1C:00000004 [INF] Route matched with "{action = \"GetProjectsByUserId\", controller = \"Project\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Colab.Models.Project]]] GetProjectsByUserId(Int32)" on controller "Colab.Controllers.ProjectController" ("Colab"). (122b2fdf)
+2023-04-12T02:53:02.7806841+00:00 0HMPQVRALNU1C:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p\".\"Id\", \"p\".\"CreatedAt\", \"p\".\"Description\", \"p\".\"Title\", \"p\".\"UpdatedAt\"
+FROM \"Projects\" AS \"p\"
+WHERE EXISTS (
+    SELECT 1
+    FROM \"ProjectUser\" AS \"p0\"
+    WHERE \"p\".\"Id\" = \"p0\".\"ProjectId\" AND \"p0\".\"UserId\" = @__id_0 AND \"p0\".\"IsOwner\")" (0723d8ff)
+2023-04-12T02:53:02.7808272+00:00 0HMPQVRALNU1C:00000004 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[Colab.Models.Project, Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T02:53:02.7809200+00:00 0HMPQVRALNU1C:00000004 [INF] Executed action "Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)" in 2.8512ms (afa2e885)
+2023-04-12T02:53:02.7809512+00:00 0HMPQVRALNU1C:00000004 [INF] Executed endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (99874f2b)
+2023-04-12T02:53:02.7810166+00:00 0HMPQVRALNU1C:00000004 [INF] Request finished HTTP/1.1 GET http://localhost:5130/api/project/user/9 - - - 200 2 application/json;+charset=utf-8 3.7930ms (791a596a)
+2023-04-12T02:53:10.5916761+00:00 0HMPQVRALNU1D:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user - - (ca22a1cb)
+2023-04-12T02:53:10.5917733+00:00 0HMPQVRALNU1D:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:10.5918426+00:00 0HMPQVRALNU1D:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user - - - 204 - - 0.1691ms (791a596a)
+2023-04-12T02:53:10.5948594+00:00 0HMPQVRALNU1D:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5130/api/user - - (ca22a1cb)
+2023-04-12T02:53:10.5951877+00:00 0HMPQVRALNU1D:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:10.5959060+00:00 0HMPQVRALNU1D:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.GetUsers (Colab)"' (500cc934)
+2023-04-12T02:53:10.6013666+00:00 0HMPQVRALNU1D:00000002 [INF] Route matched with "{action = \"GetUsers\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Colab.Models.User]]] GetUsers()" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T02:53:10.6141557+00:00 0HMPQVRALNU1D:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"" (0723d8ff)
+2023-04-12T02:53:10.6154003+00:00 0HMPQVRALNU1D:00000002 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[Colab.Models.User, Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T02:53:10.6174080+00:00 0HMPQVRALNU1D:00000002 [INF] Executed action "Colab.Controllers.UserController.GetUsers (Colab)" in 15.9935ms (afa2e885)
+2023-04-12T02:53:10.6174681+00:00 0HMPQVRALNU1D:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.GetUsers (Colab)"' (99874f2b)
+2023-04-12T02:53:10.6175582+00:00 0HMPQVRALNU1D:00000002 [INF] Request finished HTTP/1.1 GET http://localhost:5130/api/user - - - 200 1220 application/json;+charset=utf-8 22.6881ms (791a596a)
+2023-04-12T02:53:59.7697461+00:00 0HMPQVRALNU1E:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T02:53:59.7699192+00:00 0HMPQVRALNU1E:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:59.7701263+00:00 0HMPQVRALNU1E:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 0.2770ms (791a596a)
+2023-04-12T02:53:59.7717922+00:00 0HMPQVRALNU1E:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundarypRVxAMyEFAHydB3h 778 (ca22a1cb)
+2023-04-12T02:53:59.7718841+00:00 0HMPQVRALNU1E:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:53:59.7723936+00:00 0HMPQVRALNU1E:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T02:53:59.7946233+00:00 0HMPQVRALNU1E:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T02:53:59.8520549+00:00 0HMPQVRALNU1E:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:53:59.8527423+00:00 0HMPQVRALNU1E:00000002 [INF] changed for user "Colab.Models.User" (e2c4e488)
+2023-04-12T02:53:59.8693299+00:00 0HMPQVRALNU1E:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T02:53:59.8706281+00:00 0HMPQVRALNU1E:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2023-04-12T02:53:59.8707903+00:00 0HMPQVRALNU1E:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 76.1199ms (afa2e885)
+2023-04-12T02:53:59.8708194+00:00 0HMPQVRALNU1E:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T02:53:59.8709023+00:00 0HMPQVRALNU1E:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundarypRVxAMyEFAHydB3h 778 - 400 34 application/json;+charset=utf-8 99.1295ms (791a596a)
+2023-04-12T02:55:42.9050606+00:00  [INF] User profile is available. Using '"C:\Users\op\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2023-04-12T02:55:43.0253925+00:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2023-04-12T02:55:43.0369969+00:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-04-12T02:55:43.0425651+00:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2023-04-12T02:55:43.0443318+00:00  [INF] Content root path: "C:\Users\op\Desktop\Angular-Asp.net-Core-API-CRUD-Authentication\API" (cc26f24e)
+2023-04-12T02:55:43.1453209+00:00 0HMPR05K1MKSN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/index.html - - (ca22a1cb)
+2023-04-12T02:55:43.4357386+00:00 0HMPR05K1MKSN:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/index.html - - - 200 - text/html;charset=utf-8 293.8239ms (791a596a)
+2023-04-12T02:55:43.4966888+00:00 0HMPR05K1MKSN:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - (ca22a1cb)
+2023-04-12T02:55:43.4998682+00:00 0HMPR05K1MKSN:00000002 [INF] Request finished HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - - 200 11966 application/javascript;+charset=utf-8 3.1503ms (791a596a)
+2023-04-12T02:55:43.9253083+00:00 0HMPR05K1MKSO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - (ca22a1cb)
+2023-04-12T02:55:44.1796934+00:00 0HMPR05K1MKSO:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 254.3970ms (791a596a)
+2023-04-12T02:55:47.7972480+00:00 0HMPR05K1MKSP:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T02:55:47.8278673+00:00 0HMPR05K1MKSP:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2023-04-12T02:55:47.8334313+00:00 0HMPR05K1MKSP:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:55:47.8364653+00:00 0HMPR05K1MKSP:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 39.2398ms (791a596a)
+2023-04-12T02:55:47.8463497+00:00 0HMPR05K1MKSP:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryp7DJSBDQPso3u8Ao 778 (ca22a1cb)
+2023-04-12T02:55:47.8527888+00:00 0HMPR05K1MKSP:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:55:48.0495968+00:00 0HMPR05K1MKSP:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T02:55:48.0848017+00:00 0HMPR05K1MKSP:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T02:55:51.1354585+00:00 0HMPR05K1MKSP:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:55:51.2132667+00:00 0HMPR05K1MKSP:00000002 [INF] changed for user "Colab.Models.User","Colab.Requests.UserRequest" (7d2654cb)
+2023-04-12T02:55:51.2444812+00:00 0HMPR05K1MKSP:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T02:55:51.2527153+00:00 0HMPR05K1MKSP:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2023-04-12T02:55:51.3502237+00:00 0HMPR05K1MKSP:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 3251.2192ms (afa2e885)
+2023-04-12T02:55:51.3503203+00:00 0HMPR05K1MKSP:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T02:55:51.3751771+00:00 0HMPR05K1MKSP:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryp7DJSBDQPso3u8Ao 778 - 400 34 application/json;+charset=utf-8 3528.9511ms (791a596a)
+2023-04-12T02:57:32.0642776+00:00  [INF] User profile is available. Using '"C:\Users\op\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2023-04-12T02:57:32.2231353+00:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2023-04-12T02:57:32.2287000+00:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-04-12T02:57:32.2290613+00:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2023-04-12T02:57:32.2291420+00:00  [INF] Content root path: "C:\Users\op\Desktop\Angular-Asp.net-Core-API-CRUD-Authentication\API" (cc26f24e)
+2023-04-12T02:57:32.3414669+00:00 0HMPR06KJ0SMP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/index.html - - (ca22a1cb)
+2023-04-12T02:57:32.5462639+00:00 0HMPR06KJ0SMP:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/index.html - - - 200 - text/html;charset=utf-8 208.6415ms (791a596a)
+2023-04-12T02:57:32.5864191+00:00 0HMPR06KJ0SMP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - (ca22a1cb)
+2023-04-12T02:57:32.5896172+00:00 0HMPR06KJ0SMP:00000002 [INF] Request finished HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - - 200 11966 application/javascript;+charset=utf-8 3.1599ms (791a596a)
+2023-04-12T02:57:32.9027220+00:00 0HMPR06KJ0SMP:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - (ca22a1cb)
+2023-04-12T02:57:33.2367929+00:00 0HMPR06KJ0SMP:00000003 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 334.0585ms (791a596a)
+2023-04-12T02:59:52.1097116+00:00 0HMPR06KJ0SMQ:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T02:59:52.1350538+00:00 0HMPR06KJ0SMQ:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2023-04-12T02:59:52.1374364+00:00 0HMPR06KJ0SMQ:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:59:52.1406549+00:00 0HMPR06KJ0SMQ:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 30.7636ms (791a596a)
+2023-04-12T02:59:52.1436878+00:00 0HMPR06KJ0SMQ:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryaOoGNZvxv2KhABl7 778 (ca22a1cb)
+2023-04-12T02:59:52.1508963+00:00 0HMPR06KJ0SMQ:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T02:59:52.3469482+00:00 0HMPR06KJ0SMQ:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T02:59:52.3803648+00:00 0HMPR06KJ0SMQ:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T02:59:55.4382326+00:00 0HMPR06KJ0SMQ:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T02:59:55.5327089+00:00 0HMPR06KJ0SMQ:00000002 [INF] changed for user "newpass","newpass" (7d2654cb)
+2023-04-12T02:59:55.5712849+00:00 0HMPR06KJ0SMQ:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T02:59:55.5830953+00:00 0HMPR06KJ0SMQ:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2023-04-12T02:59:55.7083345+00:00 0HMPR06KJ0SMQ:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 3300.93ms (afa2e885)
+2023-04-12T02:59:55.7084555+00:00 0HMPR06KJ0SMQ:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T02:59:55.7220117+00:00 0HMPR06KJ0SMQ:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryaOoGNZvxv2KhABl7 778 - 400 34 application/json;+charset=utf-8 3578.2197ms (791a596a)
+2023-04-12T03:02:00.5824532+00:00  [INF] User profile is available. Using '"C:\Users\op\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2023-04-12T03:02:00.7052223+00:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2023-04-12T03:02:00.7094724+00:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-04-12T03:02:00.7097824+00:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2023-04-12T03:02:00.7098333+00:00  [INF] Content root path: "C:\Users\op\Desktop\Angular-Asp.net-Core-API-CRUD-Authentication\API" (cc26f24e)
+2023-04-12T03:02:00.8659535+00:00 0HMPR094JPSOV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/index.html - - (ca22a1cb)
+2023-04-12T03:02:01.1474130+00:00 0HMPR094JPSOV:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/index.html - - - 200 - text/html;charset=utf-8 294.7781ms (791a596a)
+2023-04-12T03:02:01.2124924+00:00 0HMPR094JPSOV:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - (ca22a1cb)
+2023-04-12T03:02:01.2165523+00:00 0HMPR094JPSOV:00000002 [INF] Request finished HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - - 200 11966 application/javascript;+charset=utf-8 4.3248ms (791a596a)
+2023-04-12T03:02:01.4437021+00:00 0HMPR094JPSOV:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - (ca22a1cb)
+2023-04-12T03:02:01.6797544+00:00 0HMPR094JPSOV:00000003 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 236.0630ms (791a596a)
+2023-04-12T03:02:23.0389004+00:00 0HMPR094JPSP0:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T03:02:23.0757479+00:00 0HMPR094JPSP0:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2023-04-12T03:02:23.0791228+00:00 0HMPR094JPSP0:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:02:23.0853213+00:00 0HMPR094JPSP0:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 46.4196ms (791a596a)
+2023-04-12T03:02:23.1021108+00:00 0HMPR094JPSP0:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundary9ABzsJ32CuspoTLc 778 (ca22a1cb)
+2023-04-12T03:02:23.1077184+00:00 0HMPR094JPSP0:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:02:23.2919144+00:00 0HMPR094JPSP0:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T03:02:23.3334248+00:00 0HMPR094JPSP0:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T03:02:27.1429051+00:00 0HMPR094JPSP0:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T03:02:27.3045257+00:00 0HMPR094JPSP0:00000002 [INF] changed for user "newpass","newpass" (7d2654cb)
+2023-04-12T03:02:27.3439898+00:00 0HMPR094JPSP0:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T03:02:27.3565088+00:00 0HMPR094JPSP0:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2023-04-12T03:02:27.4840425+00:00 0HMPR094JPSP0:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 4141.8487ms (afa2e885)
+2023-04-12T03:02:27.4841451+00:00 0HMPR094JPSP0:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T03:02:27.4982218+00:00 0HMPR094JPSP0:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundary9ABzsJ32CuspoTLc 778 - 400 34 application/json;+charset=utf-8 4396.0830ms (791a596a)
+2023-04-12T03:03:04.0008254+00:00 0HMPR094JPSP1:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T03:03:04.0019515+00:00 0HMPR094JPSP1:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:03:04.0029703+00:00 0HMPR094JPSP1:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 2.1390ms (791a596a)
+2023-04-12T03:03:04.0045289+00:00 0HMPR094JPSP1:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryZySoldS6ksmEDfKz 838 (ca22a1cb)
+2023-04-12T03:03:04.0049243+00:00 0HMPR094JPSP1:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:03:04.0189381+00:00 0HMPR094JPSP1:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T03:03:04.0197784+00:00 0HMPR094JPSP1:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T03:03:04.1211917+00:00 0HMPR094JPSP1:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T03:03:04.1233740+00:00 0HMPR094JPSP1:00000002 [INF] changed for user "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" (7d2654cb)
+2023-04-12T03:03:04.1245848+00:00 0HMPR094JPSP1:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T03:03:04.1266212+00:00 0HMPR094JPSP1:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2023-04-12T03:03:04.1274641+00:00 0HMPR094JPSP1:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 107.1813ms (afa2e885)
+2023-04-12T03:03:04.1275125+00:00 0HMPR094JPSP1:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T03:03:04.1281338+00:00 0HMPR094JPSP1:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryZySoldS6ksmEDfKz 838 - 400 34 application/json;+charset=utf-8 123.6044ms (791a596a)
+2023-04-12T03:06:24.9137073+00:00 0HMPR094JPSP2:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T03:06:24.9138690+00:00 0HMPR094JPSP2:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:06:24.9140404+00:00 0HMPR094JPSP2:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 0.3307ms (791a596a)
+2023-04-12T03:06:24.9154608+00:00 0HMPR094JPSP2:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryK6gKtuPrx1pOhoQD 801 (ca22a1cb)
+2023-04-12T03:06:24.9155829+00:00 0HMPR094JPSP2:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:06:24.9242295+00:00 0HMPR094JPSP2:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T03:06:24.9243827+00:00 0HMPR094JPSP2:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T03:06:24.9427811+00:00 0HMPR094JPSP2:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'. (605b4265)
+2023-04-12T03:06:24.9954121+00:00 0HMPR094JPSP2:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 70.9858ms (afa2e885)
+2023-04-12T03:06:24.9954622+00:00 0HMPR094JPSP2:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T03:06:24.9955729+00:00 0HMPR094JPSP2:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryK6gKtuPrx1pOhoQD 801 - 400 271 application/problem+json;+charset=utf-8 80.1219ms (791a596a)
+2023-04-12T03:06:30.0415715+00:00 0HMPR094JPSP2:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T03:06:30.0417991+00:00 0HMPR094JPSP2:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:06:30.0419269+00:00 0HMPR094JPSP2:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 0.3692ms (791a596a)
+2023-04-12T03:06:30.0443926+00:00 0HMPR094JPSP2:00000004 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryJ7dCyOmoLQjqg9wj 764 (ca22a1cb)
+2023-04-12T03:06:30.0445625+00:00 0HMPR094JPSP2:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:06:30.0453821+00:00 0HMPR094JPSP2:00000004 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T03:06:30.0454997+00:00 0HMPR094JPSP2:00000004 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T03:06:30.0916341+00:00 0HMPR094JPSP2:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T03:06:30.0933159+00:00 0HMPR094JPSP2:00000004 [INF] changed for user null,null (7d2654cb)
+2023-04-12T03:06:30.0960484+00:00 0HMPR094JPSP2:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T03:06:30.2352431+00:00 0HMPR094JPSP2:00000004 [INF] Executed DbCommand ("3"ms) [Parameters=["@p6='?' (DbType = Int32), @p0='?' (Size = 24), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (Size = 17), @p4='?' (Size = 60), @p5='?' (Size = 55)"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"Users\" SET \"Email\" = @p0, \"IsAdmin\" = @p1, \"IsVerified\" = @p2, \"Name\" = @p3, \"Password\" = @p4, \"profilePicture\" = @p5
+WHERE \"Id\" = @p6
+RETURNING 1;" (0723d8ff)
+2023-04-12T03:06:30.2453510+00:00 0HMPR094JPSP2:00000004 [INF] Executing "ObjectResult", writing value of type '"Colab.Models.User"'. (605b4265)
+2023-04-12T03:06:30.2500615+00:00 0HMPR094JPSP2:00000004 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 204.515ms (afa2e885)
+2023-04-12T03:06:30.2501031+00:00 0HMPR094JPSP2:00000004 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T03:06:30.2503069+00:00 0HMPR094JPSP2:00000004 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryJ7dCyOmoLQjqg9wj 764 - 200 202 application/json;+charset=utf-8 205.8657ms (791a596a)
+2023-04-12T03:06:52.3656443+00:00 0HMPR094JPSP3:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T03:06:52.3657823+00:00 0HMPR094JPSP3:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:06:52.3659566+00:00 0HMPR094JPSP3:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 0.2828ms (791a596a)
+2023-04-12T03:06:52.3701896+00:00 0HMPR094JPSP3:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryMRR5xv7Fq0rIal8J 1168 (ca22a1cb)
+2023-04-12T03:06:52.3704246+00:00 0HMPR094JPSP3:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:06:52.3709508+00:00 0HMPR094JPSP3:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T03:06:52.3710750+00:00 0HMPR094JPSP3:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T03:06:52.3760517+00:00 0HMPR094JPSP3:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T03:06:52.3764079+00:00 0HMPR094JPSP3:00000002 [INF] changed for user "{\"id\":1,\"name\":\"Joanne OrtizBased\",\"email\":\"AAAAAAAAAAAA86@gmail.com\",\"isVerified\":true,\"profilePicture\":\"profile-images\\5120a3ac-da45-4aea-b26e-5c91f4a7f8cf.png\",\"isAdmin\":false,\"participations\":null}","{\"id\":1,\"name\":\"Joanne OrtizBased\",\"email\":\"AAAAAAAAAAAA86@gmail.com\",\"isVerified\":true,\"profilePicture\":\"profile-images\\5120a3ac-da45-4aea-b26e-5c91f4a7f8cf.png\",\"isAdmin\":false,\"participations\":null}" (7d2654cb)
+2023-04-12T03:06:52.3769787+00:00 0HMPR094JPSP3:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T03:06:52.3775066+00:00 0HMPR094JPSP3:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'. (605b4265)
+2023-04-12T03:06:52.3777447+00:00 0HMPR094JPSP3:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 6.6271ms (afa2e885)
+2023-04-12T03:06:52.3777753+00:00 0HMPR094JPSP3:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T03:06:52.3778881+00:00 0HMPR094JPSP3:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryMRR5xv7Fq0rIal8J 1168 - 400 34 application/json;+charset=utf-8 7.7650ms (791a596a)
+2023-04-12T03:07:04.9113019+00:00  [INF] User profile is available. Using '"C:\Users\op\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2023-04-12T03:07:05.0539777+00:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2023-04-12T03:07:05.0595506+00:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-04-12T03:07:05.0598155+00:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2023-04-12T03:07:05.0598749+00:00  [INF] Content root path: "C:\Users\op\Desktop\Angular-Asp.net-Core-API-CRUD-Authentication\API" (cc26f24e)
+2023-04-12T03:08:06.6564604+00:00 0HMPR0CHKH0QK:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - (ca22a1cb)
+2023-04-12T03:08:06.7286334+00:00 0HMPR0CHKH0QK:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2023-04-12T03:08:06.7321145+00:00 0HMPR0CHKH0QK:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:06.7431512+00:00 0HMPR0CHKH0QK:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/user/1 - - - 204 - - 83.6746ms (791a596a)
+2023-04-12T03:08:06.7515515+00:00 0HMPR0CHKH0QK:00000002 [INF] Request starting HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryi7njTtYft27XljEP 1168 (ca22a1cb)
+2023-04-12T03:08:06.7559791+00:00 0HMPR0CHKH0QK:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:06.9259335+00:00 0HMPR0CHKH0QK:00000002 [INF] Executing endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (500cc934)
+2023-04-12T03:08:06.9719666+00:00 0HMPR0CHKH0QK:00000002 [INF] Route matched with "{action = \"PutUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Colab.Models.User]] PutUser(Int32, Colab.Requests.UserRequest)" on controller "Colab.Controllers.UserController" ("Colab"). (122b2fdf)
+2023-04-12T03:08:10.1620999+00:00 0HMPR0CHKH0QK:00000002 [INF] Executed DbCommand ("13"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Id\" = @__p_0
+LIMIT 1" (0723d8ff)
+2023-04-12T03:08:10.2321626+00:00 0HMPR0CHKH0QK:00000002 [INF] changed for user "{\"id\":1,\"name\":\"Joanne OrtizBased\",\"email\":\"AAAAAAAAAAAA86@gmail.com\",\"isVerified\":true,\"profilePicture\":\"profile-images\\5120a3ac-da45-4aea-b26e-5c91f4a7f8cf.png\",\"isAdmin\":false,\"participations\":null}","{\"id\":1,\"name\":\"Joanne OrtizBased\",\"email\":\"AAAAAAAAAAAA86@gmail.com\",\"isVerified\":true,\"profilePicture\":\"profile-images\\5120a3ac-da45-4aea-b26e-5c91f4a7f8cf.png\",\"isAdmin\":false,\"participations\":null}" (7d2654cb)
+2023-04-12T03:08:10.2546533+00:00 0HMPR0CHKH0QK:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"Users\" AS \"u\"
+    WHERE \"u\".\"Email\" = @__email_0)" (0723d8ff)
+2023-04-12T03:08:10.2564826+00:00 0HMPR0CHKH0QK:00000002 [INF] i guess you need to updooooooooot (363aea9e)
+2023-04-12T03:08:10.5907336+00:00 0HMPR0CHKH0QK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@p6='?' (DbType = Int32), @p0='?' (Size = 24), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (Size = 17), @p4='?' (Size = 60), @p5='?' (Size = 55)"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"Users\" SET \"Email\" = @p0, \"IsAdmin\" = @p1, \"IsVerified\" = @p2, \"Name\" = @p3, \"Password\" = @p4, \"profilePicture\" = @p5
+WHERE \"Id\" = @p6
+RETURNING 1;" (0723d8ff)
+2023-04-12T03:08:10.6098340+00:00 0HMPR0CHKH0QK:00000002 [INF] Executing "ObjectResult", writing value of type '"Colab.Models.User"'. (605b4265)
+2023-04-12T03:08:10.7053781+00:00 0HMPR0CHKH0QK:00000002 [INF] Executed action "Colab.Controllers.UserController.PutUser (Colab)" in 3726.8654ms (afa2e885)
+2023-04-12T03:08:10.7054812+00:00 0HMPR0CHKH0QK:00000002 [INF] Executed endpoint '"Colab.Controllers.UserController.PutUser (Colab)"' (99874f2b)
+2023-04-12T03:08:10.7242394+00:00 0HMPR0CHKH0QK:00000002 [INF] Request finished HTTP/1.1 PUT http://localhost:5130/api/user/1 multipart/form-data;+boundary=----WebKitFormBoundaryi7njTtYft27XljEP 1168 - 200 202 application/json;+charset=utf-8 3972.5110ms (791a596a)
+2023-04-12T03:08:20.7913938+00:00 0HMPR0CHKH0QL:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T03:08:20.7930988+00:00 0HMPR0CHKH0QL:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:20.7937832+00:00 0HMPR0CHKH0QL:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 2.3007ms (791a596a)
+2023-04-12T03:08:20.7957074+00:00 0HMPR0CHKH0QL:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 274 (ca22a1cb)
+2023-04-12T03:08:20.7975704+00:00 0HMPR0CHKH0QL:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:20.8033829+00:00 0HMPR0CHKH0QL:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T03:08:20.8119065+00:00 0HMPR0CHKH0QL:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T03:08:20.9410102+00:00 0HMPR0CHKH0QL:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T03:08:21.2306032+00:00 0HMPR0CHKH0QL:00000002 [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType2`5[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T03:08:21.2387836+00:00 0HMPR0CHKH0QL:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 426.7781ms (afa2e885)
+2023-04-12T03:08:21.2388365+00:00 0HMPR0CHKH0QL:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T03:08:21.2397066+00:00 0HMPR0CHKH0QL:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 274 - 200 615 application/json;+charset=utf-8 444.0255ms (791a596a)
+2023-04-12T03:08:21.2682087+00:00 0HMPR0CHKH0QL:00000003 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/1 - - (ca22a1cb)
+2023-04-12T03:08:21.2685568+00:00 0HMPR0CHKH0QL:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:21.2686992+00:00 0HMPR0CHKH0QL:00000003 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/project/user/1 - - - 204 - - 0.4950ms (791a596a)
+2023-04-12T03:08:21.2719070+00:00 0HMPR0CHKH0QL:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:5130/api/project/user/1 - - (ca22a1cb)
+2023-04-12T03:08:21.2898285+00:00 0HMPR0CHKH0QL:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:21.3066100+00:00 0HMPR0CHKH0QL:00000004 [INF] Executing endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (500cc934)
+2023-04-12T03:08:21.3146826+00:00 0HMPR0CHKH0QL:00000004 [INF] Route matched with "{action = \"GetProjectsByUserId\", controller = \"Project\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Colab.Models.Project]]] GetProjectsByUserId(Int32)" on controller "Colab.Controllers.ProjectController" ("Colab"). (122b2fdf)
+2023-04-12T03:08:21.3956888+00:00 0HMPR0CHKH0QL:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"p\".\"Id\", \"p\".\"CreatedAt\", \"p\".\"Description\", \"p\".\"Title\", \"p\".\"UpdatedAt\"
+FROM \"Projects\" AS \"p\"
+WHERE EXISTS (
+    SELECT 1
+    FROM \"ProjectUser\" AS \"p0\"
+    WHERE \"p\".\"Id\" = \"p0\".\"ProjectId\" AND \"p0\".\"UserId\" = @__id_0 AND \"p0\".\"IsOwner\")" (0723d8ff)
+2023-04-12T03:08:21.3966597+00:00 0HMPR0CHKH0QL:00000004 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[Colab.Models.Project, Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2023-04-12T03:08:21.4017819+00:00 0HMPR0CHKH0QL:00000004 [INF] Executed action "Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)" in 87.0262ms (afa2e885)
+2023-04-12T03:08:21.4018375+00:00 0HMPR0CHKH0QL:00000004 [INF] Executed endpoint '"Colab.Controllers.ProjectController.GetProjectsByUserId (Colab)"' (99874f2b)
+2023-04-12T03:08:21.4019552+00:00 0HMPR0CHKH0QL:00000004 [INF] Request finished HTTP/1.1 GET http://localhost:5130/api/project/user/1 - - - 200 2 application/json;+charset=utf-8 130.0436ms (791a596a)
+2023-04-12T03:08:25.9924059+00:00 0HMPR0CHKH0QM:00000001 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - (ca22a1cb)
+2023-04-12T03:08:25.9925669+00:00 0HMPR0CHKH0QM:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:25.9926823+00:00 0HMPR0CHKH0QM:00000001 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5130/api/Auth/login - - - 204 - - 0.2841ms (791a596a)
+2023-04-12T03:08:25.9944250+00:00 0HMPR0CHKH0QM:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 66 (ca22a1cb)
+2023-04-12T03:08:25.9945328+00:00 0HMPR0CHKH0QM:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2023-04-12T03:08:25.9947470+00:00 0HMPR0CHKH0QM:00000002 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2023-04-12T03:08:25.9948583+00:00 0HMPR0CHKH0QM:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2023-04-12T03:08:26.0178505+00:00 0HMPR0CHKH0QM:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 24)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2023-04-12T03:08:26.2756970+00:00 0HMPR0CHKH0QM:00000002 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2023-04-12T03:08:26.2805302+00:00 0HMPR0CHKH0QM:00000002 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 285.6355ms (afa2e885)
+2023-04-12T03:08:26.2805740+00:00 0HMPR0CHKH0QM:00000002 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2023-04-12T03:08:26.2807547+00:00 0HMPR0CHKH0QM:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 66 - 400 45 application/json;+charset=utf-8 286.3121ms (791a596a)
+2023-04-12T03:08:33.9153245+00:00 0HMPR0CHKH0QN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - (ca22a1cb)
+2023-04-12T03:08:33.9252034+00:00 0HMPR0CHKH0QN:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/_framework/aspnetcore-browser-refresh.js - - - 200 11966 application/javascript;+charset=utf-8 9.8483ms (791a596a)
+2023-04-12T03:08:34.0929932+00:00 0HMPR0CHKH0QO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - (ca22a1cb)
+2023-04-12T03:08:34.2537238+00:00 0HMPR0CHKH0QO:00000001 [INF] Request finished HTTP/1.1 GET http://localhost:5130/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 160.7100ms (791a596a)
+2023-04-12T03:08:50.0649647+00:00  [INF] Application is shutting down... (90f52c38)

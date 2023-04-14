@@ -10,13 +10,18 @@ public class Assignment
     public string Description { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
-    public bool IsCompleted { get; set; }
+    public int state { get; set; }
 
     //assignment has one project
 
     [ForeignKey("Project")]
     public int ProjectId { get; set; }
     public virtual Project Project { get; set; }
+
+    [ForeignKey("User")]
+    public int UserId { get; set; }    
+    public virtual User User { get; set; }
+
 
 }
 

@@ -1,0 +1,24 @@
+.img-wrapper {  
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 100px;     
+        object-fit: cover;
+    }
+  }
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+small {
+    display: inline-block;
+    max-width: 100px;
+  }

@@ -64,7 +64,18 @@ namespace Colab.Controllers
         [HttpPost]
         public async Task<ActionResult<Assignment>> PostAssignment(BaseAssignmentRequest assignment)
         {
-            return Ok(await _assignmentRepo.PostAssignment(assignment));
+            var newAsg = await _assignmentRepo.PostAssignment(assignment);
+
+            if (newAsg == null)
+            {
+                return BadRequest(new { message = "Failed to create assignment" });
+
+            }
+            else
+            {
+                return Ok(newAsg);
+            }
+
         }
 
         // DELETE: api/Assignment/5

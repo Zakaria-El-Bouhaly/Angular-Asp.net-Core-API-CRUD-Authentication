@@ -1,0 +1,4 @@
+<select class="form-select" aria-label="Default select example" (change)="onItemSelect($event)">
+    <option selected  disabled >{{label}}</option>
+    <option *ngFor="let item of items" value="{{item[Idkey]}}">{{item[text]}}</option>                
+</select>

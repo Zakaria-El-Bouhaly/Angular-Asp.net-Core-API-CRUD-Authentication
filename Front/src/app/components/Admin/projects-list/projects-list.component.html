@@ -1,0 +1,15 @@
+<button class="btn btn-primary"> Projects {{projects.length}} <i class="fa fa-cubes"></i></button>
+
+<app-table-container>
+    <button class="btn btn-primary mb-2" (click)="openAddModal()">Add Project</button>
+
+    <app-mytable [Tabledata]="projects" (editEvent)="editProject($event)"
+        (deleteEvent)="openDeleteModal($event)"></app-mytable>
+</app-table-container>
+
+
+<app-modal [title]="modalTitle">
+    <app-project-form *ngIf="addModal" (submitForm)="addnewProject($event)"></app-project-form>
+    <app-confirmation-dialog (cancel)="closeModal()" (confirm)="deleteProject()"
+        *ngIf="!addModal"></app-confirmation-dialog>
+</app-modal>

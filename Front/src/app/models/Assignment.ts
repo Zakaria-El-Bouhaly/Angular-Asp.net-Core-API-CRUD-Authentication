@@ -5,5 +5,6 @@ export interface Assignment {
     createdAt: Date;
     updatedAt: Date;
     projectId: number;
-    isCompleted: boolean;
+    userId: number;
+    state: number;
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'App1';
+
+  constructor(private titleService: Title, private router: Router) { }
+  adminPage: Boolean = false;
+  url: string = "hello";
+  ngOnInit() {
+    this.titleService.setTitle("Colab");
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        this.url = val.url;
+        console.log(this.url);
+        if (this.url.includes("/admin")) {
+          this.adminPage = true;
+        } else {
+          this.adminPage = false;
+        }
+      }
+      
+    });
+  }
+
+
+
 }

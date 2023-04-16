@@ -20,5 +20,11 @@ export class AssignmentService {
   addAssignment(assignment: any): Observable<any> {
     return this.httpService.post('/assignment', assignment);
   }
+
+  getUserAssignments(projectId: number): Observable<any> {
+    return this.httpService.get('/assignment/usertasks/' + projectId);
+  }
+
+  
   
 }

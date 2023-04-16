@@ -24,6 +24,7 @@ export class ProjectDetailsComponent {
   errorMessage: string = "";
   successMessage: string = "";
   activeTab: string = "ProjectInfo";
+  states = ["Not Started", "In Progress", "Completed"];
 
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService, private assignmentService: AssignmentService, private modalService: ModalService) { }
@@ -33,16 +34,20 @@ export class ProjectDetailsComponent {
     this.projectId = this.route.snapshot.paramMap.get('id')
     this.subProject = this.projectService.getProjectById(this.projectId).subscribe({
       next: (resultProject) => {
+        console.log(resultProject);
         this.project = resultProject;
-        this.participators = resultProject.participators;
+
+        this.participators = resultProject.participators ?? [];      
         this.participators.forEach((participator) => {
           participator.user = participator.user.name;
         });
-        this.allAssignments = resultProject.assignments;
-        this.subProject.unsubscribe();
+
+        this.allAssignments = resultProject.assignments ?? [];
+        this.allAssignments.forEach((assignment) => {
+          assignment.user = assignment.user.name;
+        });
       },
       error: (err) => {
-        console.log(err);
         this.errorMessage = err.error.message;
       }
     });
@@ -84,8 +89,11 @@ export class ProjectDetailsComponent {
 
   deleteAssignment(assignmentIndex: any) {
     // delete element by index
-    this.allAssignments= this.allAssignments.filter((assignment) => assignment.id != assignmentIndex);
+    this.allAssignments = this.allAssignments.filter((assignment) => assignment.id != assignmentIndex);
     console.log(this.allAssignments);
+  }
+  ngOnDestroy() {
+    this.subProject.unsubscribe();
   }
 
 }

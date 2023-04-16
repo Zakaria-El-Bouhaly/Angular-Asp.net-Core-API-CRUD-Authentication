@@ -37,9 +37,10 @@ export class AsignmtsListComponent {
     this.assignment = {
       id: 0,
       projectId: this.projectId,
+      userId: 0,
       title: "",
       description: "",
-      isCompleted: false
+      state: 0
     };
 
     this.modalService.openModal();
@@ -76,7 +77,8 @@ export class AsignmtsListComponent {
           if (asg.id == assignment.id) {
             asg.title = res.title;
             asg.description = res.description;
-            asg.isCompleted = res.isCompleted;
+            asg.userId = res.userId;
+            asg.state = res.state;
             asg.updatedAt = res.updatedAt;
             asg.projectId = res.projectId;
           }

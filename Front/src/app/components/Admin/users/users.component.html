@@ -1,0 +1,14 @@
+<button class="btn btn-primary"> Users {{users.length}} <i class="fa fa-user"></i></button>
+
+<app-table-container>
+    <app-mytable [Tabledata]="users" (editEvent)="openEditModal($event)"
+        (deleteEvent)="openDeleteModal($event)"></app-mytable>
+</app-table-container>
+
+
+
+
+<app-modal [title]="modalTitle">
+    <app-full-user-form *ngIf="isForm" [user]="user" (submitForm)="submitForm($event)"></app-full-user-form>
+    <app-confirmation-dialog *ngIf="!isForm" (confirm)="deleteUser()"></app-confirmation-dialog>
+</app-modal>

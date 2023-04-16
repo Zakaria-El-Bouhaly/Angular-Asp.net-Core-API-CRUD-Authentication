@@ -160,6 +160,14 @@ namespace Colab.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,User")]
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<User>>> search([FromQuery] string query)
+        {
+            var users = await _userRepository.search(query);
+            return Ok(users);
+        }
+
 
     }
 }

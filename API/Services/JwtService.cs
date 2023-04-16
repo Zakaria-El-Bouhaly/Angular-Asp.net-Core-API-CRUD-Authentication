@@ -28,13 +28,14 @@ public class JwtService : ITokenService
 
     public bool isAdmin()
     {
-        var role = _httpContextAccessor?.HttpContext?.User.FindFirst("role")?.Value;
+        var role = getRole();
+        
         return role == "Admin";
     }
 
     public string getRole()
     {
-        var role = _httpContextAccessor?.HttpContext?.User.FindFirst("role")?.Value ?? "User";
+        var role = _httpContextAccessor?.HttpContext?.User.FindFirst(ClaimTypes.Role)?.Value ?? "No Role";
         return role;
     }
 

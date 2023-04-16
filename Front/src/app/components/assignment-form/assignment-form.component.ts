@@ -19,7 +19,8 @@ export class AssignmentFormComponent {
     this.myForm = new FormGroup({
       id: new FormControl(this.formAssignment.id),
       projectId: new FormControl(this.formAssignment.projectId),
-      isCompleted: new FormControl(this.formAssignment.isCompleted, Validators.required),
+      userId: new FormControl(this.formAssignment.userId, Validators.required),
+      state: new FormControl(this.formAssignment.state, Validators.required),
       description: new FormControl(this.formAssignment.description, [Validators.required, Validators.minLength(3)]),
       title: new FormControl(this.formAssignment.title, [Validators.required, Validators.minLength(3)])
     });
@@ -27,10 +28,12 @@ export class AssignmentFormComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['formAssignment'] && this.myForm) {
+      console.log(this.formAssignment);
       this.myForm.setValue({
         id: this.formAssignment.id,
         projectId: this.formAssignment.projectId,
-        isCompleted: this.formAssignment.isCompleted,
+        state: this.formAssignment.state,
+        userId: this.formAssignment.userId,
         description: this.formAssignment.description,
         title: this.formAssignment.title
       }

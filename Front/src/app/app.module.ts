@@ -9,6 +9,11 @@ import { AppRoutingModule } from './modules/routing-module';
 import { AuthModule } from './modules/auth-module';
 import { SharedModule } from './modules/shared-module';
 import { ProjectModule } from './modules/project-module';
+import { AdminModule } from './modules/admin-module';
+import { ProfileModule } from './modules/profile-module';
+
+
+
 
 
 
@@ -26,7 +31,9 @@ import { ProjectModule } from './modules/project-module';
     AppRoutingModule,
     AuthModule,
     SharedModule,
-    ProjectModule 
+    ProjectModule,
+    AdminModule,
+    ProfileModule
   ],
   providers: [
     {

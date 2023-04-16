@@ -23,21 +23,27 @@ namespace Colab.Repositories
 
         public async Task<IEnumerable<Project>> GetProjectsByUserId(int id)
         {
+            var userId = _jwtService.getUserId();
+         
+            if (userId == id || _jwtService.isAdmin())
+            {
+                var projects = await _context.Projects
+                    .Where(p => p.Participators.Any(u => u.UserId == id && u.IsOwner))
+                    .ToListAsync();
 
-            var projects = await _context.Projects
-                .Where(p => p.Participators.Any(u => u.UserId == id && u.IsOwner))
-                .ToListAsync();
+                return projects;
+            }
+            return null;
 
-            return projects;
+
+
         }
 
         public async Task<Project> GetProjectById(int id)
         {
             var userId = _jwtService.getUserId();
-            var project = await _context.Projects
-                .Where(p => p.Id == id && p.Participators.Any(u => u.UserId == userId)).Include(p => p.Participators).ThenInclude(p => p.User).Include(p => p.Assignments).FirstOrDefaultAsync();
+            var project = await hasAccess(userId, id);
             return project;
-
         }
 
         public async Task<Project> CreateProject(ProjectRequest project)
@@ -75,7 +81,7 @@ namespace Colab.Repositories
         public async Task<Project> UpdateProject(ProjectRequest project)
         {
             var userId = _jwtService.getUserId();
-            var projectToUpdate = _context.Projects.Where(p => p.Id == project.Id && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).FirstOrDefault();
+            var projectToUpdate = await hasAccess(userId, project.Id);
 
             if (projectToUpdate != null)
             {
@@ -95,7 +101,7 @@ namespace Colab.Repositories
         public async Task<Project> DeleteProject(int id)
         {
             var userId = _jwtService.getUserId();
-            var project = _context.Projects.Where(p => p.Id == id && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).FirstOrDefault();
+            var project = await hasAccess(userId, id);
 
             if (project != null)
             {
@@ -103,16 +109,15 @@ namespace Colab.Repositories
                 await _context.SaveChangesAsync();
                 return project;
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
+
         }
 
         public async Task<ProjectUser> AddUserToProject(ProjectUserDto projectUser)
         {
             var userId = _jwtService.getUserId();
-            var project = _context.Projects.Where(p => p.Id == projectUser.ProjectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).FirstOrDefault();
+            var project = await hasAccess(userId, projectUser.ProjectId);
 
             if (project != null)
             {
@@ -141,7 +146,7 @@ namespace Colab.Repositories
         public async Task<ProjectUser> UpdateUserInProject(ProjectUserDto projectUser)
         {
             var userId = _jwtService.getUserId();
-            var project = _context.Projects.Where(p => p.Id == projectUser.ProjectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).FirstOrDefault();
+            var project = await hasAccess(userId, projectUser.ProjectId);
 
             if (project != null)
             {
@@ -159,7 +164,7 @@ namespace Colab.Repositories
         public async Task<ProjectUser> RemoveUserFromProject(ProjectUserDto projectUser)
         {
             var userId = _jwtService.getUserId();
-            var project = _context.Projects.Where(p => p.Id == projectUser.ProjectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).FirstOrDefault();
+            var project = hasAccess(userId, projectUser.ProjectId);
 
             if (project != null)
             {
@@ -182,18 +187,20 @@ namespace Colab.Repositories
         }
 
 
-        public async Task<Boolean> isOnwerOfProject(int projectId, int userId)
+        public async Task<Project> hasAccess(int userId, int projectId)
         {
+            bool isAdmin = _jwtService.isAdmin();
 
-            var project = await _context.Projects.Where(p => p.Id == projectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).FirstOrDefaultAsync();
-            if (project != null)
+          
+
+            if (isAdmin)
             {
-                return true;
+
+                return await _context.Projects.Where(p => p.Id == projectId).Include(p => p.Participators).ThenInclude(p => p.User).Include(p => p.Assignments).FirstOrDefaultAsync();
             }
-            else
-            {
-                return false;
-            }
+
+            var project = await _context.Projects.Where(p => p.Id == projectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner)).Include(p => p.Participators).ThenInclude(p => p.User).Include(p => p.Assignments).FirstOrDefaultAsync();
+            return project;
         }
     }
 }

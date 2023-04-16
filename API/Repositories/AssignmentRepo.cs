@@ -18,7 +18,8 @@ public class AssignmentRepo : IAssignmentRepo
 
     public async Task<Assignment> DeleteAssignment(int id)
     {
-        var assignment = await _context.Assignments.FindAsync(id);
+        var userId = _tokenService.getUserId();
+        var assignment = await hasAssignment(userId, id);
         if (assignment == null)
         {
             return null;
@@ -32,7 +33,8 @@ public class AssignmentRepo : IAssignmentRepo
 
     public async Task<Assignment> GetAssignment(int id)
     {
-        return await _context.Assignments.FindAsync(id);
+
+        return await hasAssignment(_tokenService.getUserId(), id);
     }
 
     public async Task<IEnumerable<Assignment>> GetAssignments()
@@ -58,7 +60,11 @@ public class AssignmentRepo : IAssignmentRepo
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now,
         };
-        _context.Assignments.Add(newAssignment);
+        var isMember = await _context.Projects.FirstOrDefaultAsync(p => p.Id == assignment.ProjectId && p.Participators.Any(u => u.UserId == assignment.UserId)) != null;
+        if (!isMember)
+        {
+            return null;
+        }
         await _context.SaveChangesAsync();
 
         return newAssignment;
@@ -68,7 +74,7 @@ public class AssignmentRepo : IAssignmentRepo
     {
 
         // update 
-        var assignmentToUpdate = await _context.Assignments.FindAsync(assignment.Id);
+        var assignmentToUpdate = await hasAssignment(_tokenService.getUserId(), assignment.Id);
 
         if (assignmentToUpdate == null)
         {
@@ -87,5 +93,24 @@ public class AssignmentRepo : IAssignmentRepo
         await _context.SaveChangesAsync();
 
         return assignmentToUpdate;
+    }
+
+    public async Task<Assignment> hasAssignment(int userId, int asgId)
+    {
+        var isAdmin = _tokenService.isAdmin();
+        if (isAdmin)
+        {
+            return await _context.Assignments.FirstOrDefaultAsync(a => a.Id == asgId);
+        }
+        var asg = await _context.Assignments.FirstOrDefaultAsync(a => a.Id == asgId && a.UserId == userId);
+        if (asg != null)
+        {
+            var isOwner = await _context.Projects.FirstOrDefaultAsync(p => p.Id == asg.ProjectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner));
+            if (isOwner != null)
+            {
+                return asg;
+            }
+        }
+        return null;
     }
 }

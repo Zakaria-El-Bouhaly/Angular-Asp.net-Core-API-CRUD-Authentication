@@ -254,4 +254,10 @@ public class UserRepository : IUserRepository
     {
         return await _context.Users.AnyAsync(u => u.Email == email);
     }
+
+    public async Task<IEnumerable<User>> search(string query)
+    {
+        var users = await _context.Users.Where(u => u.Name.Contains(query)).ToListAsync();
+        return users;
+    }
 }

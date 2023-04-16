@@ -1,15 +1,12 @@
 <div class="container">
-
-   <div class="row mt-5">
-      <h1 class="text-center fw-bold">My Projects</h1>
-   </div>
-
    <app-modal [title]="modalTitle">
       <app-project-form *ngIf="addModal" (submitForm)="addnewProject($event)"></app-project-form>
-      <app-confirmation-dialog (cancel)="closeModal()" (confirm)="deleteProject()"  *ngIf="!addModal"></app-confirmation-dialog>
+      <app-confirmation-dialog (cancel)="closeModal()" (confirm)="deleteProject()"
+         *ngIf="!addModal"></app-confirmation-dialog>
    </app-modal>
 
-   <div class="row">
+   
+   <div class="row mt-3 d-flex justify-content-center align-items-center">
       <div class="col-12 mb-2">
          <button class="btn btn-primary" (click)="openAddModal()">Add Project <i class="bi bi-plus"></i></button>
       </div>

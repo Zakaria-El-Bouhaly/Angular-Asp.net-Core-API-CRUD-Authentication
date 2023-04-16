@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { KeyValue } from '@angular/common';
 
+
 @Component({
   selector: 'app-mytable',
   templateUrl: './mytable.component.html',
@@ -9,7 +10,7 @@ import { KeyValue } from '@angular/common';
 export class MytableComponent {
   @Input() Tabledata: any;
   @Output() deleteEvent = new EventEmitter<any>();
-  @Output() editEvent = new EventEmitter<any> ();
+  @Output() editEvent = new EventEmitter<any>();
 
   constructor() { }
 

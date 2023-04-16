@@ -15,6 +15,6 @@ namespace Colab.Repositories
         Task<ProjectUser> UpdateUserInProject(ProjectUserDto projectUser);
         Task<ProjectUser> RemoveUserFromProject(ProjectUserDto projectUser);
         Task<IEnumerable<Project>> GetParticipations();
-        Task<Boolean> isOnwerOfProject(int projectId, int userId);
+        Task<Project> hasAccess(int projectId, int userId);
     }
 }

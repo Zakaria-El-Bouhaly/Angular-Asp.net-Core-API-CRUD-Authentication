@@ -1,0 +1,27 @@
+@import "src/assets/scss_vars.scss";
+
+.offcanvas {
+    background-color: rgb(52, 52, 52);
+    * {
+        color: rgb(255, 216, 126);
+    }
+
+    .btn-close {
+        &:hover {
+            background-color: rgb(255, 216, 126);
+            color: rgb(52, 52, 52);
+        }
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+router-link {
+    color: $text-main;
+    &:focus,
+    &:hover,
+    &:active {
+        color: $primary;
+    }
+}

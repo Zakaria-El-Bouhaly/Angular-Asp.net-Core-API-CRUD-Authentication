@@ -1,5 +1,102 @@
+@import "src/assets/scss_vars.scss";
+
 .container-fluid {
   padding: 0;  
   margin: 0;
+  z-index: 10;
 }
 
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.bg{    
+  position: absolute;
+  z-index: -1;
+  opacity: 0.05;
+}
+.background-shape1 {
+  
+  background-color: $warning;
+  height: 100px;
+  width: 240px;
+  -ms-transform: skewY(-10deg);
+  -webkit-transform: skewY(-20deg);
+  transform: skewY(-20deg);
+  border-radius: 30px; 
+  left: 100px;
+  bottom: 100px;
+ 
+}
+
+.background-shape2 {
+  
+  background-color: $danger;
+  height: 100px;
+  width: 100px;
+  -ms-transform: skewY(-70deg);
+  -webkit-transform: skewY(-40deg);
+  transform: skewY(10deg);
+  border-radius: 20px; 
+  right: 150px;
+  bottom: 150px;
+ 
+}
+
+.background-shape3 {
+  
+  background-color: $secondary;
+  height: 100px;
+  width: 100px;
+  -ms-transform: skewY(-70deg);
+  -webkit-transform: skewY(-40deg);
+  transform: skewY(10deg);
+  border-radius: 20px; 
+  left: 20px;
+  bottom: 350px;
+ 
+}
+
+.background-shape4 {
+  
+  background-color: $primary;
+  height: 100px;
+  width: 100px;
+  -ms-transform: skewY(-70deg);
+  -webkit-transform: skewY(-40deg);
+  transform: skewY(10deg);
+  border-radius: 20px; 
+  right: 20px;
+  bottom: 350px;
+ 
+}
+
+.background-shape5 {
+  
+  background-color: $success;
+  height: 80px;
+  width: 200px;
+  -ms-transform: skewY(70deg);
+  -webkit-transform: skewY(90deg);
+  transform: skewY(10deg);
+  border-radius: 20px; 
+  left: 20px;
+  bottom: 500px;
+ 
+}
+
+.background-shape6 {
+  
+  background-color: $info;
+  height: 100px;
+  width: 150px;
+  -ms-transform: skewY(-70deg);
+  -webkit-transform: skewY(-40deg);
+  transform: skewY(10deg);
+  border-radius: 20px; 
+  right: 60%;
+  bottom: 500px;
+ 
+}

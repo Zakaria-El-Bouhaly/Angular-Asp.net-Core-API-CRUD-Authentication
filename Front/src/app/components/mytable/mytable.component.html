@@ -7,7 +7,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of Tabledata">
-            <td *ngFor="let element of item | keyvalue:onCompare ">{{element.value}}</td>
+            <td *ngFor="let element of item | keyvalue:onCompare ">{{element.value | dateFormat}}</td>
             <td>
                 <button class="btn me-2" (click)="edit(item)"><i class="fa fa-edit"></i></button>
                 <button class="btn" (click)="delete(item)"><i class="fa fa-trash"></i></button>

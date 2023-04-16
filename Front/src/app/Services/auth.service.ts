@@ -15,6 +15,7 @@ export class AuthService {
 
 
   AuthEvent: Subject<boolean> = new Subject<boolean>();
+  
 
   login(user: User): Observable<any> {
     return this.httpService.post('/Auth/login', user);
@@ -28,8 +29,7 @@ export class AuthService {
   loginSuccess(res: any) {
     localStorage.setItem('user', JSON.stringify(res.user));
     localStorage.setItem('token', res.token);
-    this.AuthEvent.next(true);
-
+    this.AuthEvent.next(true);    
   }
 
   register(user: User): Observable<any> {
@@ -47,6 +47,11 @@ export class AuthService {
     return false;
   }
 
+  isAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.isAdmin;
+  }
+
   gettoken() {
     return localStorage.getItem('token') || '';
   }
@@ -54,12 +59,26 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.AuthEvent.next(false);
+    this.AuthEvent.next(false);    
   }
 
   getUserId() {
     return JSON.parse(localStorage.getItem('user') || '{}').id;
   }
 
+  sendVerificationEmail(): Observable<any> {
+    return this.httpService.post('/user/sendVerificationEmail', {});
+  }
 
+  verifyEmail(formData: any): Observable<any> {
+    return this.httpService.post('/user/verifyEmail', formData);
+  }
+
+  forgotPassword(formData: any): Observable<any> {
+    return this.httpService.post('/user/forgotPassword', formData);
+  }
+
+  resetPassword(formData: any): Observable<any> {
+    return this.httpService.post('/user/resetPassword', formData);
+  }
 }

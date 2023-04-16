@@ -1,3 +1,5 @@
+@import 'src/assets/scss_vars.scss';
+
 .btn-close {
     border-radius: 5px;
     &:focus {
@@ -5,6 +7,6 @@
         box-shadow: none;
     }
     &:hover {
-        background-color: #b5b5b5;
+        background-color: $secondary;
     }
 }

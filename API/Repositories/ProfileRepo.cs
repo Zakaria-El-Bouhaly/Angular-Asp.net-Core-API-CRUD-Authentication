@@ -32,7 +32,7 @@ namespace Colab.Repositories
             if (profile != null)
             {
                 profile.Name = profileRequest.Name;
-                Console.WriteLine(profileRequest.Name);
+           
 
                 if (profileRequest.ProfilePicture != null && profileRequest.ProfilePicture.Length > 0)
                 {

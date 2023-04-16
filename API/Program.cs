@@ -6,8 +6,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Colab.Repositories;
-using MailKit;
-using MailKit.Security;
 using Colab.config;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,15 +1,26 @@
+@import "src/assets/scss_vars.scss";
 .card {
-    
-    border-radius: 20px;
-    padding-bottom: 20px;    
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    border: 0px solid $dark;
+    padding-bottom: 20px;
+    box-shadow: 0 2px 4px $dark;
 
-    .card-header {            
+    .card-header {
+        border: 0px solid $dark;
         border-radius: 20px 20px 0 0;
+        background: $secondary;
     }
     &:hover {
-     //rotate the card
-        transform: rotate(1deg);
-        cursor: pointer;
+        cursor: auto;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
     }
 }
+.btn-danger , .btn-primary  {    
+    color: $text-main;
+    border: 0px solid $dark;
+    &:hover {
+        background-color: $primary;
+        color: $text-main;
+    }
+}
+

@@ -1,10 +1,8 @@
-<button class="btn btn-primary mb-2" (click)="openAddModal()">Add User</button>
-
-
-<div class="overflow-auto">
+<button class="btn btn-primary mb-2" (click)="openAddModal()">Add Participant</button>
+<app-table-container>
     <app-mytable [Tabledata]="participants" (editEvent)="openEditModal($event)"
         (deleteEvent)="openDeleteModal($event)"></app-mytable>
-</div>
+</app-table-container>
 
 <app-modal [title]="modalTitle">
     <app-user-form *ngIf="formId==1" [formUserProject]="projectUser" (submitForm)="submitForm($event)"></app-user-form>

@@ -1,0 +1,16 @@
+<div class="container">
+
+    <div class="row mt-5">
+        <h1 class="text-center fw-bold">My Tasks</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mb-2">
+            <app-select-input [label]="'Select Project'" [items]="projects" [Idkey]="'id'" [text]="'title'" (itemSelected)="getUserAssignments($event)"></app-select-input>
+        </div>                
+    </div>
+
+    <div class="row">
+        <app-kanban (updatedState)="updateState($event)" [tasks]="myTasks"></app-kanban>
+    </div>
+</div>

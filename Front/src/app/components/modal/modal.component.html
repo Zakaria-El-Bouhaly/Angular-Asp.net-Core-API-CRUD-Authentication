@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <ng-content></ng-content>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" *ngIf="errorMessage || successMessage">
                 <p class="text-danger">{{errorMessage}}</p>
                 <p class="text-success">{{successMessage}}</p>
             </div>

@@ -46,7 +46,12 @@ export class AuthFormComponent {
       this.authService.login(loginUser).subscribe({
         next: (res) => {
           this.authService.loginSuccess(res);
-          this.router.navigate(['/myprojects']);
+          if (this.authService.isAdmin()) {
+            this.router.navigate(['/admin']);
+          }
+          else {
+            this.router.navigate(['/']);
+          }
         },
         error: (err) => {
           this.errors = err.error.errors;
@@ -81,7 +86,7 @@ export class AuthFormComponent {
       next: (res) => {
         console.log("resutlt :" + res);
         this.authService.loginSuccess(res);
-        this.router.navigate(['/myprojects']);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         this.errors = err.error.errors;

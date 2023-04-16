@@ -14,5 +14,6 @@ public interface IUserRepository
     Task<User> verifyEmail(string token);
     Task forgotPassword(string email);
     Task resetPassword(string token, string password, string confirmPassword);
+    Task<IEnumerable<User>> search(string query);
 
 }

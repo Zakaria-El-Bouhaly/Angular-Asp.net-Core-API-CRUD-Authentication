@@ -9,4 +9,5 @@ public interface IAssignmentRepo
     Task<Assignment> PostAssignment(BaseAssignmentRequest assignment);
     Task<Assignment> DeleteAssignment(int id);
     Task<IEnumerable<Assignment>> GetAssignmentsByUserProject(int id);
+    Task<Assignment> hasAssignment(int userId, int asgId);
 }

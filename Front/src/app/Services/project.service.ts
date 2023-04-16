@@ -8,6 +8,10 @@ export class ProjectService {
 
   constructor(private httpService: HttpService) { }
 
+  getProjects(): Observable<any> {
+    return this.httpService.get("/project");
+  }
+
   getUserProjects(id: number): Observable<any> {
     return this.httpService.get("/project/user/" + id);
   }
@@ -26,6 +30,10 @@ export class ProjectService {
 
   updateProject(project: any): Observable<any> {
     return this.httpService.put("/project/"+project.id, project);
+  }
+
+  getParticipations():Observable<any>{
+    return this.httpService.get('/project/participations');
   }
 
 }

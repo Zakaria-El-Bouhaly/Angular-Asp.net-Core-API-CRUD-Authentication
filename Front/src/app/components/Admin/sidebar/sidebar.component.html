@@ -2,7 +2,14 @@
   <div class="row flex-nowrap">
     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-        
+
+
+        <div class="img-wrapper m-2">
+          <img async src="../../../../assets/kanban.png" />
+        </div>
+
+
+
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
           <li class="nav-item">
@@ -22,6 +29,13 @@
               <i class="fs-5 bi-building-gear"></i><span class="ms-1 d-none d-sm-inline">Projects</span>
             </router-link>
           </li>
+
+          <li class=" nav-item">
+            <router-link class="nav-link text-truncate" [routerLink]="['/login']" (click)="logout()" >
+              <i class="fs-5 bi-box-arrow-left"></i><span class="ms-1 d-none d-sm-inline">Logout</span>
+            </router-link>
+          </li>
+
         </ul>
       </div>
     </div>

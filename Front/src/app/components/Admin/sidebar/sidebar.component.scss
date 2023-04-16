@@ -25,3 +25,28 @@ router-link {
         color: $primary;
     }
 }
+
+.img-wrapper {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 100px;
+        object-fit: cover;
+    }
+
+}
+@media (max-width: 768px) {
+   .img-wrapper {
+       width: 50px;
+       height: 50px;
+       img {
+           width: 50px;
+       }
+   }
+}

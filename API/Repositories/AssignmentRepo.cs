@@ -60,12 +60,14 @@ public class AssignmentRepo : IAssignmentRepo
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now,
         };
-        var isMember = await _context.Projects.FirstOrDefaultAsync(p => p.Id == assignment.ProjectId && p.Participators.Any(u => u.UserId == assignment.UserId)) != null;
+        var isMember = await _context.Projects.FirstOrDefaultAsync(p => p.Id == assignment.ProjectId && p.Participators.Any(u => u.UserId == assignment.UserId)) != null;        
         if (!isMember)
-        {
+        {            
             return null;
-        }
+        }        
+        _context.Assignments.Add(newAssignment);
         await _context.SaveChangesAsync();
+        Console.WriteLine("id============="+newAssignment.Id);
 
         return newAssignment;
     }

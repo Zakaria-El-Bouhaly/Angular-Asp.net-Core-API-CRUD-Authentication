@@ -15,6 +15,8 @@ public class User
     public bool IsAdmin { get; set; }
     // user has many projects
     public virtual List<ProjectUser> Participations { get; set; }
+    // user has many invitations
+    public virtual List<ProjectUserInvitation> Invitations { get; set; }
 
 
 }

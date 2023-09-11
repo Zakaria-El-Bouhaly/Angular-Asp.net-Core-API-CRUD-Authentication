@@ -14,7 +14,7 @@ public class EmailService : IEmailService
         _mailSettings = mailSettingsOptions.Value;
     }
 
-    public bool SendEmail(MailData mailData)
+    public async Task<bool> SendEmail(MailData mailData)
     {
         try
         {
@@ -34,10 +34,10 @@ public class EmailService : IEmailService
 
                 using (SmtpClient mailClient = new SmtpClient())
                 {
-                    mailClient.Connect(_mailSettings.Host, _mailSettings.Port, MailKit.Security.SecureSocketOptions.StartTls);
-                    mailClient.Authenticate(_mailSettings.UserName, _mailSettings.Password);
-                    mailClient.Send(emailMessage);
-                    mailClient.Disconnect(true);
+                    await mailClient.ConnectAsync(_mailSettings.Host, _mailSettings.Port, MailKit.Security.SecureSocketOptions.StartTls);
+                    await mailClient.AuthenticateAsync(_mailSettings.UserName, _mailSettings.Password);
+                    await mailClient.SendAsync(emailMessage);
+                    await mailClient.DisconnectAsync(true);
                 }
             }
 

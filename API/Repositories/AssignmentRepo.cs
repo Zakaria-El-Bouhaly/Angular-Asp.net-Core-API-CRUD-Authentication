@@ -18,12 +18,11 @@ public class AssignmentRepo : IAssignmentRepo
 
     public async Task<Assignment> DeleteAssignment(int id)
     {
-        var userId = _tokenService.getUserId();
-        var assignment = await hasAssignment(userId, id);
-        if (assignment == null)
-        {
-            return null;
-        }
+
+
+        await hasAccessToAsg(id);
+
+        var assignment = await _context.Assignments.FindAsync(id);
 
         _context.Assignments.Remove(assignment);
         await _context.SaveChangesAsync();
@@ -31,10 +30,15 @@ public class AssignmentRepo : IAssignmentRepo
         return assignment;
     }
 
-    public async Task<Assignment> GetAssignment(int id)
+    public async Task<Assignment?> GetAssignment(int id)
     {
 
-        return await hasAssignment(_tokenService.getUserId(), id);
+
+        var hasAccess = await hasAccessToAsg(id);
+
+        var assignment = await _context.Assignments.Include(a => a.Project).Include(a => a.User).FirstOrDefaultAsync(a => a.Id == id);
+
+        return assignment;
     }
 
     public async Task<IEnumerable<Assignment>> GetAssignments()
@@ -48,7 +52,7 @@ public class AssignmentRepo : IAssignmentRepo
         return await _context.Assignments.Where(a => a.UserId == userId && a.ProjectId == id).ToListAsync();
     }
 
-    public async Task<Assignment> PostAssignment(BaseAssignmentRequest assignment)
+    public async Task<Assignment?> PostAssignment(BaseAssignmentRequest assignment)
     {
         var newAssignment = new Assignment
         {
@@ -60,28 +64,24 @@ public class AssignmentRepo : IAssignmentRepo
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now,
         };
-        var isMember = await _context.Projects.FirstOrDefaultAsync(p => p.Id == assignment.ProjectId && p.Participators.Any(u => u.UserId == assignment.UserId)) != null;        
+        var isMember = await _context.Projects.FirstOrDefaultAsync(p => p.Id == assignment.ProjectId && p.Participators.Any(u => u.UserId == assignment.UserId)) != null;
         if (!isMember)
-        {            
-            return null;
-        }        
+            throw new UnauthorizedAccessException("user is not a member of this project");
+
         _context.Assignments.Add(newAssignment);
         await _context.SaveChangesAsync();
-        Console.WriteLine("id============="+newAssignment.Id);
 
-        return newAssignment;
+        return await GetAssignment(newAssignment.Id);
     }
 
     public async Task<Assignment> PutAssignment(AssignmentRequest assignment)
     {
 
         // update 
-        var assignmentToUpdate = await hasAssignment(_tokenService.getUserId(), assignment.Id);
+        var assignmentToUpdate = await GetAssignment(assignment.Id);
 
         if (assignmentToUpdate == null)
-        {
-            return null;
-        }
+            throw new Exception("assignment not found");
 
         assignmentToUpdate.Title = assignment.Title;
         assignmentToUpdate.Description = assignment.Description;
@@ -97,22 +97,28 @@ public class AssignmentRepo : IAssignmentRepo
         return assignmentToUpdate;
     }
 
-    public async Task<Assignment> hasAssignment(int userId, int asgId)
+
+    private async Task<bool> hasAccessToAsg(int asgId)
     {
+        var userId = _tokenService.getUserId();
+
         var isAdmin = _tokenService.isAdmin();
         if (isAdmin)
         {
-            return await _context.Assignments.FirstOrDefaultAsync(a => a.Id == asgId);
+            return true;
         }
-        var asg = await _context.Assignments.FirstOrDefaultAsync(a => a.Id == asgId && a.UserId == userId);
-        if (asg != null)
-        {
-            var isOwner = await _context.Projects.FirstOrDefaultAsync(p => p.Id == asg.ProjectId && p.Participators.Any(u => u.UserId == userId && u.IsOwner));
-            if (isOwner != null)
-            {
-                return asg;
-            }
-        }
-        return null;
+        var asg = await _context.Assignments.AnyAsync(a => a.Id == asgId && a.UserId == userId);
+
+        if (asg)
+            return true;
+
+        var isOwner = await _context.Assignments.AnyAsync(a => a.Id == asgId && a.Project.Participators.Any(u => u.UserId == userId && u.IsOwner));
+        if (isOwner)
+            return true;
+
+        throw new UnauthorizedAccessException("assignment not found");
+
     }
+
+
 }

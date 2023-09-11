@@ -9,11 +9,9 @@ public class MainDbContext : DbContext
 
     }
 
-    //enab  le lazy loading by proxy
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // optionsBuilder.UseLazyLoadingProxies();
-        // optionsBuilder.EnableSensitiveDataLogging();
+
     }
 
 
@@ -25,49 +23,26 @@ public class MainDbContext : DbContext
 
         modelBuilder.Entity<ProjectUser>()
        .HasKey(pu => new { pu.ProjectId, pu.UserId });
+
         modelBuilder.Entity<ProjectUser>()
             .HasOne(pu => pu.Project).WithMany(p => p.Participators).HasForeignKey(pu => pu.ProjectId);
+
         modelBuilder.Entity<ProjectUser>().HasOne(pu => pu.User).WithMany(u => u.Participations).HasForeignKey(pu => pu.UserId);
 
-
-        var i = 1;
-        var randomusers = new Faker<User>()
-                    .RuleFor(m => m.Id, f => i++)
-                    .RuleFor(m => m.Name, f => f.Name.FullName())
-                    .RuleFor(m => m.profilePicture, f => f.Internet.Avatar())
-                    .RuleFor(m => m.Email, f => f.Internet.Email())
-                    .RuleFor(m => m.Password, f => BCrypt.Net.BCrypt.HashPassword("userpass" + (i-1)));
-
-
-        modelBuilder.Entity<User>()
-                        .HasData(randomusers.Generate(5));
-
-        var j = 1;
-
-        var randomProjects = new Faker<Project>().RuleFor(m => m.Id, f => j++)
-                                                 .RuleFor(m => m.Title, f => f.Commerce.ProductName())
-                                                 .RuleFor(m => m.Description, f => f.Lorem.Paragraph().Substring(0, 20))
-                                                 .RuleFor(m => m.CreatedAt, f => f.Date.Past())
-                                                 .RuleFor(m => m.UpdatedAt, f => f.Date.Past());
-
-        modelBuilder.Entity<Project>()
-                        .HasData(randomProjects.Generate(10));
-
-        var k = 1;
-        var randomAssignments = new Faker<Assignment>().RuleFor(m => m.Id, f => k++)
-                                                       .RuleFor(m => m.Title, f => f.Commerce.ProductName())
-                                                       .RuleFor(m => m.Description, f => f.Lorem.Paragraph().Substring(0, 20))
-                                                       .RuleFor(m => m.CreatedAt, f => f.Date.Past())
-                                                       .RuleFor(m => m.UpdatedAt, f => f.Date.Past())
-                                                       .RuleFor(m => m.state, f => f.Random.Int(0,2))
-                                                       .RuleFor(m => m.ProjectId, f => f.Random.Int(1, 10))
-                                                       .RuleFor(m => m.UserId, f => f.Random.Int(1, 5));
-
-
-        modelBuilder.Entity<Assignment>().HasData(randomAssignments.Generate(20));
-
-
-
+      
+        // create admin user
+        var admin = new User
+        {
+            Id = 1,
+            Email = "admin@demo.com",
+            Name = "Admin",
+            IsAdmin =true,
+            IsVerified = true,
+            Password= BCrypt.Net.BCrypt.HashPassword("admin123"),            
+            profilePicture = "profile-images/default.png",
+        };
+        
+        modelBuilder.Entity<User>().HasData(admin);
     }
 
 
@@ -76,5 +51,6 @@ public class MainDbContext : DbContext
     public DbSet<Project> Projects { get; set; }
     public DbSet<EmailVerifTokens> EmailVerifTokens { get; set; }
     public DbSet<PasswordResetTokens> PasswordResetTokens { get; set; }
+    public DbSet<ProjectUserInvitation> ProjectUserInvitations { get; set; }
 
 }

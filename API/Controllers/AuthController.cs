@@ -77,7 +77,7 @@ public class AuthController : ControllerBase
 
         await _userRepository.CreateUser(user);
 
-        await _userRepository.sendVerificationEmail(user.Id);
+        await _userRepository.sendVerificationEmail(user.Id, Request.Headers["origin"]);
 
         // return created successfully message response
         return Ok(new { message = "User created successfully" });

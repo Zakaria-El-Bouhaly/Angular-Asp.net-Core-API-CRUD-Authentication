@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Colab.Requests;
 using Colab.Services;
 using Colab.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Colab.Controllers
 {
@@ -24,107 +25,161 @@ namespace Colab.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
         {
+            try
+            {
 
-            return Ok(await _projectRepo.GetAllProjects());
+                return Ok(await _projectRepo.GetAllProjects());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpGet("user/{id}")]
         public async Task<ActionResult<IEnumerable<Project>>> GetProjectsByUserId(int id)
         {
-            return Ok(await _projectRepo.GetProjectsByUserId(id));
+            try
+            {
+                return Ok(await _projectRepo.GetProjectsByUserId(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Project>> GetProject(int id)
         {
-            var project = await _projectRepo.GetProjectById(id);
-            if (project == null)
+            try
             {
-                return NotFound(new { message = "Project not found" });
+                var project = await _projectRepo.GetProjectById(id);
+                return Ok(project);
             }
-            return Ok(project);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpPost]
         public async Task<ActionResult<Project>> PostProject(ProjectRequest project)
         {
-            var newProject = await _projectRepo.CreateProject(project);
-            if (newProject.Id == 0)
+            try
             {
-                return BadRequest(new { message = "Project creation failed" });
+                var newProject = await _projectRepo.CreateProject(project);
+                return CreatedAtAction("GetProject", new { id = newProject.Id }, newProject);
             }
-
-            return CreatedAtAction("GetProject", new { id = newProject.Id }, newProject);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Project>> DeleteProject(int id)
         {
-            var deletedProject = await _projectRepo.DeleteProject(id);
-            if (deletedProject == null)
+            try
             {
-                return BadRequest(new { message = "Project deletion failed" });
+                var deletedProject = await _projectRepo.DeleteProject(id);
+                return Ok(deletedProject);
             }
-            return Ok(deletedProject);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Project>> PutProject(ProjectRequest project)
         {
-            var updatedProject = await _projectRepo.UpdateProject(project);
-            if (updatedProject == null)
+            try
             {
-                return BadRequest(new { message = "Project update failed" });
+                var updatedProject = await _projectRepo.UpdateProject(project);
+                return Ok(updatedProject);
             }
-            return Ok(updatedProject);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpPost("addUser")]
         public async Task<ActionResult<Project>> AddUserToProject(ProjectUserDto projectUser)
         {
-            var updatedProject = await _projectRepo.AddUserToProject(projectUser);
-            if (updatedProject == null)
+            try
             {
-                return BadRequest(new { message = "User could not be added to project" });
+                var updatedProject = await _projectRepo.AddUserToProject(projectUser);
+                return Ok(updatedProject);
             }
-            return Ok(updatedProject);
+            catch (DbUpdateException e)
+            {
+                return BadRequest(new { errors = "User already in project" });
+
+            }
+
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(new { errors = "User already in project" });
+
+            }
+
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
+
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpPut("updateUser")]
         public async Task<ActionResult<ProjectUser>> UpdateUserInProject(ProjectUserDto projectUser)
         {
-            var updatedProjectUser = await _projectRepo.UpdateUserInProject(projectUser);
-            if (updatedProjectUser == null)
+            try
             {
-                return BadRequest(new { message = "User could not be updated in project" });
+                var updatedProjectUser = await _projectRepo.UpdateUserInProject(projectUser);
+                return Ok(updatedProjectUser);
             }
-            return Ok(updatedProjectUser);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpPost("removeUser")]
         public async Task<ActionResult<Project>> RemoveUserFromProject(ProjectUserDto projectUser)
         {
-            var updatedProject = await _projectRepo.RemoveUserFromProject(projectUser);
-            if (updatedProject == null)
+            try
             {
-                return BadRequest(new { message = "User could not be removed from project" });
+                var updatedProject = await _projectRepo.RemoveUserFromProject(projectUser);
+                return Ok(updatedProject);
             }
-            return Ok(updatedProject);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpGet("participations")]
         public async Task<ActionResult<IEnumerable<Project>>> GetParticipations()
         {
-            return Ok(await _projectRepo.GetParticipations());
+            try
+            {
+                return Ok(await _projectRepo.GetParticipations());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
 

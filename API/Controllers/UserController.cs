@@ -63,11 +63,11 @@ namespace Colab.Controllers
 
             try
             {
-                return await _userRepository.UpdateUser(userRequest);
+                return await _userRepository.UpdateUser(userRequest, Request.Headers["origin"]);
             }
             catch (Exception e)
             {
-                return BadRequest(new { message = e.Message });
+                return BadRequest(new { errors = e.Message });
             }
         }
 
@@ -92,13 +92,16 @@ namespace Colab.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _userRepository.DeleteUser(id);
-            if (user == null)
+            try
             {
-                return NotFound();
+                var user = await _userRepository.DeleteUser(id);
+                return NoContent();
             }
 
-            return NoContent();
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "Admin,User")]
@@ -109,12 +112,12 @@ namespace Colab.Controllers
 
             try
             {
-                await _userRepository.sendVerificationEmail(userId);
+                await _userRepository.sendVerificationEmail(userId, Request.Headers["origin"]);
                 return Ok(new { message = "Verification email sent" });
             }
             catch (Exception e)
             {
-                return BadRequest(new { message = e.Message });
+                return BadRequest(new { errors = e.Message });
             }
         }
 
@@ -128,7 +131,7 @@ namespace Colab.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(new { message = e.Message });
+                return BadRequest(new { errors = e.Message });
             }
         }
 
@@ -137,12 +140,13 @@ namespace Colab.Controllers
         {
             try
             {
-                await _userRepository.forgotPassword(request.Email);
+                await _userRepository.forgotPassword(request.Email, Request.Headers["origin"]);
+
                 return Ok(new { message = "Password reset email sent" });
             }
             catch (Exception e)
             {
-                return BadRequest(new { message = e.Message });
+                return BadRequest(new { errors = e.Message });
             }
         }
 
@@ -156,7 +160,7 @@ namespace Colab.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(new { message = e.Message });
+                return BadRequest(new { errors = e.Message });
             }
         }
 

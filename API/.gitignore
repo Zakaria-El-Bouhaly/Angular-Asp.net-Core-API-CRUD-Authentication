@@ -1,4 +1,8 @@
 obj/
 bin/
+wwwroot/*
+app.db
+Logs/*
+.vscode/*
 
 appsettings.json

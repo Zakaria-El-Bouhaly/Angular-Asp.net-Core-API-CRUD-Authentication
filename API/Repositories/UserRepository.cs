@@ -13,15 +13,16 @@ public class UserRepository : IUserRepository
     private readonly MainDbContext _context;
     private readonly IEmailService _emailService;
     private readonly IWebHostEnvironment _hostingEnvironment;
+    private readonly ITokenService _tokenService;
 
     // inject logger
     private readonly ILogger<UserRepository> _logger;
-    public UserRepository(MainDbContext context, IEmailService emailService, IWebHostEnvironment hostingEnvironment, ILogger<UserRepository> logger)
+    public UserRepository(MainDbContext context, IEmailService emailService, IWebHostEnvironment hostingEnvironment, ITokenService tokenService)
     {
         _context = context;
         _emailService = emailService;
         _hostingEnvironment = hostingEnvironment;
-        _logger = logger;
+        _tokenService = tokenService;
     }
     public async Task<IEnumerable<User>> GetUsers()
     {
@@ -34,15 +35,13 @@ public class UserRepository : IUserRepository
     }
 
 
-    public async Task<User> UpdateUser(UserRequest userRequest)
+    public async Task<User> UpdateUser(UserRequest userRequest, string originUrl)
     {
         var user = await _context.Users.FindAsync(userRequest.Id);
         if (user == null)
         {
             return null;
         }
-
-        _logger.LogInformation("changed for user {0},{1}", userRequest.ConfirmPassword, userRequest.Password);
 
         user.Name = userRequest.Name;
         user.IsAdmin = userRequest.IsAdmin;
@@ -56,20 +55,19 @@ public class UserRepository : IUserRepository
         {
             throw new Exception("Email already exists");
         }
+
         else if (user.Email != userRequest.Email)
         {
             user.Email = userRequest.Email;
-            user.IsVerified = false;
-            await sendVerificationEmail(user.Id);
+            user.IsVerified = false;            
+            await sendVerificationEmail(user.Id, originUrl);
         }
 
         if (userRequest.Password != null)
         {
-            _logger.LogInformation("i guess you need to updooooooooot");
-            user.Password = BCrypt.Net.BCrypt.HashPassword(userRequest.Password);            
+            user.Password = BCrypt.Net.BCrypt.HashPassword(userRequest.Password);
         }
 
-        _context.Entry(user).State = EntityState.Modified;
         await _context.SaveChangesAsync();
 
         return user;
@@ -82,13 +80,19 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
         return user;
     }
+
+
     public async Task<User> DeleteUser(int id)
     {
         var user = await _context.Users.FindAsync(id);
         if (user == null)
-        {
-            return null;
-        }
+            throw new Exception("User not found");
+
+        // get userId from token
+        var userId = _tokenService.getUserId();
+        if (userId == user.Id)
+            throw new Exception("You can't delete your own account");
+
         _context.Users.Remove(user);
         await _context.SaveChangesAsync();
         return user;
@@ -100,7 +104,7 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public async Task sendVerificationEmail(int id)
+    public async Task sendVerificationEmail(int id, string originUrl)
     {
 
 
@@ -118,7 +122,7 @@ public class UserRepository : IUserRepository
 
             // enocde token to url safe base64
             var encodedToken = HttpUtility.UrlEncode(emailVerifToken.Token);
-            var url = $"http://localhost:4200/verify-email?token={encodedToken}";
+            var url = $"{originUrl}/verify-email?token={encodedToken}";
 
             var mailData = new MailData
             {
@@ -127,7 +131,7 @@ public class UserRepository : IUserRepository
                 Body = $"Click on the link to verify your email: {url}"
             };
 
-            _emailService.SendEmail(mailData);
+           await _emailService.SendEmail(mailData);
         }
         else
         {
@@ -160,7 +164,7 @@ public class UserRepository : IUserRepository
         }
     }
 
-    public async Task forgotPassword(string email)
+    public async Task forgotPassword(string email, string originUrl)
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         if (user != null && user.IsVerified == true)
@@ -177,7 +181,7 @@ public class UserRepository : IUserRepository
 
             // enocde token to url safe base64
             var encodedToken = HttpUtility.UrlEncode(passwordResetToken.Token);
-            var url = $"http://localhost:4200/reset-password?token={encodedToken}";
+            var url = $"{originUrl}/reset-password?token={encodedToken}";
 
             var mailData = new MailData
             {
@@ -186,7 +190,7 @@ public class UserRepository : IUserRepository
                 Body = $"Click on the link to reset your password: {url}"
             };
 
-            _emailService.SendEmail(mailData);
+         await   _emailService.SendEmail(mailData);
         }
         else
         {
@@ -257,7 +261,7 @@ public class UserRepository : IUserRepository
 
     public async Task<IEnumerable<User>> search(string query)
     {
-        var users = await _context.Users.Where(u => u.Name.Contains(query)).ToListAsync();
+        var users = await _context.Users.Where(u => u.Name.ToLower().Contains(query.ToLower()) && u.IsVerified == true).ToListAsync();
         return users;
     }
 }

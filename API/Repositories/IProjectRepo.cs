@@ -11,10 +11,9 @@ namespace Colab.Repositories
         Task<Project> CreateProject(ProjectRequest project);
         Task<Project> UpdateProject(ProjectRequest project);
         Task<Project> DeleteProject(int id);
-        Task<ProjectUser> AddUserToProject(ProjectUserDto projectUser);
+        Task<ProjectUserInvitation> AddUserToProject(ProjectUserDto projectUser);
         Task<ProjectUser> UpdateUserInProject(ProjectUserDto projectUser);
         Task<ProjectUser> RemoveUserFromProject(ProjectUserDto projectUser);
-        Task<IEnumerable<Project>> GetParticipations();
-        Task<Project> hasAccess(int projectId, int userId);
+        Task<IEnumerable<Project>> GetParticipations(); 
     }
 }

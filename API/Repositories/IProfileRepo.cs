@@ -6,7 +6,7 @@ public interface IProfileRepo
 {
     Task<User> GetProfile();
     Task<User> UpdateProfile(ProfileRequest user);
-    Task<User> UpdateEmail(EmailRequest emailRequest);
+    Task<User> UpdateEmail(EmailRequest emailRequest, string origin);
     Task UpdatePassword(PasswordRequest passwordRequest);
 
     

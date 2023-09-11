@@ -13,6 +13,8 @@ namespace Colab.Models
         public virtual List<Assignment> Assignments { get; set; }      
         // project has many users
         public virtual List<ProjectUser> Participators { get; set; }
+        // project has many invitations
+        public virtual List<ProjectUserInvitation> Invitations { get; set; }
 
 
     }

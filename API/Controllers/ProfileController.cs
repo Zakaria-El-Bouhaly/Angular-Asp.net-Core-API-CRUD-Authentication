@@ -42,7 +42,7 @@ namespace Colab.Controllers
         {
             try
             {
-                var profile = await _profileRepo.UpdateEmail(emailRequest);
+                var profile = await _profileRepo.UpdateEmail(emailRequest,Request.Headers["Origin"]);
                 return Ok(profile);
             }
             catch (Exception e)
@@ -65,5 +65,6 @@ namespace Colab.Controllers
                 return BadRequest(new { errors = new { CurrentPassword = e.Message } });
             }
         }
+        
     }
 }

@@ -11,12 +11,17 @@ namespace Colab.Repositories
         private readonly MainDbContext _context;
         private readonly ITokenService _tokenService;
         private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IEmailService _emailService;
+        private readonly IUserRepository _userRepository;
 
-        public ProfileRepo(MainDbContext context, ITokenService tokenService, IWebHostEnvironment hostingEnvironment)
+        public ProfileRepo(MainDbContext context, ITokenService tokenService,
+         IWebHostEnvironment hostingEnvironment, IEmailService emailService, IUserRepository userRepository)
         {
             _context = context;
             _tokenService = tokenService;
             _hostingEnvironment = hostingEnvironment;
+            _emailService = emailService;
+            _userRepository = userRepository;
         }
 
         public async Task<User> GetProfile()
@@ -32,7 +37,7 @@ namespace Colab.Repositories
             if (profile != null)
             {
                 profile.Name = profileRequest.Name;
-           
+
 
                 if (profileRequest.ProfilePicture != null && profileRequest.ProfilePicture.Length > 0)
                 {
@@ -59,7 +64,7 @@ namespace Colab.Repositories
             return profile;
         }
 
-        public async Task<User> UpdateEmail(EmailRequest emailRequest)
+        public async Task<User> UpdateEmail(EmailRequest emailRequest, string origin)
         {
             User profile = await _context.Users.FirstOrDefaultAsync(x => x.Id == _tokenService.getUserId());
 
@@ -78,6 +83,8 @@ namespace Colab.Repositories
                     profile.Email = emailRequest.Email;
                     profile.IsVerified = false;
                     await _context.SaveChangesAsync();
+                    // send verification email
+                    await _userRepository.sendVerificationEmail(_tokenService.getUserId(), origin);
                 }
                 else
                 {
@@ -96,7 +103,7 @@ namespace Colab.Repositories
             {
                 // check if current password is correct
                 if (BCrypt.Net.BCrypt.Verify(passwordRequest.CurrentPassword, profile.Password))
-                {                    
+                {
                     profile.Password = BCrypt.Net.BCrypt.HashPassword(passwordRequest.NewPassword);
                     _context.SaveChanges();
                 }

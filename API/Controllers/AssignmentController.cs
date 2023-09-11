@@ -24,8 +24,14 @@ namespace Colab.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Assignment>>> GetAssignments()
         {
-
-            return Ok(await _assignmentRepo.GetAssignments());
+            try
+            {
+                return Ok(await _assignmentRepo.GetAssignments());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         // GET: api/Assignment/5
@@ -33,70 +39,78 @@ namespace Colab.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Assignment>> GetAssignment(int id)
         {
-            var assignment = await _assignmentRepo.GetAssignment(id);
-
-            if (assignment == null)
+            try
             {
-                return NotFound();
+                var assignment = await _assignmentRepo.GetAssignment(id);
+                return Ok(assignment);
             }
-
-            return Ok(assignment);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
-        // PUT: api/Assignment/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [Authorize(Roles = "User,Admin")]
         [HttpPut]
         public async Task<IActionResult> PutAssignment(AssignmentRequest assignment)
         {
-            var assignments = await _assignmentRepo.PutAssignment(assignment);
-            if (assignments == null)
+            try
             {
-                return NotFound();
+                var assignments = await _assignmentRepo.PutAssignment(assignment);
+
+                return Ok(assignment);
             }
-            return Ok(assignment);
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
 
         }
 
-        // POST: api/Assignment
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [Authorize(Roles = "User,Admin")]
         [HttpPost]
         public async Task<ActionResult<Assignment>> PostAssignment(BaseAssignmentRequest assignment)
         {
-            var newAsg = await _assignmentRepo.PostAssignment(assignment);
-
-            if (newAsg == null)
+            try
             {
-                return BadRequest(new { message = "Failed to create assignment" });
-
-            }
-            else
-            {
+                var newAsg = await _assignmentRepo.PostAssignment(assignment);
                 return Ok(newAsg);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
             }
 
         }
 
-        // DELETE: api/Assignment/5
 
         [Authorize(Roles = "User,Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAssignment(int id)
         {
-            var assignments = await _assignmentRepo.DeleteAssignment(id);
-            if (assignments == null)
+            try
             {
-                return NotFound();
+                var assignments = await _assignmentRepo.DeleteAssignment(id);
+                return Ok(new { message = "Assignment deleted" });
             }
-            return Ok(new { message = "Assignment deleted" });
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
         [Authorize(Roles = "User,Admin")]
         [HttpGet("usertasks/{id}")]
         public async Task<ActionResult<IEnumerable<Assignment>>> GetAssignmentsByUserProject(int id)
         {
-            return Ok(await _assignmentRepo.GetAssignmentsByUserProject(id));
+            try
+            {
+                return Ok(await _assignmentRepo.GetAssignmentsByUserProject(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { errors = e.Message });
+            }
         }
 
     }

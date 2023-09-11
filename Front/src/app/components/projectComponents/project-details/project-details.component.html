@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row mt-2">
+        <h1 class="text-center text-danger">{{ errorMessage }}</h1>
+    </div>
+
+    <div class="col-12">
+
+        <ul class="tabs-container">
+            <li (click)="onTabClick('ProjectInfo')" [class.active]="activeTab == 'ProjectInfo'" class="tab-link">
+                <i class="fas fa-info-circle"></i> Project Information
+            </li>
+            <li (click)="onTabClick('Assignments')" [class.active]="activeTab == 'Assignments'" class="tab-link">
+                <i class="fas fa-tasks"></i> Tasks
+            </li>
+            <li (click)="onTabClick('Participants')" [class.active]="activeTab == 'Participants'" class="tab-link">
+                <i class="fas fa-users"></i> Participants
+            </li>
+        </ul>
+
+        <div *ngIf="activeTab == 'ProjectInfo'">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Project Info</h3>
+                    </div>
+                    <div class="card-body">
+                        <app-project-form [formProject]="project"
+                            (submitForm)="updateProject($event)"></app-project-form>
+                    </div>
+                    <div class="card-footer" *ngIf="errorMessage || successMessage ">
+                        <p class="text-danger">{{errorMessage}}</p>
+                        <p class="text-success">{{successMessage}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeTab == 'Assignments'">
+            <app-asignmts-list (onAction)="onActionAsg($event)"
+                [allAssignments]="allAssignments" [participators]="participators"></app-asignmts-list>
+        </div>
+
+
+        <div *ngIf="activeTab == 'Participants'">
+            <app-users-list (onAction)="onActionParticp($event)"
+                [participators]="participators"></app-users-list>
+        </div>
+
+    </div>
+</div>

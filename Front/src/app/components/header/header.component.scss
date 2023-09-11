@@ -1,19 +1,22 @@
-@import "../../../assets/scss_vars.scss";
-
 .navbar {
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(52, 52, 52, 0.1);
+    box-shadow:
+        0 1px 1px 0 rgba(0, 0, 0, 0.2),
+        0 2px 30px 0 rgba(52, 52, 52, 0.1);
     // gardient color
     // background: linear-gradient(30deg, rgb(227, 126, 126) 0%, rgb(237, 122, 122) 50%, rgb(130, 77, 77) 100%);
-    background-color: $primary;
+    background-color: var(--primary);
     opacity: 0.9;
 }
 
-i {
-    color: $text-main;
-}
+
 .navbar-brand {
-    color: $text-main;
+    color: var(--text-main);
+    &:hover {
+        color: var(--text-main);
+        cursor: pointer;
+    }
 }
+
 .navbar-toggler {
     border: none;
     background-color: transparent;
@@ -28,7 +31,7 @@ i {
 }
 .navbar-toggler span {
     display: block;
-    background-color: $dark;
+    background-color: var(--dark);
     height: 3px;
     width: 25px;
     margin-top: 5px;
@@ -70,15 +73,15 @@ i {
 .nav-link {
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid $third;
-    color: $text-main;
+    border: 2px solid var(--third);
+    color: var(--text-main);
     border-radius: 20px;
     margin-left: 10px;
 
     &:hover {
-        background-color: $secondary;
-        border-color: $secondary;
-        color: $text-main;
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: var(--text-main);
     }
 
     &:focus {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalService } from 'src/app/Services/modal.service';
+import { ResponseService } from 'src/app/Services/response.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class UsersComponent {
   modalTitle: string = "Edit User";
   user: any;
   usersColumns: any = [];
-  constructor(private usersService: UsersService, private modalService: ModalService) {
+  constructor(private usersService: UsersService, private modalService: ModalService,
+    private response: ResponseService) {
 
   }
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class UsersComponent {
 
       this.users = res;
 
-      console.log(this.users);
+    
 
       this.usersColumns = Object.keys(this.users[0]);
 
@@ -70,21 +72,23 @@ export class UsersComponent {
         this.modalService.setModalSuccess("User updated successfully");
       },
       error: (err: any) => {
-        this.modalService.setModalError("Error updating user");
+        let errors = this.response.getErrorMessage(err);
+        this.modalService.setModalError(errors);
       }
     }
     );
   }
 
   deleteUser() {
-    console.log(this.user);
+   
     this.usersService.deleteUser(this.user.id).subscribe({
       next: (res: any) => {
         this.users = this.users.filter((u: any) => u.id !== this.user.id);
         this.modalService.setModalSuccess("User deleted successfully");
       },
       error: (err: any) => {
-        this.modalService.setModalError("Error deleting user");
+        let errors = this.response.getErrorMessage(err);
+        this.modalService.setModalError(errors);
       }
     });
 

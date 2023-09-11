@@ -5,6 +5,7 @@ import { FullProject, Project } from 'src/app/models/Project';
 import { AuthService } from 'src/app/Services/auth.service';
 import { ModalService } from 'src/app/Services/modal.service';
 import { ProjectService } from 'src/app/Services/project.service';
+import { ResponseService } from 'src/app/Services/response.service';
 
 @Component({
   selector: 'app-projects-list',
@@ -21,7 +22,9 @@ export class ProjectsListComponent {
   modalTitle = "Add Project";
   deleteProjectId = 0;
 
-  constructor(private projectService: ProjectService, private router: Router, private modalService: ModalService) { }
+  constructor(private projectService: ProjectService, private router: Router, private modalService: ModalService
+    , private responseService: ResponseService
+  ) { }
 
   //get user id from local storage
 
@@ -49,18 +52,19 @@ export class ProjectsListComponent {
         this.modalService.setModalSuccess("Project added successfully!");
       },
       error: (err) => {
-        this.modalService.setModalError(err.error.message);
+        let errors = this.responseService.getErrorMessage(err);
+        this.modalService.setModalError(errors);
       }
     });
   }
 
   editProject(project: Project) {
-    console.log(project);
+  
     this.router.navigate(['/edit/' + project.id]);
   }
 
   deleteProject() {
-    console.log(this.deleteProjectId);
+  
     this.projectService.deleteProject(this.deleteProjectId).subscribe(
       {
         next: (res) => {
@@ -68,7 +72,8 @@ export class ProjectsListComponent {
           this.modalService.setModalSuccess("Project deleted successfully!");
         },
         error: (err) => {
-          this.modalService.setModalError(err.error.message);
+          let errors = this.responseService.getErrorMessage(err);
+          this.modalService.setModalError(errors);
         }
       }
     );

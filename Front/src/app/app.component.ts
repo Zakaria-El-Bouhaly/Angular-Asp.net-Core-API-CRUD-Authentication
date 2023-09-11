@@ -17,7 +17,7 @@ export class AppComponent {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.url = val.url;
-        console.log(this.url);
+       
         if (this.url.includes("/admin")) {
           this.adminPage = true;
         } else {

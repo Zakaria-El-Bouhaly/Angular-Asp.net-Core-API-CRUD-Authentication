@@ -1,0 +1,51 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" formControlName="title">
+        <small class="text-danger" *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.touched">Title
+            is required</small>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" formControlName="description">
+        <small class="text-danger"
+            *ngIf="myForm.get('description')?.invalid && myForm.get('description')?.touched">Description
+            is required</small>
+    </div>
+
+    <div class="form-group">
+        <label>State</label>
+
+        <p-dropdown [options]="asgStates" placeholder="Select a status" optionLabel="label" formControlName="state"
+            optionValue="id" [style]="{width:'100%'}">
+        </p-dropdown>
+
+        <small class="text-danger" *ngIf="myForm.get('state')?.invalid && myForm.get('state')?.touched">State is
+            required</small>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center">
+
+
+        <label>User</label>
+
+        <p-dropdown [options]="participators" filterBy="user.name" [showClear]="true" placeholder="Select a user"
+            optionLabel="user.name" formControlName="userId" optionValue="user.id" [style]="{width:'100%'}">
+            <ng-template let-particip pTemplate="item">
+                <div class="d-flex justify-content-between">
+                    <img src={{mediaUrl+particip.user.profilePicture}} class="rounded-circle" width="30" height="30"
+                        alt="avatar">
+                    <div>{{ particip.user.name }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+    </div>
+
+    <small class="text-danger" *ngIf="myForm.get('userId')?.invalid && myForm.get('userId')?.touched">user is
+        required</small>
+
+
+    <button type="submit" class="btn btn-primary mt-2" [disabled]="myForm.invalid">Submit</button>
+
+</form>

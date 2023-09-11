@@ -14,11 +14,12 @@
     </div>
 
     <div class="form-group">
-        <label>Type</label>
-        <select class="form-select" formControlName="isAdmin">
-            <option value="false">User</option>
-            <option value="true">Admin</option>
-        </select>
+        <label>Role</label>
+
+        <p-dropdown [options]="userRoles" placeholder="Select a Role" optionLabel="name" formControlName="isAdmin"
+            optionValue="id" [style]="{width:'100%'}">
+        </p-dropdown>
+
         <small class="text-danger" *ngIf="myForm.get('isAdmin')?.invalid && myForm.get('isAdmin')?.touched">Type is
             required</small>
     </div>

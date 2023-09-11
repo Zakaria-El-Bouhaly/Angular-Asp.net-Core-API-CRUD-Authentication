@@ -1,25 +1,24 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ModalComponent } from "../components/modal/modal.component";
+import { ModalComponent } from "../components/sharedComponents/modal/modal.component";
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FormContainerComponent } from "../components/form-container/form-container.component";
-import { MytableComponent } from "../components/mytable/mytable.component";
-import { DateFormatPipe } from "../components/mytable/mydatePipe";
-import { ConfirmationDialogComponent } from "../components/confirmation-dialog/confirmation-dialog.component";
-import { ProjectFormComponent } from "../components/project-form/project-form.component";
-import { DropdownSearchComponent } from "../components/dropdown-search/dropdown-search.component";
-import { TableContainerComponent } from "../components/table-container/table-container.component";
+import { FormContainerComponent } from "../components/sharedComponents/form-container/form-container.component";
+import { ConfirmationDialogComponent } from "../components/sharedComponents/confirmation-dialog/confirmation-dialog.component";
+import { ProjectFormComponent } from "../components/sharedComponents/project-form/project-form.component";
+import { TableContainerComponent } from "../components/sharedComponents/table-container/table-container.component";
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from "primeng/button";
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+
 
 @NgModule({
     declarations: [
         ModalComponent,
-        FormContainerComponent,
-        MytableComponent,
-        DateFormatPipe,
+        FormContainerComponent,              
         ConfirmationDialogComponent,
-        ProjectFormComponent,
-        DropdownSearchComponent,
+        ProjectFormComponent,        
         TableContainerComponent
     ],
 
@@ -27,7 +26,11 @@ import { TableContainerComponent } from "../components/table-container/table-con
         FormsModule,
         CommonModule,
         ReactiveFormsModule,
-        DragDropModule
+        DragDropModule,
+        TableModule,
+        ButtonModule,
+        DropdownModule,
+        InputTextModule
     ]
     ,
     exports: [
@@ -36,13 +39,14 @@ import { TableContainerComponent } from "../components/table-container/table-con
         ReactiveFormsModule,
         ModalComponent,
         DragDropModule,
-        FormContainerComponent,
-        MytableComponent,
-        DateFormatPipe,
+        FormContainerComponent,              
         ConfirmationDialogComponent,
-        ProjectFormComponent,
-        DropdownSearchComponent  ,
-        TableContainerComponent     
+        ProjectFormComponent,        
+        TableContainerComponent ,
+        TableModule ,
+        ButtonModule   ,
+        DropdownModule,
+        InputTextModule
     ]
 
 })

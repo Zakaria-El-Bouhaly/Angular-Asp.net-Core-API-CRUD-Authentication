@@ -1,4 +1,4 @@
-@import "src/assets/scss_vars.scss";
+
 
 .offcanvas {
     background-color: rgb(52, 52, 52);
@@ -18,11 +18,11 @@
 }
 
 router-link {
-    color: $text-main;
+    color: var(--light);
     &:focus,
     &:hover,
     &:active {
-        color: $primary;
+        color: var(--primary);
     }
 }
 

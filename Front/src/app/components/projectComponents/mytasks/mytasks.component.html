@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div class="row mt-5">
+        <h1 class="text-center fw-bold">My Tasks</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mb-2">
+            <p-dropdown [options]="projects" filterBy="title" [showClear]="true" placeholder="Select a project"
+                optionLabel="title" optionValue="id" [style]="{width:'100%'}" (onChange)="getUserAssignments($event.value)">
+            </p-dropdown>
+            
+        </div>
+    </div>
+
+    <div class="row">
+        <app-kanban (updatedState)="updateState($event)" [tasks]="myTasks"></app-kanban>
+    </div>
+</div>

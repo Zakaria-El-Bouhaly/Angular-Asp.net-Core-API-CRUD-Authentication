@@ -6,19 +6,21 @@ import { ProjectsListComponent } from '../components/Admin/projects-list/project
 import { SidebarComponent } from '../components/Admin/sidebar/sidebar.component';
 import { UsersComponent } from '../components/Admin/users/users.component';
 
-import { ProjectDetailsComponent } from '../components/project-details/project-details.component';
+import { ProjectDetailsComponent } from '../components/projectComponents/project-details/project-details.component';
 import { AdminGuard } from '../helpers/AdminGuard';
 import { SharedModule } from './shared-module';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'admin', pathMatch: 'full' },
     {
-        path: 'admin', component: DashboardComponent, canActivate: [AdminGuard], children: [
+        path: '', component: DashboardComponent, canActivate: [AdminGuard], children: [
             { path: 'edit/:id', component: ProjectDetailsComponent, canActivate: [AdminGuard] },
             { path: 'users', component: UsersComponent, canActivate: [AdminGuard] },
             { path: 'projects', component: ProjectsListComponent, canActivate: [AdminGuard] },
         ]
     }
+    ,
+
+    { path: '**', redirectTo: '' }
 ]
 
 
@@ -28,7 +30,7 @@ const routes: Routes = [
         SidebarComponent,
         UsersComponent,
         ProjectsListComponent,
-        FullUserFormComponent    
+        FullUserFormComponent
     ],
     imports: [
         SharedModule,

@@ -1,5 +1,26 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
-@import "assets/scss_vars.scss";
+
+@import "primeng/resources/themes/lara-light-teal/theme.css";
+@import "primeng/resources/primeng.css";
+
+// define the colors
+
+@mixin light() {
+    --primary: #79eab1;
+    --secondary: #65d89f;
+    --third: #4dd18f;
+    --success: #53b76c;
+    --danger: #fb6565;
+    --warning: #f4ba4f;
+    --info: #82f9ff;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --text-main: #000000;    
+}
+
+body.main {
+    @include light();
+}
 
 .nav-link {
     cursor: pointer;
@@ -8,66 +29,66 @@
 .btn {
     cursor: pointer;
     border-radius: 20px;
-    border: 2px solid $primary;
+    border: 2px solid var(--primary);
 
     &:hover {
-        background-color: $secondary;
-        border-color: $secondary;
-        color: $text-main;
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: var(--text-main);
     }
 
     &:focus {
         outline: none;
         box-shadow: none;
 
-        background-color: $secondary;
-        color: $text-main;
+        background-color: var(--secondary);
+        color: var(--text-main);
     }
 }
 
 .btn-primary {
     background-color: transparent;
-    border-color: $primary;
-    color: $primary;
+    border-color: var(--primary);
+    color: var(--primary);
 
     &:hover {
-        background-color: $secondary;
-        border-color: $secondary;
-        color: $text-main;
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: var(--text-main);
     }
     &:focus {
         outline: none;
         box-shadow: none;
-        background-color: $secondary;
-        color: $text-main;
-        border-color: $secondary;
-    }    
+        background-color: var(--secondary);
+        color: var(--text-main);
+        border-color: var(--secondary);
+    }
 }
 
 .btn-danger {
     background-color: transparent;
-    border-color: $danger;
-    color: $danger;
+    border-color: var(--danger);
+    color: var(--danger);
 
     &:hover {
-        background-color: $danger;
-        border-color: $danger;
-        color: $text-main;
+        background-color: var(--danger);
+        border-color: var(--danger);
+        color: var(--text-main);
     }
 
     &:focus {
         outline: none;
         box-shadow: none;
-        background-color: $danger;
-        color: $text-main;
-        border-color: $danger;
+        background-color: var(--danger);
+        color: var(--text-main);
+        border-color: var(--danger);
     }
 }
 
 .form-control {
     border-radius: 20px;
     border: 2px solid;
-    border-color: $primary;
+    border-color: var(--primary);
     &:focus {
         outline: none;
         box-shadow: none;
@@ -79,11 +100,11 @@
 }
 
 .ng-invalid {
-    border-color: $danger;
+    border-color: var(--danger);
 }
 
 .ng-valid {
-    border-color: $success;
+    border-color: var(--success);
 }
 
 input {
@@ -115,3 +136,12 @@ input {
         padding: 20px;
     }
 }
+
+i {
+    
+    &:hover {
+        color: var(--third);
+        cursor: pointer;
+    }
+}
+

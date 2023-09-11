@@ -16,14 +16,18 @@ export class FullUserFormComponent {
   @Output() submitForm = new EventEmitter();
   @Input() user!: any;
 
+  userRoles:any =[
+    {id:true, name:"Admin"},
+    {id:false, name:"User"}
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
       id: new FormControl(this.user.id),
       name: new FormControl(this.user.name),
-      email: new FormControl(this.user.email, [Validators.email]),
-      profilePicture: new FormControl(this.user.profilePicture),
+      email: new FormControl(this.user.email, [Validators.email]),      
       password: new FormControl("", [Validators.minLength(6)]),
       confirmPassword: new FormControl("", [Validators.minLength(6), confirmPasswordValidator('password', 'confirmPassword')]),
       isAdmin: new FormControl(this.user.isAdmin, [Validators.pattern("true|false")])
@@ -37,8 +41,7 @@ export class FullUserFormComponent {
     if (changes['user'] && this.myForm) {
       this.myForm.setValue({
         id: this.user.id,
-        name: this.user.name,
-        profilePicture: this.user.profilePicture,
+        name: this.user.name,        
         email: this.user.email,
         password: "",
         confirmPassword: "",

@@ -12,22 +12,40 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item" *ngIf="!islogged">
-                    <router-link class="nav-link" [routerLink]="['/login']">Login</router-link>
+                    <router-link class="nav-link" [routerLink]="['/login']">
+                        Login
+                        <i class="bi bi-box-arrow-in-right"></i>
+                    </router-link>
                 </li>
                 <li class=" nav-item" *ngIf="!islogged">
-                    <router-link class="nav-link" [routerLink]="['/register']">Register</router-link>
+                    <router-link class="nav-link" [routerLink]="['/register']">Register
+                        <i class="bi bi-person-plus-fill"></i>
+                    </router-link>
                 </li>
                 <li class=" nav-item" *ngIf="islogged">
-                    <a class="nav-link" (click)="logout()">logout</a>
+                    <a class="nav-link" (click)="logout()">logout
+                        <i class="bi bi-box-arrow-right"></i>
+                    </a>
                 </li>
 
                 <li class=" nav-item" *ngIf="islogged">
-                    <router-link class="nav-link" [routerLink]="['/mytasks']">My Tasks</router-link>
+                    <router-link class="nav-link" [routerLink]="['/mytasks']">My Tasks
+                        <i class="bi bi-card-checklist"></i>
+                    </router-link>
                 </li>
 
                 <li class=" nav-item" *ngIf="islogged">
-                    <router-link class="nav-link" [routerLink]="['/profile']">Profile</router-link>
+                    <router-link class="nav-link" [routerLink]="['/invitations']">Invitations
+                        <i class="bi bi-envelope-fill"></i>
+                    </router-link>
                 </li>
+
+                <li class=" nav-item" *ngIf="islogged">
+                    <router-link class="nav-link" [routerLink]="['/profile']">Profile
+                        <i class="bi bi-person-circle"></i>
+                    </router-link>
+                </li>
+                
 
             </ul>
         </div>

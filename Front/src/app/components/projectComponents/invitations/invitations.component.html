@@ -1,0 +1,38 @@
+<div class="container">
+
+    <div class="row mt-5">
+        <h1 class="text-center fw-bold">My Invitations</h1>
+    </div>
+    <app-table-container>
+        <p-table [value]="invitations">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="title" style="width:20%">Project <p-sortIcon field="title"></p-sortIcon></th>
+                    <th pSortableColumn="createdAt" style="width:20%">Sent at <p-sortIcon
+                            field="createdAt"></p-sortIcon>
+                    </th>
+                    <th style="width:20%">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-invitation>
+                <tr>
+                    <td>{{invitation.project.title}}</td>
+                    <td>{{invitation.createdAt | date:'short'}}</td>
+                    <td>
+                        <button (click)="acceptInvitation(invitation)" class="btn btn-success me-2">
+                            Accept
+                            <i class="fa fa-check">
+                            </i>
+
+                        </button>
+                        <button (click)="rejectInvitation(invitation)" class="btn btn-danger">
+                            Reject
+                            <i class="fa fa-times">
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </app-table-container>
+</div>

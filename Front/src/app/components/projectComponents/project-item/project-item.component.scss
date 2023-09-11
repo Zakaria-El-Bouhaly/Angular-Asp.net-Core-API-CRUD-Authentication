@@ -1,0 +1,26 @@
+
+.card {
+    border-radius: 25px;
+    border: 0px solid var(--dark);
+    padding-bottom: 20px;
+    box-shadow: 0 2px 4px var(--dark);
+
+    .card-header {
+        border: 0px solid var(--dark);
+        border-radius: 20px 20px 0 0;
+        background: var(--secondary);
+    }
+    &:hover {
+        cursor: auto;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    }
+}
+.btn-danger , .btn-primary  {    
+    color: var(--text-main);
+    border: 0px solid var(--dark);
+    &:hover {
+        background-color: var(--primary);
+        color: var(--text-main);
+    }
+}
+

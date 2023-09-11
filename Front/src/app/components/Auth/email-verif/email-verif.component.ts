@@ -25,7 +25,7 @@ export class EmailVerifComponent {
           this.successMsg = res.message;
         },
         error: (err) => {
-          console.log(err);
+          
           this.errorMsg = err.error.message;
         }
       });

@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { AuthFormComponent } from "../components/auth-form/auth-form.component";
+import { AuthFormComponent } from "../components/Auth/auth-form/auth-form.component";
 import { AdminGuard } from "../helpers/AdminGuard";
 import { AuthGuard } from "../helpers/AuthGuard";
 import { LoginGuard } from "../helpers/LoginGuard";

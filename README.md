@@ -3,21 +3,36 @@ This is a web application that uses ASP.NET Core for the backend and Angular for
 the user can manage the tasks using the kanban method , the app provides the ability to Sign in with Google , reset password , verify email , modify profile ..
 
 ## Login , Register , Reset Password
-![1](https://user-images.githubusercontent.com/104870424/232344440-e17f5168-065b-45dd-8c95-39da5d4f6c07.png)
-![2](https://user-images.githubusercontent.com/104870424/232344462-58f87159-31ee-41f2-9843-f58e195cde14.png)
-![3](https://user-images.githubusercontent.com/104870424/232344477-51333afd-946a-4755-be9c-d51312511238.png)
+![1](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/24a50d11-f890-4743-9875-cf36de620982)
+![2](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/f87a9f9e-b6d4-4127-b50b-696e81f57f10)
+![3](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/9e568902-c0c9-4760-8a98-375fad31ac64)
+
 ## User's Projects 
-![4](https://user-images.githubusercontent.com/104870424/232344491-90c3ecb9-4d5a-41c2-a3fb-cad5f938f2b9.png)
-![6](https://user-images.githubusercontent.com/104870424/232344496-9238bf7a-8823-4cb6-900b-58e9d9112b42.png)
-![11](https://user-images.githubusercontent.com/104870424/232344542-e393d7ab-b8a1-422b-a678-acd6cef5f946.png)
+![4](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/bba26e24-9fe9-4d74-9ec0-9c3e87a9f3bf)
+
+![5](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/7a971db9-72f8-49cd-988e-207ce2f0a354)
+
 ## Project Editing 
-![7](https://user-images.githubusercontent.com/104870424/232344503-a3aa1701-ec0f-4771-b56c-4356f9473e3b.png)
-![8](https://user-images.githubusercontent.com/104870424/232344515-dca928ee-067b-4150-9a9a-b466fcf8ddfc.png)
+![6](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/fa87b672-6610-454d-b82d-8861668f87e9)
+
+![7](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/a48c111c-3c87-4371-a10d-132b559bf260)
+
+![8](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/af75e5d2-78cc-44dd-b1da-4139de6cb864)
+
+![9](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/cfb2c499-738e-4844-b478-e361dd18c20b)
+
 ## User's Tasks
-![9](https://user-images.githubusercontent.com/104870424/232344524-ec9e821a-818b-4c52-949b-589a6e42c9d2.png)
+### Drag & Drop
+![10](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/331e6304-1d45-4080-87ba-cda74b1548ee)
+
 ## Profile
-![10](https://user-images.githubusercontent.com/104870424/232344537-c1bebe05-37aa-4dd1-9e81-ec1d1f44a9e8.png)
+![11](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/1de5d47d-8e6e-4c96-b4be-811d50532142)
+
+## Invitations
+![12](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/212c6552-fb46-4f60-ba5b-3cee359710ae)
+
+
 ## Admin
-![14](https://user-images.githubusercontent.com/104870424/232344592-5605ab4a-5fe6-4073-89dd-4e57e9b1ab57.png)
-![13](https://user-images.githubusercontent.com/104870424/232344562-0272a47b-74a4-4600-a586-b25273e24a36.png)
-![15](https://user-images.githubusercontent.com/104870424/232344609-9485a283-3f6d-498d-9e7c-06adf38b8f31.png)
+![13](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/649d5820-0edc-4552-a34e-29ca1b524651)
+
+![14](https://github.com/Zakaria-El-Bouhaly/Colab/assets/104870424/67142bc2-6059-4155-bc4c-da49bfe2be55)

@@ -4,5 +4,9 @@ wwwroot/*
 app.db
 Logs/*
 .vscode/*
+.vs
+.config
+Properties
+Colab.csproj.user
 
 appsettings.json

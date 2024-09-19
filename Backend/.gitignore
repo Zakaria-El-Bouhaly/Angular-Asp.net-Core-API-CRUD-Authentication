@@ -1,0 +1,10 @@
+obj/
+bin/
+wwwroot/*
+app.db
+Logs/*
+.vscode/*
+.vs
+.config
+Properties
+Colab.csproj.user

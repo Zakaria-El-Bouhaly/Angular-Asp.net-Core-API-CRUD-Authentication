@@ -1,0 +1,298 @@
+2024-09-17T14:56:28.0327517+01:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""PRAGMA journal_mode = 'wal';" (0723d8ff)
+2024-09-17T14:56:28.1055010+01:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"__EFMigrationsHistory\" (
+    \"MigrationId\" TEXT NOT NULL CONSTRAINT \"PK___EFMigrationsHistory\" PRIMARY KEY,
+    \"ProductVersion\" TEXT NOT NULL
+);" (0723d8ff)
+2024-09-17T14:56:28.1114371+01:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-09-17T14:56:28.1134723+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-09-17T14:56:28.1270634+01:00  [INF] Applying migration '"20230911212319_add_invitations"'. (0e2ac64d)
+2024-09-17T14:56:28.2042414+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"Projects\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_Projects\" PRIMARY KEY AUTOINCREMENT,
+    \"Title\" TEXT NOT NULL,
+    \"Description\" TEXT NOT NULL,
+    \"CreatedAt\" TEXT NOT NULL,
+    \"UpdatedAt\" TEXT NOT NULL
+);" (0723d8ff)
+2024-09-17T14:56:28.2044988+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"Users\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_Users\" PRIMARY KEY AUTOINCREMENT,
+    \"Name\" TEXT NOT NULL,
+    \"Email\" TEXT NOT NULL,
+    \"IsVerified\" INTEGER NOT NULL,
+    \"profilePicture\" TEXT NOT NULL,
+    \"Password\" TEXT NOT NULL,
+    \"IsAdmin\" INTEGER NOT NULL
+);" (0723d8ff)
+2024-09-17T14:56:28.2046968+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"Assignments\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_Assignments\" PRIMARY KEY AUTOINCREMENT,
+    \"Title\" TEXT NOT NULL,
+    \"Description\" TEXT NOT NULL,
+    \"CreatedAt\" TEXT NOT NULL,
+    \"UpdatedAt\" TEXT NOT NULL,
+    \"state\" INTEGER NOT NULL,
+    \"ProjectId\" INTEGER NOT NULL,
+    \"UserId\" INTEGER NOT NULL,
+    CONSTRAINT \"FK_Assignments_Projects_ProjectId\" FOREIGN KEY (\"ProjectId\") REFERENCES \"Projects\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_Assignments_Users_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"Users\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-09-17T14:56:28.2048449+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"EmailVerifTokens\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_EmailVerifTokens\" PRIMARY KEY AUTOINCREMENT,
+    \"Token\" TEXT NOT NULL,
+    \"ExpiryDate\" TEXT NOT NULL,
+    \"UserId\" INTEGER NOT NULL,
+    CONSTRAINT \"FK_EmailVerifTokens_Users_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"Users\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-09-17T14:56:28.2049915+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"PasswordResetTokens\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_PasswordResetTokens\" PRIMARY KEY AUTOINCREMENT,
+    \"Token\" TEXT NOT NULL,
+    \"ExpiryDate\" TEXT NOT NULL,
+    \"UserId\" INTEGER NOT NULL,
+    CONSTRAINT \"FK_PasswordResetTokens_Users_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"Users\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-09-17T14:56:28.2051740+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"ProjectUser\" (
+    \"ProjectId\" INTEGER NOT NULL,
+    \"UserId\" INTEGER NOT NULL,
+    \"IsOwner\" INTEGER NOT NULL,
+    CONSTRAINT \"PK_ProjectUser\" PRIMARY KEY (\"ProjectId\", \"UserId\"),
+    CONSTRAINT \"FK_ProjectUser_Projects_ProjectId\" FOREIGN KEY (\"ProjectId\") REFERENCES \"Projects\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_ProjectUser_Users_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"Users\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-09-17T14:56:28.2053112+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"ProjectUserInvitations\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_ProjectUserInvitations\" PRIMARY KEY AUTOINCREMENT,
+    \"ProjectId\" INTEGER NOT NULL,
+    \"UserId\" INTEGER NOT NULL,
+    \"IsOwner\" INTEGER NOT NULL,
+    \"CreatedAt\" TEXT NOT NULL,
+    CONSTRAINT \"FK_ProjectUserInvitations_Projects_ProjectId\" FOREIGN KEY (\"ProjectId\") REFERENCES \"Projects\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_ProjectUserInvitations_Users_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"Users\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-09-17T14:56:28.2053898+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Users\" (\"Id\", \"Email\", \"IsAdmin\", \"IsVerified\", \"Name\", \"Password\", \"profilePicture\")
+VALUES (1, 'admin@demo.com', 1, 1, 'Admin', '$2a$11$WDzdrEftNWaxNo805xIbnuElri26KNpxJeZuVcCphBEn15dFDscGi', 'profile-images/default.png');" (0723d8ff)
+2024-09-17T14:56:28.2055122+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Assignments_ProjectId\" ON \"Assignments\" (\"ProjectId\");" (0723d8ff)
+2024-09-17T14:56:28.2056178+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_Assignments_UserId\" ON \"Assignments\" (\"UserId\");" (0723d8ff)
+2024-09-17T14:56:28.2057182+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_EmailVerifTokens_UserId\" ON \"EmailVerifTokens\" (\"UserId\");" (0723d8ff)
+2024-09-17T14:56:28.2058441+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_PasswordResetTokens_UserId\" ON \"PasswordResetTokens\" (\"UserId\");" (0723d8ff)
+2024-09-17T14:56:28.2059612+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_ProjectUser_UserId\" ON \"ProjectUser\" (\"UserId\");" (0723d8ff)
+2024-09-17T14:56:28.2060632+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_ProjectUserInvitations_ProjectId\" ON \"ProjectUserInvitations\" (\"ProjectId\");" (0723d8ff)
+2024-09-17T14:56:28.2061615+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_ProjectUserInvitations_UserId\" ON \"ProjectUserInvitations\" (\"UserId\");" (0723d8ff)
+2024-09-17T14:56:28.2062337+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"__EFMigrationsHistory\" (\"MigrationId\", \"ProductVersion\")
+VALUES ('20230911212319_add_invitations', '7.0.2');" (0723d8ff)
+2024-09-17T14:58:11.4801039+01:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-09-17T14:58:11.4903318+01:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-09-17T14:58:11.5023694+01:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-09-17T14:58:11.5139700+01:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-09-17T15:11:26.7559695+01:00  [INF] User profile is available. Using '"C:\Users\zelbouhaly\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2024-09-17T15:11:26.9161756+01:00  [ERR] An exception occurred while trying to decrypt the element. (3db2eb46)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+2024-09-17T15:11:26.9245811+01:00  [ERR] An exception occurred while processing the key element '"<key id=\"8b4deca8-9abc-4735-a3fb-f2027972f60f\" version=\"1\" />"'. (b5685f3b)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+2024-09-17T15:11:26.9352862+01:00  [WRN] Key {8b4deca8-9abc-4735-a3fb-f2027972f60f} is ineligible to be the default key because its "CreateEncryptor" method failed. (52a7bec4)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+2024-09-17T15:11:26.9406912+01:00  [WRN] Key {8b4deca8-9abc-4735-a3fb-f2027972f60f} is ineligible to be the default key because its "CreateEncryptor" method failed. (52a7bec4)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+2024-09-17T15:11:26.9945812+01:00  [ERR] An exception occurred while trying to decrypt the element. (3db2eb46)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+2024-09-17T15:11:26.9984904+01:00  [ERR] An exception occurred while processing the key element '"<key id=\"78503b53-28a9-4b6f-af56-375450d658cd\" version=\"1\" />"'. (b5685f3b)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+2024-09-17T15:11:27.0024679+01:00  [WRN] Key {78503b53-28a9-4b6f-af56-375450d658cd} is ineligible to be the default key because its "CreateEncryptor" method failed. (52a7bec4)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+2024-09-17T15:11:27.0064622+01:00  [WRN] Key {78503b53-28a9-4b6f-af56-375450d658cd} is ineligible to be the default key because its "CreateEncryptor" method failed. (52a7bec4)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+2024-09-17T15:11:27.0099071+01:00  [WRN] Key {8b4deca8-9abc-4735-a3fb-f2027972f60f} is ineligible to be the default key because its "CreateEncryptor" method failed. (52a7bec4)
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+2024-09-17T15:11:27.0150740+01:00  [INF] Creating key {c158231c-873c-4af2-a860-90686bb3906e} with creation date 2024-09-17 14:11:27Z, activation date 2024-09-17 14:11:26Z, and expiration date 2024-12-16 14:11:26Z. (77afce94)
+2024-09-17T15:11:27.0244534+01:00  [INF] Writing data to file '"C:\Users\zelbouhaly\AppData\Local\ASP.NET\DataProtection-Keys\key-c158231c-873c-4af2-a860-90686bb3906e.xml"'. (da22a8b1)
+2024-09-17T15:11:27.2208584+01:00  [INF] Now listening on: "https://localhost:7273" (d826f4b8)
+2024-09-17T15:11:27.2236057+01:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2024-09-17T15:11:27.2958627+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-09-17T15:11:27.2985766+01:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2024-09-17T15:11:27.3010137+01:00  [INF] Content root path: "C:\Users\zelbouhaly\Desktop\Colab\API" (cc26f24e)
+2024-09-17T15:13:30.4210641+01:00 0HN6N4AFF0VF1:00000001 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 52 (ca22a1cb)
+2024-09-17T15:13:30.4802548+01:00 0HN6N4AFF0VF1:00000001 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 52 - 307 0 - 58.1293ms (791a596a)
+2024-09-17T15:13:56.3329518+01:00  [INF] User profile is available. Using '"C:\Users\zelbouhaly\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2024-09-17T15:13:56.5595765+01:00  [INF] Now listening on: "https://localhost:7273" (d826f4b8)
+2024-09-17T15:13:56.5621033+01:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2024-09-17T15:13:56.6300739+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-09-17T15:13:56.6330566+01:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2024-09-17T15:13:56.6350990+01:00  [INF] Content root path: "C:\Users\zelbouhaly\Desktop\Colab\API" (cc26f24e)
+2024-09-17T15:15:09.4996061+01:00  [INF] User profile is available. Using '"C:\Users\zelbouhaly\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2024-09-17T15:16:07.1178524+01:00  [INF] User profile is available. Using '"C:\Users\zelbouhaly\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2024-09-17T15:16:07.3318321+01:00  [INF] Now listening on: "https://localhost:7273" (d826f4b8)
+2024-09-17T15:16:07.3340133+01:00  [INF] Now listening on: "http://localhost:5130" (d826f4b8)
+2024-09-17T15:16:07.3950860+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-09-17T15:16:07.3974654+01:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2024-09-17T15:16:07.3995404+01:00  [INF] Content root path: "C:\Users\zelbouhaly\Desktop\Colab\API" (cc26f24e)
+2024-09-17T15:16:27.9289778+01:00 0HN6N4D2TVLGS:00000001 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 52 (ca22a1cb)
+2024-09-17T15:16:27.9838734+01:00 0HN6N4D2TVLGS:00000001 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 52 - 307 0 - 55.5512ms (791a596a)
+2024-09-17T15:16:28.0175069+01:00 0HN6N4D2TVLGT:00000001 [INF] Request starting HTTP/2 POST https://localhost:7273/api/Auth/login application/json 52 (ca22a1cb)
+2024-09-17T15:16:28.0923128+01:00 0HN6N4D2TVLGT:00000001 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2024-09-17T15:16:28.1108018+01:00 0HN6N4D2TVLGT:00000001 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2024-09-17T15:16:34.1811691+01:00 0HN6N4D2TVLGT:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=["@__email_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2024-09-17T15:16:50.0715974+01:00 0HN6N4D2TVLGT:00000001 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2024-09-17T15:16:50.0997683+01:00 0HN6N4D2TVLGT:00000001 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 21985.7426ms (afa2e885)
+2024-09-17T15:16:50.0998346+01:00 0HN6N4D2TVLGT:00000001 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2024-09-17T15:16:50.1062546+01:00 0HN6N4D2TVLGT:00000001 [INF] Request finished HTTP/2 POST https://localhost:7273/api/Auth/login application/json 52 - 400 45 application/json;+charset=utf-8 22088.7254ms (791a596a)
+2024-09-17T15:17:22.8120566+01:00 0HN6N4D2TVLGS:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 52 (ca22a1cb)
+2024-09-17T15:17:22.8133191+01:00 0HN6N4D2TVLGS:00000002 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 52 - 307 0 - 1.2938ms (791a596a)
+2024-09-17T15:17:22.8300153+01:00 0HN6N4D2TVLGU:00000001 [INF] Request starting HTTP/2 POST https://localhost:7273/api/Auth/login application/json 52 (ca22a1cb)
+2024-09-17T15:17:22.8368311+01:00 0HN6N4D2TVLGU:00000001 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2024-09-17T15:17:22.8382490+01:00 0HN6N4D2TVLGU:00000001 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2024-09-17T15:17:25.2820828+01:00 0HN6N4D2TVLGU:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2024-09-17T15:17:25.2830271+01:00 0HN6N4D2TVLGU:00000001 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2024-09-17T15:17:25.2836144+01:00 0HN6N4D2TVLGU:00000001 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 2445.2999ms (afa2e885)
+2024-09-17T15:17:25.2836674+01:00 0HN6N4D2TVLGU:00000001 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2024-09-17T15:17:25.2842170+01:00 0HN6N4D2TVLGU:00000001 [INF] Request finished HTTP/2 POST https://localhost:7273/api/Auth/login application/json 52 - 400 45 application/json;+charset=utf-8 2454.1773ms (791a596a)
+2024-09-17T15:17:48.3342948+01:00 0HN6N4D2TVLGS:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 49 (ca22a1cb)
+2024-09-17T15:17:48.3346125+01:00 0HN6N4D2TVLGS:00000003 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 49 - 307 0 - 0.3382ms (791a596a)
+2024-09-17T15:17:48.3361235+01:00 0HN6N4D2TVLGU:00000003 [INF] Request starting HTTP/2 POST https://localhost:7273/api/Auth/login application/json 49 (ca22a1cb)
+2024-09-17T15:17:48.3377165+01:00 0HN6N4D2TVLGU:00000003 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2024-09-17T15:17:48.3377841+01:00 0HN6N4D2TVLGU:00000003 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2024-09-17T15:17:48.3853618+01:00 0HN6N4D2TVLGU:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2024-09-17T15:17:48.3855544+01:00 0HN6N4D2TVLGU:00000003 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2024-09-17T15:17:48.3856852+01:00 0HN6N4D2TVLGU:00000003 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 47.8618ms (afa2e885)
+2024-09-17T15:17:48.3857059+01:00 0HN6N4D2TVLGU:00000003 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2024-09-17T15:17:48.3858478+01:00 0HN6N4D2TVLGU:00000003 [INF] Request finished HTTP/2 POST https://localhost:7273/api/Auth/login application/json 49 - 400 45 application/json;+charset=utf-8 49.7131ms (791a596a)
+2024-09-17T15:17:52.0580619+01:00 0HN6N4D2TVLGS:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 49 (ca22a1cb)
+2024-09-17T15:17:52.0584988+01:00 0HN6N4D2TVLGS:00000004 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 49 - 307 0 - 0.4364ms (791a596a)
+2024-09-17T15:17:52.0602109+01:00 0HN6N4D2TVLGU:00000005 [INF] Request starting HTTP/2 POST https://localhost:7273/api/Auth/login application/json 49 (ca22a1cb)
+2024-09-17T15:17:52.0604158+01:00 0HN6N4D2TVLGU:00000005 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2024-09-17T15:17:52.0604987+01:00 0HN6N4D2TVLGU:00000005 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2024-09-17T15:17:52.0656751+01:00 0HN6N4D2TVLGU:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2024-09-17T15:17:52.0661308+01:00 0HN6N4D2TVLGU:00000005 [INF] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.SerializableError"'. (605b4265)
+2024-09-17T15:17:52.0664358+01:00 0HN6N4D2TVLGU:00000005 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 5.8982ms (afa2e885)
+2024-09-17T15:17:52.0664739+01:00 0HN6N4D2TVLGU:00000005 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2024-09-17T15:17:52.0665961+01:00 0HN6N4D2TVLGU:00000005 [INF] Request finished HTTP/2 POST https://localhost:7273/api/Auth/login application/json 49 - 400 45 application/json;+charset=utf-8 6.3899ms (791a596a)
+2024-09-17T15:17:54.7245583+01:00 0HN6N4D2TVLGS:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 54 (ca22a1cb)
+2024-09-17T15:17:54.7247538+01:00 0HN6N4D2TVLGS:00000005 [INF] Request finished HTTP/1.1 POST http://localhost:5130/api/Auth/login application/json 54 - 307 0 - 0.2073ms (791a596a)
+2024-09-17T15:17:54.7265970+01:00 0HN6N4D2TVLGU:00000007 [INF] Request starting HTTP/2 POST https://localhost:7273/api/Auth/login application/json 54 (ca22a1cb)
+2024-09-17T15:17:54.7267666+01:00 0HN6N4D2TVLGU:00000007 [INF] Executing endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (500cc934)
+2024-09-17T15:17:54.7268469+01:00 0HN6N4D2TVLGU:00000007 [INF] Route matched with "{action = \"Login\", controller = \"Auth\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Colab.Requests.LoginRequest)" on controller "Colab.Controllers.AuthController" ("Colab"). (122b2fdf)
+2024-09-17T15:17:54.7347565+01:00 0HN6N4D2TVLGU:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__email_0='?' (Size = 14)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"u\".\"Id\", \"u\".\"Email\", \"u\".\"IsAdmin\", \"u\".\"IsVerified\", \"u\".\"Name\", \"u\".\"Password\", \"u\".\"profilePicture\"
+FROM \"Users\" AS \"u\"
+WHERE \"u\".\"Email\" = @__email_0
+LIMIT 1" (0723d8ff)
+2024-09-17T15:17:55.0137585+01:00 0HN6N4D2TVLGU:00000007 [INF] Executing "OkObjectResult", writing value of type '"<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Colab, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2024-09-17T15:17:55.0213839+01:00 0HN6N4D2TVLGU:00000007 [INF] Executed action "Colab.Controllers.AuthController.Login (Colab)" in 294.5109ms (afa2e885)
+2024-09-17T15:17:55.0214098+01:00 0HN6N4D2TVLGU:00000007 [INF] Executed endpoint '"Colab.Controllers.AuthController.Login (Colab)"' (99874f2b)
+2024-09-17T15:17:55.0214994+01:00 0HN6N4D2TVLGU:00000007 [INF] Request finished HTTP/2 POST https://localhost:7273/api/Auth/login application/json 54 - 200 514 application/json;+charset=utf-8 294.9197ms (791a596a)
+2024-09-17T15:18:07.6289596+01:00  [INF] Application is shutting down... (90f52c38)

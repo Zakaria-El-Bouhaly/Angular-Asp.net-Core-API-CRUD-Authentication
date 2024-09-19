@@ -1,10 +1,11 @@
-obj/
-bin/
-wwwroot/*
-app.db
-Logs/*
-.vscode/*
-.vs
-.config
-Properties
-Colab.csproj.user
+# Ignore bin and obj folders
+**/bin/
+**/obj/
+**/wwwroot/*
+**/app.db
+**/Logs/
+**/.vscode/*/
+**/.vs/
+**/.config/
+**/Properties/
+**/Colab.csproj.user
